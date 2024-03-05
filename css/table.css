@@ -1,0 +1,233 @@
+body {}
+
+.time_button{
+    margin: 0;
+    padding: 0 70px 0 0;
+}
+.container_selected{
+    width: 766px;
+    margin: 20px auto 0px;
+}
+.container_carousel {
+    margin: 40px auto 0px;
+}
+
+.table_container {
+    margin: 0px 50px;
+    box-sizing: border-box;
+}
+
+.gallery_list {
+    max-height: 22vh;
+}
+.hidden{
+    display: none !important;
+    transition: opacity;
+}
+.btnIn:hover{
+    box-shadow: rgb(38, 57, 77) 0px 20px 30px -10px !important;
+}
+.btnCheckIn{
+    border:2px solid #4682B4 !important;
+    color: #4682B4 !important;
+}
+.btnSkusSerialIn{
+    border-color: #0000CD !important;
+    background-color: white;
+    color: #0000CD !important;
+
+}
+.btnSkusSerialInCheckAll{
+    background-color:#0000CD !important;
+    color: white !important;
+}
+.btnSBoxSerial{
+    border-color: #006400 !important;
+    background-color: white;
+    color: #006400 !important;
+}
+.btnBegin{
+    background-color: #0000CD !important;
+    color: white !important;
+}
+.btnFinish{
+    background-color: #800000 !important;
+    color: white !important;
+}
+.btnPause{
+    background-color: #008080 !important;
+    color: white !important;
+}
+/*.hidden {*/
+/*    !*display: none !important;*!*/
+/*    opacity: 1;*/
+/*    animation-name: a1;*/
+/*    animation-duration: 2s;*/
+/*    animation-fill-mode: forwards;*/
+/*}*/
+
+/*@keyframes a1{*/
+/*    to{*/
+/*        opacity: 0;*/
+/*        min-height: 0;*/
+/*        min-width: 0;*/
+/*        padding: 0;*/
+/*        margin: 0;*/
+/*        border: 0;*/
+/*    }*/
+
+/*}*/
+
+.btn1c:hover{
+    box-shadow: rgb(38, 57, 77) 0px 20px 30px -10px !important;
+}
+
+.text_down {
+    margin: 10px auto;
+
+}
+
+.text_down h5 {
+    border: 1px solid green;
+    border-radius: 5px;
+}
+
+
+.carousel_box {
+    display: flex;
+    flex-direction: row;
+    width: 768px;
+}
+
+.btn_carousel {
+    margin: 0px 2px 0px 2px;
+    width: 146px !important;
+    height: 40px;
+    display: block;
+}
+
+.arrow_box:focus {
+    outline: none;
+}
+.arrow_box{
+    background-color: #4682B4 !important;
+    border-color: #4682B4 !important;
+    color: white !important;
+}
+.arrow_box:hover {
+    cursor: pointer;
+}
+
+.prev_box {
+    height: 40px;
+    margin: 1px 3px 0px 3px;
+}
+
+.next_box {
+    height: 40px;
+    margin: 1px 3px 0px 3px;
+}
+
+.gallery_box {
+    margin: 0 auto;
+    width: 650px;
+    overflow: hidden;
+}
+
+.gallery_list_box {
+    height: 100px;
+    width: 9999px;
+    margin: 0 auto;
+    padding: 0;
+    list-style: none !important;
+    transition: margin-left 900ms;
+    /* удаляем пустое пространство между элементами li, у которых установлен inline-block */
+    /* http://davidwalsh.name/remove-whitespace-inline-block */
+    font-size: 0;
+}
+
+.gallery_list_box li {
+    display: inline-block;
+}
+.gallery_opacity{
+    opacity: 0.5;
+}
+.carousel{
+    max-width: 650px;
+}
+.carousel_button_in{
+    min-width: 100px;
+    /*max-height: 22vh;*/
+    margin-left: 2px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+}
+select:active,
+select:hover,
+select:focus{
+    outline: none !important;
+    border: none !important;
+}
+
+
+.switch-btn {
+    display: inline-block;
+    min-width: 35px; /* ширина */
+    height: 20px; /* высота */
+    border-radius: 19px; /* радиус скругления */
+    background: #ffffff; /* цвет фона */
+    border: 1px solid #0000CD;
+    z-index: 0;
+    margin: 0;
+    padding: 0px;
+    cursor: pointer;
+    position: relative;
+    transition-duration: 300ms; /* анимация */
+}
+.switch-btn::after {
+    content: "";
+    height: 15px; /* высота кнопки */
+    width: 15px; /* ширина кнопки */
+    border-radius: 17px;
+    background: #0000CD; /* цвет кнопки */
+    top: 2px; /* положение кнопки по вертикали относительно основы */
+    left: 2px; /* положение кнопки по горизонтали относительно основы */
+    transition-duration: 300ms; /* анимация */
+    position: absolute;
+    z-index: 1;
+}
+.switch-on {
+    background: #0000CD;
+}
+.switch-on::after {
+    left: 18px;
+    background: #ffffff;
+}
+.liButton{
+    list-style: none;
+}
+.modal-win{
+    display: block;
+    opacity:1 !important;
+    background-color: white !important;
+    margin: 0 auto !important;
+    position: absolute !important;;
+    border-radius: 3px;
+    top:5%;
+    left:30%;
+    right: 30%;
+    padding: 20px;
+    box-shadow: rgb(38, 57, 77) 0px 20px 30px -10px;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 10px;
+    text-transform: uppercase;
+    line-height: 25px;
+    letter-spacing: 3px;
+    font-weight: 600;
+    text-align: center;
+}
+.gallery-pos{
+    position: relative;
+}

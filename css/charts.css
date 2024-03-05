@@ -1,0 +1,18 @@
+.start_header > th{
+    background-color: #161818 !important;
+    color: white !important ;
+}
+.row_inside:hover{
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px !important;
+    transform: translateY(-2px) !important;
+    background-color: #c99719 !important;
+    color: white !important;
+}
+.row_inside:hover>td {
+    background-color: #ffc107 !important;
+    color: white !important;
+}
+.row_inside:hover>th{
+    background-color: #ffc107 !important;
+    color: white !important;
+}

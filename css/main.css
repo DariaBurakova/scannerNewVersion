@@ -1,0 +1,18 @@
+html {
+    height: 100%;
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+}
+
+.container {
+    width: 50vw;
+    height: 50vh;
+    background: rgb(236, 233, 233);
+    justify-content: center;
+    align-items: center;
+}
