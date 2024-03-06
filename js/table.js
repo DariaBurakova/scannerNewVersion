@@ -13,15 +13,27 @@ let htmlBox = ''
 let checkBox = 0
 let allButtonsIn = []
 let checkBoxAll = 0
-let checkBoxItemSkusSerial=[]
+let checkBoxItemSkusSerial = []
 let allSkusSerialItem = []
-let checkBoxItem=0
+let checkBoxItem = 0
 let countButtonSkusSerial = false
 let buttonPrevSkusSerial = ''
 let countButton = false
 let buttonPrev = ''
 let GlobalTimer;
 let allDataAboutOperations = new Map();
+let connetcClient = false
+const client = Stomp.client('ws://localhost:15674/ws');
+const on_connect = function () {
+    connetcClient = true
+    console.log('Connected to WS');
+};
+const on_error = function () {
+    connetcClient = false
+    console.log('error');
+};
+client.connect('rmuser', 'rmpassword', on_connect, on_error, '/');
+
 // БДА 2023-11-06 Массив, который отсылается в мидлэнд со всеми нажатиями
 let localData = {
     "OperationsLists": [
@@ -957,10 +969,10 @@ const deleteClassListAll = (elems, classElem) => {
 
 //проверяет было ли ранее загружен вывод серий
 const handlerControlLoadingSkusSerial = () => {
-    checkBoxAll=0
-    checkBoxItem=0
-    checkBoxItemSkusSerial=[]
-    allSkusSerialItem=[]
+    checkBoxAll = 0
+    checkBoxItem = 0
+    checkBoxItemSkusSerial = []
+    allSkusSerialItem = []
     if (listGallery.classList.contains('gallery_opacity')) {
         deleteClassList(listGallery, 'gallery_opacity') //проверяем было ли выбрано все серии
     }
@@ -982,7 +994,7 @@ const handlerButtonHidden = (allButtons) => {
             addClassList(document.getElementById(itemId.itemButtonPause), 'hidden')
             addClassList(document.getElementById(itemId.itemButtonFinish), 'hidden')
         }
-        if (document.getElementById(itemId.itemStatusId).textContent.toLowerCase() == 'начато' ) {
+        if (document.getElementById(itemId.itemStatusId).textContent.toLowerCase() == 'начато') {
             addClassList(document.getElementById(itemId.itemButtonBegin), 'hidden')
         }
         if (document.getElementById(itemId.itemStatusId).textContent.toLowerCase() == 'пауза') {
@@ -1000,8 +1012,8 @@ const handlerButtonHidden = (allButtons) => {
 }
 
 //функция скрывает ненужные кнопки и показывает нужные при клике на кнопки
-const handlerSearchButtons = (InOperationNumber,SkusSerial,OperationNumber) =>{
-    if(document.getElementById(`${InOperationNumber}status${SkusSerial}`).textContent.toLowerCase() == 'начато' ){
+const handlerSearchButtons = (InOperationNumber, SkusSerial, OperationNumber) => {
+    if (document.getElementById(`${InOperationNumber}status${SkusSerial}`).textContent.toLowerCase() == 'начато') {
         addClassList(document.getElementById(`${InOperationNumber}begin${SkusSerial}`), 'hidden')
         deleteClassList(document.getElementById(`${InOperationNumber}finish${SkusSerial}`), 'hidden')
         deleteClassList(document.getElementById(`${InOperationNumber}pause${SkusSerial}`), 'hidden')
@@ -1020,8 +1032,8 @@ const handlerSearchButtons = (InOperationNumber,SkusSerial,OperationNumber) =>{
 }
 
 //модальное окно с ошибкой
-const htmlModalWindow = (text,serialControl)=>{
-    let htmlModal=(`
+const htmlModalWindow = (text, serialControl) => {
+    let htmlModal = (`
   <div class="modal-win" >
       <div class="modal-dialog">
         <h2 class="text-center mb-1">Ошибка в статусах</h2>
@@ -1036,18 +1048,18 @@ const htmlModalWindow = (text,serialControl)=>{
   </div>
 
     `)
-    document.body.insertAdjacentHTML('afterbegin',htmlModal)
+    document.body.insertAdjacentHTML('afterbegin', htmlModal)
 }
 
 //меняет предворительно статус при выборе всех или нескольких серий
-const handlerChangeStatus=(BoxSerial, SkusSerial, textStatus,InOperationNumber)=>{
-    localData.OperationsLists.find(itemBox=>{
-        itemBox.Boxes.find(itemBoxSerial=>{
-            if (itemBoxSerial.BoxSerial === BoxSerial){
-                itemBoxSerial.Skus.find(itemSkusSerial=>{
-                    if(itemSkusSerial.SkusSerial === SkusSerial){
-                        itemSkusSerial.Operations.find(itemNumOperationsStatus=>{
-                            if (itemNumOperationsStatus.InOperationNumber == InOperationNumber){
+const handlerChangeStatus = (BoxSerial, SkusSerial, textStatus, InOperationNumber) => {
+    localData.OperationsLists.find(itemBox => {
+        itemBox.Boxes.find(itemBoxSerial => {
+            if (itemBoxSerial.BoxSerial === BoxSerial) {
+                itemBoxSerial.Skus.find(itemSkusSerial => {
+                    if (itemSkusSerial.SkusSerial === SkusSerial) {
+                        itemSkusSerial.Operations.find(itemNumOperationsStatus => {
+                            if (itemNumOperationsStatus.InOperationNumber == InOperationNumber) {
                                 itemNumOperationsStatus.Status = textStatus
                             }
                         })
@@ -1059,21 +1071,21 @@ const handlerChangeStatus=(BoxSerial, SkusSerial, textStatus,InOperationNumber)=
 }
 
 // данная функция нужна для работы коректной проверки контроля статуса
-const handlerControlStatus=(BoxSerial, SkusSerial, OperationNumber, textStatus, WcGuid, num,InOperationNumber)=>{
-    let errorsControl=[]
-    let textControl="Невозможно изменить статус, ранее серия не была выбрана"
-    let controlStatus=0
-    if(num===2 || num===1985){
-        if(checkBoxAll === 1){
-            localData.OperationsLists.find(itemBox=>{
-                itemBox.Boxes.find(itemBoxSerial=>{
-                    if (itemBoxSerial.BoxSerial === BoxSerial){
-                        itemBoxSerial.Skus.find(itemSkusSerial=>{
-                            allSkusSerialItem.find(itemAllSkusSerialItem=>{
-                                if (itemSkusSerial.SkusSerial == itemAllSkusSerialItem.SkusSerial){
+const handlerControlStatus = (BoxSerial, SkusSerial, OperationNumber, textStatus, WcGuid, num, InOperationNumber) => {
+    let errorsControl = []
+    let textControl = "Невозможно изменить статус, ранее серия не была выбрана"
+    let controlStatus = 0
+    if (num === 2 || num === 1985) {
+        if (checkBoxAll === 1) {
+            localData.OperationsLists.find(itemBox => {
+                itemBox.Boxes.find(itemBoxSerial => {
+                    if (itemBoxSerial.BoxSerial === BoxSerial) {
+                        itemBoxSerial.Skus.find(itemSkusSerial => {
+                            allSkusSerialItem.find(itemAllSkusSerialItem => {
+                                if (itemSkusSerial.SkusSerial == itemAllSkusSerialItem.SkusSerial) {
                                     itemSkusSerial.Operations.find(itemNumOperationsStatus => {
-                                        if (itemNumOperationsStatus.InOperationNumber == InOperationNumber){
-                                            if(itemNumOperationsStatus.Status.toLowerCase() == 'сформировано' || itemNumOperationsStatus.Status.toLowerCase() == 'закончено'){
+                                        if (itemNumOperationsStatus.InOperationNumber == InOperationNumber) {
+                                            if (itemNumOperationsStatus.Status.toLowerCase() == 'сформировано' || itemNumOperationsStatus.Status.toLowerCase() == 'закончено') {
                                                 allSkusSerialItem = allSkusSerialItem.filter(item => (item.SkusSerial !== itemSkusSerial.SkusSerial))
                                                 controlStatus++
                                                 errorsControl.push(itemSkusSerial.SkusSerial)
@@ -1086,23 +1098,23 @@ const handlerControlStatus=(BoxSerial, SkusSerial, OperationNumber, textStatus, 
                     }
                 })
             })
-            if(controlStatus>0){
-                htmlModalWindow(textControl,errorsControl.join(' ,'))
-                controlStatus=0
-                errorsControl=[]
+            if (controlStatus > 0) {
+                htmlModalWindow(textControl, errorsControl.join(' ,'))
+                controlStatus = 0
+                errorsControl = []
             }
-            handlerSearchLocalData(BoxSerial, SkusSerial, OperationNumber, textStatus, WcGuid, num,InOperationNumber)
+            handlerSearchLocalData(BoxSerial, SkusSerial, OperationNumber, textStatus, WcGuid, num, InOperationNumber)
         }
-        if(checkBoxItem > 0){
-            localData.OperationsLists.find(itemBox=>{
-                itemBox.Boxes.find(itemBoxSerial=>{
-                    if (itemBoxSerial.BoxSerial === BoxSerial){
-                        itemBoxSerial.Skus.find(itemSkusSerial=>{
-                            checkBoxItemSkusSerial.find(itemAllSkusSerialItem=>{
-                                if (itemSkusSerial.SkusSerial == itemAllSkusSerialItem.SkusSerial){
+        if (checkBoxItem > 0) {
+            localData.OperationsLists.find(itemBox => {
+                itemBox.Boxes.find(itemBoxSerial => {
+                    if (itemBoxSerial.BoxSerial === BoxSerial) {
+                        itemBoxSerial.Skus.find(itemSkusSerial => {
+                            checkBoxItemSkusSerial.find(itemAllSkusSerialItem => {
+                                if (itemSkusSerial.SkusSerial == itemAllSkusSerialItem.SkusSerial) {
                                     itemSkusSerial.Operations.find(itemNumOperationsStatus => {
-                                        if (itemNumOperationsStatus.InOperationNumber == InOperationNumber){
-                                            if(itemNumOperationsStatus.Status.toLowerCase() == 'сформировано'  || itemNumOperationsStatus.Status.toLowerCase() == 'закончено'){
+                                        if (itemNumOperationsStatus.InOperationNumber == InOperationNumber) {
+                                            if (itemNumOperationsStatus.Status.toLowerCase() == 'сформировано' || itemNumOperationsStatus.Status.toLowerCase() == 'закончено') {
                                                 checkBoxItemSkusSerial = checkBoxItemSkusSerial.filter(item => (item.SkusSerial !== itemSkusSerial.SkusSerial))
                                                 controlStatus++
                                                 errorsControl.push(itemSkusSerial.SkusSerial)
@@ -1115,25 +1127,25 @@ const handlerControlStatus=(BoxSerial, SkusSerial, OperationNumber, textStatus, 
                     }
                 })
             })
-            if(controlStatus>0){
-                htmlModalWindow(textControl,errorsControl.join(' ,'))
-                controlStatus=0
-                errorsControl=[]
+            if (controlStatus > 0) {
+                htmlModalWindow(textControl, errorsControl.join(' ,'))
+                controlStatus = 0
+                errorsControl = []
             }
-            handlerSearchLocalData(BoxSerial, SkusSerial, OperationNumber, textStatus, WcGuid, num,InOperationNumber)
+            handlerSearchLocalData(BoxSerial, SkusSerial, OperationNumber, textStatus, WcGuid, num, InOperationNumber)
         }
     }
-    if(num===3){
-        if(checkBoxAll === 1){
-            localData.OperationsLists.find(itemBox=>{
-                itemBox.Boxes.find(itemBoxSerial=>{
-                    if (itemBoxSerial.BoxSerial === BoxSerial){
-                        itemBoxSerial.Skus.find(itemSkusSerial=>{
-                            allSkusSerialItem.find(itemAllSkusSerialItem=>{
-                                if (itemSkusSerial.SkusSerial == itemAllSkusSerialItem.SkusSerial){
+    if (num === 3) {
+        if (checkBoxAll === 1) {
+            localData.OperationsLists.find(itemBox => {
+                itemBox.Boxes.find(itemBoxSerial => {
+                    if (itemBoxSerial.BoxSerial === BoxSerial) {
+                        itemBoxSerial.Skus.find(itemSkusSerial => {
+                            allSkusSerialItem.find(itemAllSkusSerialItem => {
+                                if (itemSkusSerial.SkusSerial == itemAllSkusSerialItem.SkusSerial) {
                                     itemSkusSerial.Operations.find(itemNumOperationsStatus => {
-                                        if (itemNumOperationsStatus.InOperationNumber == InOperationNumber){
-                                            if(itemNumOperationsStatus.Status.toLowerCase() == 'сформировано'  || itemNumOperationsStatus.Status.toLowerCase() == 'пауза'){
+                                        if (itemNumOperationsStatus.InOperationNumber == InOperationNumber) {
+                                            if (itemNumOperationsStatus.Status.toLowerCase() == 'сформировано' || itemNumOperationsStatus.Status.toLowerCase() == 'пауза') {
                                                 allSkusSerialItem = allSkusSerialItem.filter(item => (item.SkusSerial !== itemSkusSerial.SkusSerial))
                                                 controlStatus++
                                                 errorsControl.push(itemSkusSerial.SkusSerial)
@@ -1146,23 +1158,23 @@ const handlerControlStatus=(BoxSerial, SkusSerial, OperationNumber, textStatus, 
                     }
                 })
             })
-            if(controlStatus>0){
-                htmlModalWindow(textControl,errorsControl.join(' ,'))
-                controlStatus=0
-                errorsControl=[]
+            if (controlStatus > 0) {
+                htmlModalWindow(textControl, errorsControl.join(' ,'))
+                controlStatus = 0
+                errorsControl = []
             }
-            handlerSearchLocalData(BoxSerial, SkusSerial, OperationNumber, textStatus, WcGuid, num,InOperationNumber)
+            handlerSearchLocalData(BoxSerial, SkusSerial, OperationNumber, textStatus, WcGuid, num, InOperationNumber)
         }
-        if(checkBoxItem > 0){
-            localData.OperationsLists.find(itemBox=>{
-                itemBox.Boxes.find(itemBoxSerial=>{
-                    if (itemBoxSerial.BoxSerial === BoxSerial){
-                        itemBoxSerial.Skus.find(itemSkusSerial=>{
-                            checkBoxItemSkusSerial.find(itemAllSkusSerialItem=>{
-                                if (itemSkusSerial.SkusSerial == itemAllSkusSerialItem.SkusSerial){
+        if (checkBoxItem > 0) {
+            localData.OperationsLists.find(itemBox => {
+                itemBox.Boxes.find(itemBoxSerial => {
+                    if (itemBoxSerial.BoxSerial === BoxSerial) {
+                        itemBoxSerial.Skus.find(itemSkusSerial => {
+                            checkBoxItemSkusSerial.find(itemAllSkusSerialItem => {
+                                if (itemSkusSerial.SkusSerial == itemAllSkusSerialItem.SkusSerial) {
                                     itemSkusSerial.Operations.find(itemNumOperationsStatus => {
-                                        if (itemNumOperationsStatus.InOperationNumber == InOperationNumber){
-                                            if(itemNumOperationsStatus.Status.toLowerCase() == 'сформировано'  || itemNumOperationsStatus.Status.toLowerCase() == 'пауза'){
+                                        if (itemNumOperationsStatus.InOperationNumber == InOperationNumber) {
+                                            if (itemNumOperationsStatus.Status.toLowerCase() == 'сформировано' || itemNumOperationsStatus.Status.toLowerCase() == 'пауза') {
                                                 checkBoxItemSkusSerial = checkBoxItemSkusSerial.filter(item => (item.SkusSerial !== itemSkusSerial.SkusSerial))
                                                 controlStatus++
                                                 errorsControl.push(itemSkusSerial.SkusSerial)
@@ -1175,21 +1187,21 @@ const handlerControlStatus=(BoxSerial, SkusSerial, OperationNumber, textStatus, 
                     }
                 })
             })
-            if(controlStatus>0){
-                htmlModalWindow(textControl,errorsControl.join(' ,'))
-                controlStatus=0
-                errorsControl=[]
+            if (controlStatus > 0) {
+                htmlModalWindow(textControl, errorsControl.join(' ,'))
+                controlStatus = 0
+                errorsControl = []
             }
-            handlerSearchLocalData(BoxSerial, SkusSerial, OperationNumber, textStatus, WcGuid, num,InOperationNumber)
+            handlerSearchLocalData(BoxSerial, SkusSerial, OperationNumber, textStatus, WcGuid, num, InOperationNumber)
         }
     }
 }
 
 //функция запускает и останавливает время у соответсвующих изделий
-const handlerSearchTimerMap=(SkusSerial,BoxSerial,InOperationNumber,OperationNumber,aryName,startOrStop)=>{
+const handlerSearchTimerMap = (SkusSerial, BoxSerial, InOperationNumber, OperationNumber, aryName, startOrStop) => {
     localData.OperationsLists.find(itemBox => {
         itemBox.Boxes.find(itemBoxSerial => {
-            if(itemBoxSerial.BoxSerial === BoxSerial) {
+            if (itemBoxSerial.BoxSerial === BoxSerial) {
                 itemBoxSerial.Skus.find(itemSkusSerial => {
                     aryName.find(itemAllSkusSerialItem => {
                         if (itemAllSkusSerialItem.SkusSerial == itemSkusSerial.SkusSerial) {
@@ -1236,37 +1248,23 @@ function handlerSendAllDataBase() {
     let myHeaders = new Headers();
     myHeaders.append("Content-Type", "application/json");
     let raw = JSON.stringify(dataBase);
-    let requestOptions = {
-        method: 'POST',
-        headers: myHeaders,
-        body: raw,
-        redirect: 'follow'
-    };
-    let pipe = function (send) {
-        if (send) {
-            send(raw)
-            return false;
-        }
-    };
-    let client = Stomp.client('ws://localhost:15674/ws');
-    let print_first = pipe(function (data) {
-        client.send('/topic/test', { "content-type": "text/plain" }, data);
-        console.log(data)
-    });
-    // let on_connect = function (x) {
-    //     id = client.subscribe("/topic/test", function (d) {
-    //         print_first(d.body);
-    //     });
+    // let requestOptions = {
+    //     method: 'POST',
+    //     headers: myHeaders,
+    //     body: raw,
+    //     redirect: 'follow'
     // };
-    let on_error = function () {
-        console.log('error');
-    };
-    client.connect('rmuser', 'rmpassword', on_connect, on_error, '/');
+
+
     // fetch(mainUrl + "changeFull", requestOptions)
     //     .then(response => response.json())
     //     .then(function (result) {
     //     })
     //     .catch(error => console.log('error', error));
+    if (connetcClient) {
+        client.send('/queue/btmchash_2', { "content-type": "text/plain" }, raw)
+        dataBase = []
+    }
 
 }
 
@@ -1315,7 +1313,7 @@ function handlerButtonSkusSerialStyle(item) {
 }
 
 //функция меняет данные загруженные из 1с при клике на соответствующие кнопки
-function handlerSearchLocalData(BoxSerial, SkusSerial, OperationNumber, textStatus, WcGuid, num,InOperationNumber) {
+function handlerSearchLocalData(BoxSerial, SkusSerial, OperationNumber, textStatus, WcGuid, num, InOperationNumber) {
     localData.OperationsLists.find(itemBox => {
         itemBox.Boxes.find(itemBoxSerial => {
             if (itemBoxSerial.BoxSerial === BoxSerial) {
@@ -1369,7 +1367,7 @@ function handlerSearchLocalData(BoxSerial, SkusSerial, OperationNumber, textStat
                             }
                         })
                     })
-                } else if (checkBoxAll === 0 && checkBoxItem === 0 ) {
+                } else if (checkBoxAll === 0 && checkBoxItem === 0) {
                     itemBoxSerial.Skus.find(itemSkusSerial => {
                         if (itemSkusSerial.SkusSerial == SkusSerial) {
                             itemSkusSerial.Operations.find(itemOperationNumber => {
@@ -1402,31 +1400,31 @@ function handlerSearchLocalData(BoxSerial, SkusSerial, OperationNumber, textStat
 }
 
 //функция собирает данные отправленные пользователем при нажатии на кнопки и отправляеи их в функцию handlerSearchLocalData
-function handlerSendInLocal(SkusSerial,WcGuid,BoxSerial,Operation,num,Status,InOperationNumber,OperationNumber){
+function handlerSendInLocal(SkusSerial, WcGuid, BoxSerial, Operation, num, Status, InOperationNumber, OperationNumber) {
     let textStatus = ''
     if (num === 1) {
         textStatus = 'Начато'
         if (checkBoxAll === 1) {
             checkBoxItemSkusSerial = []
-            handlerSearchTimerMap(SkusSerial,BoxSerial,InOperationNumber,OperationNumber,allSkusSerialItem,true)
+            handlerSearchTimerMap(SkusSerial, BoxSerial, InOperationNumber, OperationNumber, allSkusSerialItem, true)
             document.getElementById(`${InOperationNumber}status${SkusSerial}`).innerHTML = ('Начато')
-            handlerSearchButtons(InOperationNumber,SkusSerial,OperationNumber)
-            handlerSearchLocalData(BoxSerial, SkusSerial, OperationNumber, textStatus, WcGuid, num,InOperationNumber)
+            handlerSearchButtons(InOperationNumber, SkusSerial, OperationNumber)
+            handlerSearchLocalData(BoxSerial, SkusSerial, OperationNumber, textStatus, WcGuid, num, InOperationNumber)
 
-        }else
-        if (checkBoxItem > 0) {
-            document.getElementById(`${InOperationNumber}status${SkusSerial}`).innerHTML = ('Начато')
-            handlerSearchTimerMap(SkusSerial,BoxSerial,InOperationNumber,OperationNumber,checkBoxItemSkusSerial,true)
-            handlerSearchButtons(InOperationNumber,SkusSerial,OperationNumber)
-            handlerSearchLocalData(BoxSerial, SkusSerial, OperationNumber, textStatus, WcGuid, num,InOperationNumber)
+        } else
+            if (checkBoxItem > 0) {
+                document.getElementById(`${InOperationNumber}status${SkusSerial}`).innerHTML = ('Начато')
+                handlerSearchTimerMap(SkusSerial, BoxSerial, InOperationNumber, OperationNumber, checkBoxItemSkusSerial, true)
+                handlerSearchButtons(InOperationNumber, SkusSerial, OperationNumber)
+                handlerSearchLocalData(BoxSerial, SkusSerial, OperationNumber, textStatus, WcGuid, num, InOperationNumber)
 
-        }else
-        if(checkBoxItem == 0 && checkBoxAll == 0){
-            GlobalTimer.changeTimerState(SkusSerial, Number(OperationNumber), true)
-            document.getElementById(`${InOperationNumber}status${SkusSerial}`).innerHTML = ('Начато')
-            handlerSearchButtons(InOperationNumber,SkusSerial,OperationNumber)
-            handlerSearchLocalData(BoxSerial, SkusSerial, OperationNumber, textStatus, WcGuid, num,InOperationNumber)
-        }
+            } else
+                if (checkBoxItem == 0 && checkBoxAll == 0) {
+                    GlobalTimer.changeTimerState(SkusSerial, Number(OperationNumber), true)
+                    document.getElementById(`${InOperationNumber}status${SkusSerial}`).innerHTML = ('Начато')
+                    handlerSearchButtons(InOperationNumber, SkusSerial, OperationNumber)
+                    handlerSearchLocalData(BoxSerial, SkusSerial, OperationNumber, textStatus, WcGuid, num, InOperationNumber)
+                }
     }
     if (num === 2) {
         if (document.getElementById(`${InOperationNumber}pause${SkusSerial}`).textContent === 'Продолжить') {
@@ -1436,28 +1434,28 @@ function handlerSendInLocal(SkusSerial,WcGuid,BoxSerial,Operation,num,Status,InO
                 checkBoxItemSkusSerial = []
                 document.getElementById(`${InOperationNumber}pause${SkusSerial}`).textContent = ('Пауза')
                 document.getElementById(`${InOperationNumber}status${SkusSerial}`).textContent = ('Начато')
-                handlerChangeStatus(BoxSerial, SkusSerial, textStatus,InOperationNumber)
-                handlerSearchTimerMap(SkusSerial,BoxSerial,InOperationNumber,OperationNumber,allSkusSerialItem,true)
-                handlerSearchButtons(InOperationNumber,SkusSerial,OperationNumber)
-                handlerControlStatus(BoxSerial, SkusSerial, OperationNumber, textStatus, WcGuid, num,InOperationNumber)
+                handlerChangeStatus(BoxSerial, SkusSerial, textStatus, InOperationNumber)
+                handlerSearchTimerMap(SkusSerial, BoxSerial, InOperationNumber, OperationNumber, allSkusSerialItem, true)
+                handlerSearchButtons(InOperationNumber, SkusSerial, OperationNumber)
+                handlerControlStatus(BoxSerial, SkusSerial, OperationNumber, textStatus, WcGuid, num, InOperationNumber)
 
 
-            }else
-            if (checkBoxItem > 0) {
-                document.getElementById(`${InOperationNumber}pause${SkusSerial}`).textContent = ('Пауза')
-                document.getElementById(`${InOperationNumber}status${SkusSerial}`).textContent = ('Начато')
-                handlerChangeStatus(BoxSerial, SkusSerial, textStatus,InOperationNumber)
-                handlerSearchTimerMap(SkusSerial,BoxSerial,InOperationNumber,OperationNumber,checkBoxItemSkusSerial,true)
-                handlerSearchButtons(InOperationNumber,SkusSerial,OperationNumber)
-                handlerControlStatus(BoxSerial, SkusSerial, OperationNumber, textStatus, WcGuid, num,InOperationNumber)
-            }else
-            if(checkBoxItem == 0 && checkBoxAll == 0){
-                document.getElementById(`${InOperationNumber}pause${SkusSerial}`).textContent = ('Пауза')
-                document.getElementById(`${InOperationNumber}status${SkusSerial}`).textContent = ('Начато')
-                handlerSearchButtons(InOperationNumber,SkusSerial,OperationNumber)
-                GlobalTimer.changeTimerState(SkusSerial, Number(OperationNumber), true)
-                handlerSearchLocalData(BoxSerial, SkusSerial, OperationNumber, textStatus, WcGuid, num,InOperationNumber)
-            }
+            } else
+                if (checkBoxItem > 0) {
+                    document.getElementById(`${InOperationNumber}pause${SkusSerial}`).textContent = ('Пауза')
+                    document.getElementById(`${InOperationNumber}status${SkusSerial}`).textContent = ('Начато')
+                    handlerChangeStatus(BoxSerial, SkusSerial, textStatus, InOperationNumber)
+                    handlerSearchTimerMap(SkusSerial, BoxSerial, InOperationNumber, OperationNumber, checkBoxItemSkusSerial, true)
+                    handlerSearchButtons(InOperationNumber, SkusSerial, OperationNumber)
+                    handlerControlStatus(BoxSerial, SkusSerial, OperationNumber, textStatus, WcGuid, num, InOperationNumber)
+                } else
+                    if (checkBoxItem == 0 && checkBoxAll == 0) {
+                        document.getElementById(`${InOperationNumber}pause${SkusSerial}`).textContent = ('Пауза')
+                        document.getElementById(`${InOperationNumber}status${SkusSerial}`).textContent = ('Начато')
+                        handlerSearchButtons(InOperationNumber, SkusSerial, OperationNumber)
+                        GlobalTimer.changeTimerState(SkusSerial, Number(OperationNumber), true)
+                        handlerSearchLocalData(BoxSerial, SkusSerial, OperationNumber, textStatus, WcGuid, num, InOperationNumber)
+                    }
 
         } else {
             textStatus = 'Пауза'
@@ -1466,36 +1464,36 @@ function handlerSendInLocal(SkusSerial,WcGuid,BoxSerial,Operation,num,Status,InO
                 checkBoxItemSkusSerial = []
                 document.getElementById(`${InOperationNumber}pause${SkusSerial}`).textContent = ('Продолжить')
                 document.getElementById(`${InOperationNumber}status${SkusSerial}`).textContent = ('Пауза')
-                handlerChangeStatus(BoxSerial, SkusSerial, textStatus,InOperationNumber)
-                handlerSearchTimerMap(SkusSerial,BoxSerial,InOperationNumber,OperationNumber,allSkusSerialItem,false)
-                handlerSearchButtons(InOperationNumber,SkusSerial,OperationNumber)
+                handlerChangeStatus(BoxSerial, SkusSerial, textStatus, InOperationNumber)
+                handlerSearchTimerMap(SkusSerial, BoxSerial, InOperationNumber, OperationNumber, allSkusSerialItem, false)
+                handlerSearchButtons(InOperationNumber, SkusSerial, OperationNumber)
                 let some = GlobalTimer.allTimers.get(SkusSerial).get(Number(OperationNumber)).getTime();
                 console.log(some / 1000);
-                handlerControlStatus(BoxSerial, SkusSerial, OperationNumber, textStatus, WcGuid, num,InOperationNumber)
-                console.log(num,'pause')
-            }else
-            if (checkBoxItem > 0) {
-                document.getElementById(`${InOperationNumber}pause${SkusSerial}`).textContent = ('Продолжить')
-                document.getElementById(`${InOperationNumber}status${SkusSerial}`).textContent = ('Пауза')
-                handlerChangeStatus(BoxSerial, SkusSerial, textStatus,InOperationNumber)
-                handlerSearchTimerMap(SkusSerial,BoxSerial,InOperationNumber,OperationNumber,checkBoxItemSkusSerial,false)
-                handlerSearchButtons(InOperationNumber,SkusSerial,OperationNumber)
-                let some = GlobalTimer.allTimers.get(SkusSerial).get(Number(OperationNumber)).getTime();
-                console.log(some / 1000);
-                handlerControlStatus(BoxSerial, SkusSerial, OperationNumber, textStatus, WcGuid, num,InOperationNumber)
+                handlerControlStatus(BoxSerial, SkusSerial, OperationNumber, textStatus, WcGuid, num, InOperationNumber)
+                console.log(num, 'pause')
+            } else
+                if (checkBoxItem > 0) {
+                    document.getElementById(`${InOperationNumber}pause${SkusSerial}`).textContent = ('Продолжить')
+                    document.getElementById(`${InOperationNumber}status${SkusSerial}`).textContent = ('Пауза')
+                    handlerChangeStatus(BoxSerial, SkusSerial, textStatus, InOperationNumber)
+                    handlerSearchTimerMap(SkusSerial, BoxSerial, InOperationNumber, OperationNumber, checkBoxItemSkusSerial, false)
+                    handlerSearchButtons(InOperationNumber, SkusSerial, OperationNumber)
+                    let some = GlobalTimer.allTimers.get(SkusSerial).get(Number(OperationNumber)).getTime();
+                    console.log(some / 1000);
+                    handlerControlStatus(BoxSerial, SkusSerial, OperationNumber, textStatus, WcGuid, num, InOperationNumber)
 
 
-            }else
-            if(checkBoxItem == 0 && checkBoxAll == 0){
-                document.getElementById(`${InOperationNumber}pause${SkusSerial}`).textContent = ('Продолжить')
-                document.getElementById(`${InOperationNumber}status${SkusSerial}`).textContent = ('Пауза')
-                GlobalTimer.changeTimerState(SkusSerial, Number(OperationNumber), false)
-                handlerSearchButtons(InOperationNumber,SkusSerial,OperationNumber)
-                let some = GlobalTimer.allTimers.get(SkusSerial).get(Number(OperationNumber)).getTime();
-                console.log(some / 1000);
-                handlerSearchLocalData(BoxSerial, SkusSerial, OperationNumber, textStatus, WcGuid, num,InOperationNumber)
+                } else
+                    if (checkBoxItem == 0 && checkBoxAll == 0) {
+                        document.getElementById(`${InOperationNumber}pause${SkusSerial}`).textContent = ('Продолжить')
+                        document.getElementById(`${InOperationNumber}status${SkusSerial}`).textContent = ('Пауза')
+                        GlobalTimer.changeTimerState(SkusSerial, Number(OperationNumber), false)
+                        handlerSearchButtons(InOperationNumber, SkusSerial, OperationNumber)
+                        let some = GlobalTimer.allTimers.get(SkusSerial).get(Number(OperationNumber)).getTime();
+                        console.log(some / 1000);
+                        handlerSearchLocalData(BoxSerial, SkusSerial, OperationNumber, textStatus, WcGuid, num, InOperationNumber)
 
-            }
+                    }
 
         }
     }
@@ -1504,25 +1502,25 @@ function handlerSendInLocal(SkusSerial,WcGuid,BoxSerial,Operation,num,Status,InO
         if (checkBoxAll === 1) {
             checkBoxItemSkusSerial = []
             document.getElementById(`${InOperationNumber}status${SkusSerial}`).textContent = ('Закончено')
-            handlerChangeStatus(BoxSerial, SkusSerial, textStatus,InOperationNumber)
-            handlerSearchTimerMap(SkusSerial,BoxSerial,InOperationNumber,OperationNumber,allSkusSerialItem,false)
-            handlerSearchButtons(InOperationNumber,SkusSerial,OperationNumber)
+            handlerChangeStatus(BoxSerial, SkusSerial, textStatus, InOperationNumber)
+            handlerSearchTimerMap(SkusSerial, BoxSerial, InOperationNumber, OperationNumber, allSkusSerialItem, false)
+            handlerSearchButtons(InOperationNumber, SkusSerial, OperationNumber)
             console.log(GlobalTimer.allTimers.get(SkusSerial).get(Number(OperationNumber)).getTime() / 1000)
-            handlerControlStatus(BoxSerial, SkusSerial, OperationNumber, textStatus, WcGuid, num,InOperationNumber)
+            handlerControlStatus(BoxSerial, SkusSerial, OperationNumber, textStatus, WcGuid, num, InOperationNumber)
 
-        }else if (checkBoxItem > 0) {
+        } else if (checkBoxItem > 0) {
             document.getElementById(`${InOperationNumber}status${SkusSerial}`).textContent = ('Закончено')
-            handlerChangeStatus(BoxSerial, SkusSerial, textStatus,InOperationNumber)
-            handlerSearchTimerMap(SkusSerial,BoxSerial,InOperationNumber,OperationNumber,checkBoxItemSkusSerial,false)
+            handlerChangeStatus(BoxSerial, SkusSerial, textStatus, InOperationNumber)
+            handlerSearchTimerMap(SkusSerial, BoxSerial, InOperationNumber, OperationNumber, checkBoxItemSkusSerial, false)
             console.log(GlobalTimer.allTimers.get(SkusSerial).get(Number(OperationNumber)).getTime() / 1000)
-            handlerSearchButtons(InOperationNumber,SkusSerial,OperationNumber)
-            handlerControlStatus(BoxSerial, SkusSerial, OperationNumber, textStatus, WcGuid, num,InOperationNumber)
-        }else if (checkBoxItem == 0 && checkBoxAll == 0){
+            handlerSearchButtons(InOperationNumber, SkusSerial, OperationNumber)
+            handlerControlStatus(BoxSerial, SkusSerial, OperationNumber, textStatus, WcGuid, num, InOperationNumber)
+        } else if (checkBoxItem == 0 && checkBoxAll == 0) {
             document.getElementById(`${InOperationNumber}status${SkusSerial}`).textContent = ('Закончено')
             GlobalTimer.changeTimerState(SkusSerial, Number(OperationNumber), false)
             console.log(GlobalTimer.allTimers.get(SkusSerial).get(Number(OperationNumber)).getTime() / 1000)
-            handlerSearchButtons(InOperationNumber,SkusSerial,OperationNumber)
-            handlerSearchLocalData(BoxSerial, SkusSerial, OperationNumber, textStatus, WcGuid, num,InOperationNumber)
+            handlerSearchButtons(InOperationNumber, SkusSerial, OperationNumber)
+            handlerSearchLocalData(BoxSerial, SkusSerial, OperationNumber, textStatus, WcGuid, num, InOperationNumber)
         }
 
     }
@@ -1574,11 +1572,11 @@ function handlerShowTable(BoxSerial, SkusSerial) {
 }
 
 //функция собирает массив со всеми сериями для кнопки выбрать все
-function handlerSearchSkusSerial(boxSerial){
-    localData.OperationsLists.find(itemBox=>{
-        itemBox.Boxes.find(itemBoxSerial=>{
-            if(itemBoxSerial.BoxSerial == boxSerial){
-                itemBoxSerial.Skus.find(itemSkusSerial=>{
+function handlerSearchSkusSerial(boxSerial) {
+    localData.OperationsLists.find(itemBox => {
+        itemBox.Boxes.find(itemBoxSerial => {
+            if (itemBoxSerial.BoxSerial == boxSerial) {
+                itemBoxSerial.Skus.find(itemSkusSerial => {
                     let skusSerialAll = new Object()
                     skusSerialAll.SkusSerial = itemSkusSerial.SkusSerial
                     allSkusSerialItem.push(skusSerialAll)
@@ -1591,22 +1589,22 @@ function handlerSearchSkusSerial(boxSerial){
 }
 
 // функция отвечает за выбор всех серий или удаление выбранного
-function handlerBlockButtonChecked(id,boxSerial){
-    if(checkBoxItem === 0){
-        if(document.getElementById(id).textContent.toLowerCase() == 'отметить все'){
+function handlerBlockButtonChecked(id, boxSerial) {
+    if (checkBoxItem === 0) {
+        if (document.getElementById(id).textContent.toLowerCase() == 'отметить все') {
             document.getElementById(id).textContent = ('Убрать у всех')
-            addClassListAll(document.querySelectorAll('.btnSkusSerialIn'),'btnSkusSerialInCheckAll')
-            addClassList(listGallery,'gallery_opacity')
-            addClassListAll(document.querySelectorAll('.checkButtonInput '),'switch-on')
-            checkBoxAll=1
+            addClassListAll(document.querySelectorAll('.btnSkusSerialIn'), 'btnSkusSerialInCheckAll')
+            addClassList(listGallery, 'gallery_opacity')
+            addClassListAll(document.querySelectorAll('.checkButtonInput '), 'switch-on')
+            checkBoxAll = 1
             handlerSearchSkusSerial(boxSerial)
-        }else{
+        } else {
             document.getElementById(id).textContent = ('Отметить все')
-            deleteClassList(listGallery,'gallery_opacity')
-            deleteClassListAll(document.querySelectorAll('.btnSkusSerialIn'),'btnSkusSerialInCheckAll')
-            deleteClassListAll(document.querySelectorAll('.checkButtonInput '),'switch-on')
-            checkBoxAll=0
-            allSkusSerialItem=[]
+            deleteClassList(listGallery, 'gallery_opacity')
+            deleteClassListAll(document.querySelectorAll('.btnSkusSerialIn'), 'btnSkusSerialInCheckAll')
+            deleteClassListAll(document.querySelectorAll('.checkButtonInput '), 'switch-on')
+            checkBoxAll = 0
+            allSkusSerialItem = []
         }
     }
 }
@@ -1616,7 +1614,7 @@ function handlerInputCheck(skusSerial) {
     if (this.event && checkBoxAll === 0) {
         let elems = document.getElementById(`${skusSerial}flexCheckDefault`)
         elems.classList.toggle('switch-on')
-        addClassList(document.getElementById(`${skusSerial}`),'btnSkusSerialInCheckAll')
+        addClassList(document.getElementById(`${skusSerial}`), 'btnSkusSerialInCheckAll')
         if (elems.classList.contains('switch-on')) {
             checkBoxItem = checkBoxItem + 1
             let itemSkusSerial = new Object()
@@ -1624,7 +1622,7 @@ function handlerInputCheck(skusSerial) {
             checkBoxItemSkusSerial.push(itemSkusSerial)
         } else {
             checkBoxItem = checkBoxItem - 1
-            deleteClassList(document.getElementById(`${skusSerial}`),'btnSkusSerialInCheckAll')
+            deleteClassList(document.getElementById(`${skusSerial}`), 'btnSkusSerialInCheckAll')
             checkBoxItemSkusSerial = checkBoxItemSkusSerial.filter(item => (item.SkusSerial !== skusSerial))
 
         }
@@ -1633,7 +1631,7 @@ function handlerInputCheck(skusSerial) {
 }
 // функция рисует сами серии
 function handlerBoxSkusSerial(itemBoxSerial) {
-    let filterSerial=[]
+    let filterSerial = []
     handlerControlLoadingSkusSerial() //проверяет было ли ранее загружен вывод серий
     handlerButtonBoxSerialStyle(itemBoxSerial) //отрабатываем клик по серии и добавляем стили к кнопкам
     localData.OperationsLists.find(itemBox => {
@@ -1641,7 +1639,7 @@ function handlerBoxSkusSerial(itemBoxSerial) {
             if (itemSkusSerial.BoxSerial == itemBoxSerial) {
 
                 itemSkusSerial.Skus.find(itemSerial => {
-                    itemSerial.Operations.find(itemSerialStatus=>{
+                    itemSerial.Operations.find(itemSerialStatus => {
                         if (selectionChoose == 1 || selectionChoose == 0) {
                             let statusControl = new Object()
                             statusControl.SkusSerial = itemSerial.SkusSerial
@@ -1659,7 +1657,7 @@ function handlerBoxSkusSerial(itemBoxSerial) {
                             }
                         }
                         if (selectionChoose == 3) {
-                            if ( itemSerialStatus.Status.toLowerCase() === 'начато') {
+                            if (itemSerialStatus.Status.toLowerCase() === 'начато') {
                                 let statusControl = new Object()
                                 statusControl.SkusSerial = itemSerial.SkusSerial
                                 statusControl.BoxSerial = itemSkusSerial.BoxSerial
@@ -1674,10 +1672,10 @@ function handlerBoxSkusSerial(itemBoxSerial) {
         })
 
     })
-    filterSerial= filterSerial.reduce((r, i) =>
-            !r.some(j => !Object.keys(i).some(k => i[k] !== j[k])) ? [...r, i] : r
+    filterSerial = filterSerial.reduce((r, i) =>
+        !r.some(j => !Object.keys(i).some(k => i[k] !== j[k])) ? [...r, i] : r
         , [])
-    filterSerial.find(item=>{
+    filterSerial.find(item => {
         htmlButtonSkusSerial(item.SkusSerial, item.BoxSerial, item.SkusFriendlyName)
     })
     let htmlBlockChecked = (`
@@ -1687,43 +1685,43 @@ function handlerBoxSkusSerial(itemBoxSerial) {
 
 //функция фильтрует бокс серии по выборки
 const handlerSelectionStatusSearchBox = (text) => {
-    let filterStatus=[]
-    for(let a=0;a<localData.OperationsLists.length;a++) {
+    let filterStatus = []
+    for (let a = 0; a < localData.OperationsLists.length; a++) {
         for (let i = 0; i < localData.OperationsLists[a].Boxes.length; i++) {
-            for (let j = 0; j <localData.OperationsLists[a].Boxes[i].Skus.length; j++) {
+            for (let j = 0; j < localData.OperationsLists[a].Boxes[i].Skus.length; j++) {
                 for (let k = 0; k < localData.OperationsLists[a].Boxes[i].Skus[j].Operations.length; k++) {
                     if (localData.OperationsLists[a].Boxes[i].Skus[j].Operations[k].Status.toLowerCase() == text) {
-                            let statusControl = new Object()
-                            statusControl.WcGuid = localData.OperationsLists[a].WcGuid
-                            statusControl.BoxSerial = localData.OperationsLists[a].Boxes[i].BoxSerial
-                            statusControl.ClientOrder = localData.OperationsLists[a].Boxes[i].ClientOrder
-                            filterStatus.push(statusControl)
+                        let statusControl = new Object()
+                        statusControl.WcGuid = localData.OperationsLists[a].WcGuid
+                        statusControl.BoxSerial = localData.OperationsLists[a].Boxes[i].BoxSerial
+                        statusControl.ClientOrder = localData.OperationsLists[a].Boxes[i].ClientOrder
+                        filterStatus.push(statusControl)
                     }
                 }
             }
         }
 
     }
-    filterStatus= filterStatus.reduce((r, i) =>
-            !r.some(j => !Object.keys(i).some(k => i[k] !== j[k])) ? [...r, i] : r
+    filterStatus = filterStatus.reduce((r, i) =>
+        !r.some(j => !Object.keys(i).some(k => i[k] !== j[k])) ? [...r, i] : r
         , [])
-    filterStatus.find(item=>{
-            htmlBoxSerial(item.BoxSerial, item.WcGuid, item.ClientOrder)
+    filterStatus.find(item => {
+        htmlBoxSerial(item.BoxSerial, item.WcGuid, item.ClientOrder)
     })
 }
 // вывожу серии бокса,взависимости от сортировки
 function handlerBoxSerial() {
-    if (selectionChoose == 1 || selectionChoose == 0){
+    if (selectionChoose == 1 || selectionChoose == 0) {
         localData.OperationsLists.find(item => {
-                item.Boxes.find(itemBoxSerial => {
-                        htmlBoxSerial(itemBoxSerial.BoxSerial, item.WcGuid, itemBoxSerial.ClientOrder)
-                })
+            item.Boxes.find(itemBoxSerial => {
+                htmlBoxSerial(itemBoxSerial.BoxSerial, item.WcGuid, itemBoxSerial.ClientOrder)
+            })
         })
     }
-    if(selectionChoose == 2){
+    if (selectionChoose == 2) {
         handlerSelectionStatusSearchBox('пауза')
     }
-    if(selectionChoose == 3){
+    if (selectionChoose == 3) {
         handlerSelectionStatusSearchBox('начато')
     }
 }
