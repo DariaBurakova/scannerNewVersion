@@ -22,6 +22,7 @@ let countButton = false
 let buttonPrev = ''
 let GlobalTimer;
 let allDataAboutOperations = new Map();
+let microPartions_global = new Map();
 let connetcClient = false
 const client = Stomp.client('ws://localhost:15674/ws');
 const on_connect = function () {
@@ -1399,8 +1400,87 @@ function handlerSearchLocalData(BoxSerial, SkusSerial, OperationNumber, textStat
     })
 }
 
+function handlerMicropartionCheckBoxItemSkusSerial(BoxSerial, SkusSerial, InOperationNumber) {
+    let partion;
+    localData.OperationsLists.find(itemBox => {
+        itemBox.Boxes.find(itemBoxSerial => {
+            if (itemBoxSerial.BoxSerial === BoxSerial) {
+                itemBoxSerial.Skus.find(itemSkusSerial => {
+                    if (itemSkusSerial.SkusSerial == SkusSerial) {
+                        itemSkusSerial.Operations.find(itemOperationNumber => {
+                            if (itemOperationNumber.InOperationNumber == InOperationNumber) {
+                                partion = new Object()
+                                partion.SkusSerial = SkusSerial
+                                partion.BoxSerial = BoxSerial
+                                partion.Operation = itemOperationNumber.Operation
+                                partion.OperationNumber = parseInt(itemOperationNumber.OperationNumber)
+
+                            }
+                        })
+                    }
+                })
+            }
+        })
+    })
+    return partion;
+}
+function microPartionSerialCodeGenerator() {
+    return "10000000-1000-4000-8000-100000000000".replace(/[018]/g, c =>
+        (c ^ crypto.getRandomValues(new Uint8Array(1))[0] & 15 >> c / 4).toString(16)
+    );
+}
+
+
+function createTempMicropartions(microPartions_local, BoxSerial, SkusSerial, OperationNumber, Operation) {
+    let temp = microPartionSerialCodeGenerator()
+    microPartions_local.set(temp, new Map([[BoxSerial, new Map([[SkusSerial, [[OperationNumber, Operation, 665]]]])]]))
+
+}
+
+// Проверяем данные ...
+function microPartionChecker(BoxSerial, SkusSerial, OperationNumber, Operation, InOperationNumber) {
+    // let elems = document.getElementById(`${SkusSerial}flexCheckDefault`)
+    if (checkBoxItem > 0) {
+
+        checkBoxItemSkusSerial.find(itemId => {
+            let some = handlerMicropartionCheckBoxItemSkusSerial(BoxSerial, itemId.SkusSerial, InOperationNumber);
+            if (microPartions_global.size > 0) {
+                for (itemKey of microPartions_global.values()) {
+                    if (itemKey.has(BoxSerial)) {
+                        for (itemSkusSerial of itemKey.get(BoxSerial).keys()) {
+                            if (itemSkusSerial === itemId.SkusSerial) {
+                                for (item of itemKey.get(BoxSerial).get(itemId.SkusSerial)) {
+                                    if (item[0] === some.OperationNumber && item[1] === some.Operation) {
+
+                                    } else {
+                                        createTempMicropartions(microPartions_global, some.BoxSerial, some.SkusSerial, some.OperationNumber, some.Operation)
+                                    }
+                                }
+                            } else {
+
+                                itemKey.get(BoxSerial).set([new Map([[itemId.SkusSerial, [[some.OperationNumber, some.Operation, 665]]]])])
+
+                                // itemKey.get(BoxSerial).set([new Map([[SkusSerial, [[OperationNumber, Operation, 665]]]])])
+                            }
+                        }
+
+                    }
+                }
+            } else {
+
+                createTempMicropartions(microPartions_global, some.BoxSerial, some.SkusSerial, some.OperationNumber, some.Operation)
+
+
+            }
+        })
+
+    } else {
+        console.log('error')
+    }
+}
 //функция собирает данные отправленные пользователем при нажатии на кнопки и отправляеи их в функцию handlerSearchLocalData
 function handlerSendInLocal(SkusSerial, WcGuid, BoxSerial, Operation, num, Status, InOperationNumber, OperationNumber) {
+    microPartionChecker(BoxSerial, SkusSerial, OperationNumber, Operation, InOperationNumber)
     let textStatus = ''
     if (num === 1) {
         textStatus = 'Начато'
@@ -1765,6 +1845,7 @@ function handlerSkusSerial() {
 }
 
 
+// createTempMicropartions(microPartions_global)
 //запуск всех функций
 function axiosLogin() {
     let myHeaders = new Headers();
