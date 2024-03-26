@@ -22,7 +22,7 @@ let countButton = false
 let buttonPrev = ''
 let GlobalTimer;
 let allDataAboutOperations = new Map();
-// let localData = {}
+let localData = {}
 let microPartions_global = new Map();
 let connetcClient = false
 // const client = Stomp.client('ws://localhost:15674/ws');
@@ -38,204 +38,204 @@ let connetcClient = false
 
 //БДА 2023-11-06 Массив, который отсылается в мидлэнд со всеми нажатиями
 
-let localData = {
-    "OperationsLists": [{
-        "WcGuid": "1d09989e-a9dc-11ec-8c0f-00505681efea", "Boxes": [{
-            "BoxSerial": "00000010442 02308", "ClientOrder": "270-23/Ц   ", "Skus": [{
-                "SkusID": "12226bea-3b65-11ee-8c44-00505681f37b",
-                "SkusFriendlyName": "КБСО - -3,0ESFC2Л ΔL\u003d+0,03м ",
-                "SkusSerial": "00000010442 023081",
-                "Operations": [{
-                    "OperationNumber": 1,
-                    "Operation": "55cf64f2-6b04-11ed-8c34-00505681efea",
-                    "OperationHumanName": "Маркировка кабеля (Армирование)",
-                    "DateOfChange": "27.10.2023 13.20.55",
-                    "RealExecutor": "Рабочий стол 3 (Сапрыкин)",
-                    "Status": "Сформировано",
-                    "OperationalDuration": 0,
-                }, {
-                    "OperationNumber": 2,
-                    "Operation": "c2c5fb0e-6aff-11ed-8c34-00505681efea",
-                    "OperationHumanName": "Сдача ОТК (Армирование)",
-                    "DateOfChange": "27.10.2023 13.20.55",
-                    "RealExecutor": "Рабочий стол 3 (Сапрыкин)",
-                    "Status": "пауза",
-                    "OperationalDuration": 0
-                }, {
-                    "OperationNumber": 3,
-                    "Operation": "8541472a-72d0-11ec-8c01-00505681efea",
-                    "OperationHumanName": "Приёмо-сдаточные испытания и оформление документации (Армирование)",
-                    "DateOfChange": "27.10.2023 13.20.55",
-                    "RealExecutor": "Рабочий стол 3 (Сапрыкин)",
-                    "Status": "начато",
-                    "OperationalDuration": 0
-                }, {
-                    "OperationNumber": 4,
-                    "Operation": "e1e19658-6aff-11ed-8c34-00505681efea",
-                    "OperationHumanName": "Упаковка (Армирование)",
-                    "DateOfChange": "27.10.2023 13.20.55",
-                    "RealExecutor": "Рабочий стол 3 (Сапрыкин)",
-                    "Status": "начато",
-                    "OperationalDuration": 0
-                }]
-            }, {
-                "SkusID": "12226bea-3b65-11ee-8c44-00505681f37bc",
-                "SkusFriendlyName": "КБСО - -3,0ESFC2Л ΔL\u003d+0,03м ",
-                "SkusSerial": "00000010442 023082",
-                "Operations": [{
-                    "OperationNumber": 1,
-                    "Operation": "55cf64f2-6b04-11ed-8c34-00505681efea",
-                    "OperationHumanName": "Маркировка кабеля (Армирование)",
-                    "DateOfChange": "27.10.2023 13.20.55",
-                    "RealExecutor": "Рабочий стол 3 (Сапрыкин)",
-                    "Status": "Сформировано",
-                    "OperationalDuration": 0
-                }, {
-                    "OperationNumber": 2,
-                    "Operation": "c2c5fb0e-6aff-11ed-8c34-00505681efea",
-                    "OperationHumanName": "Сдача ОТК (Армирование)",
-                    "DateOfChange": "27.10.2023 13.20.55",
-                    "RealExecutor": "Рабочий стол 3 (Сапрыкин)",
-                    "Status": "Сформировано",
-                    "OperationalDuration": 0
-                }, {
-                    "OperationNumber": 3,
-                    "Operation": "8541472a-72d0-11ec-8c01-00505681efea",
-                    "OperationHumanName": "Приёмо-сдаточные испытания и оформление документации (Армирование)",
-                    "DateOfChange": "27.10.2023 13.20.55",
-                    "RealExecutor": "Рабочий стол 3 (Сапрыкин)",
-                    "Status": "Сформировано",
-                    "OperationalDuration": 0,
-                }, {
-                    "OperationNumber": 4,
-                    "Operation": "e1e19658-6aff-11ed-8c34-00505681efea",
-                    "OperationHumanName": "Упаковка (Армирование)",
-                    "DateOfChange": "27.10.2023 13.20.55",
-                    "RealExecutor": "Рабочий стол 3 (Сапрыкин)",
-                    "Status": "начато",
-                    "OperationalDuration": 0
-                }]
-            }, {
-                "SkusID": "12226bea-3b65-11ee-8c44-00505681f37b7",
-                "SkusFriendlyName": "КБСО - -3,0ESFC2Л ΔL\u003d+0,03м ",
-                "SkusSerial": "00000010442 023083",
-                "Operations": [{
-                    "OperationNumber": 1,
-                    "Operation": "55cf64f2-6b04-11ed-8c34-00505681efea",
-                    "OperationHumanName": "Маркировка кабеля (Армирование)",
-                    "DateOfChange": "27.10.2023 13.20.55",
-                    "RealExecutor": "Рабочий стол 3 (Сапрыкин)",
-                    "Status": "Сформировано",
-                    "OperationalDuration": 0
-                }, {
-                    "OperationNumber": 2,
-                    "Operation": "c2c5fb0e-6aff-11ed-8c34-00505681efea",
-                    "OperationHumanName": "Сдача ОТК (Армирование)",
-                    "DateOfChange": "27.10.2023 13.20.55",
-                    "RealExecutor": "Рабочий стол 3 (Сапрыкин)",
-                    "Status": "Сформировано",
-                    "OperationalDuration": 0,
-                }, {
-                    "OperationNumber": 3,
-                    "Operation": "8541472a-72d0-11ec-8c01-00505681efea",
-                    "OperationHumanName": "Приёмо-сдаточные испытания и оформление документации (Армирование)",
-                    "DateOfChange": "27.10.2023 13.20.55",
-                    "RealExecutor": "Рабочий стол 3 (Сапрыкин)",
-                    "Status": "Сформировано",
-                    "OperationalDuration": 0
-                }, {
-                    "OperationNumber": 4,
-                    "Operation": "e1e19658-6aff-11ed-8c34-00505681efea",
-                    "OperationHumanName": "Упаковка (Армирование)",
-                    "DateOfChange": "27.10.2023 13.20.55",
-                    "RealExecutor": "Рабочий стол 3 (Сапрыкин)",
-                    "Status": "Сформировано",
-                    "OperationalDuration": 0
-                }]
-            },
-            ]
-        }, {
-            "BoxSerial": "00000010442 9999", "ClientOrder": "1985/Ц   ", "Skus": [{
-                "SkusID": "12226bea-3b65-11ee-8c44-00505681f37b",
-                "SkusFriendlyName": "КБСО  ",
-                "SkusSerial": "00000010442 989891",
-                "Operations": [{
-                    "OperationNumber": 1,
-                    "Operation": "55cf64f2-6b04-11ed-8c34-00505681efea",
-                    "OperationHumanName": "Маркировка кабеля (Армирование)",
-                    "DateOfChange": "27.10.2023 13.20.55",
-                    "RealExecutor": "Рабочий стол 3 (Сапрыкин)",
-                    "Status": "Сформировано",
-                    "OperationalDuration": 0
-                }, {
-                    "OperationNumber": 2,
-                    "Operation": "c2c5fb0e-6aff-11ed-8c34-00505681efea",
-                    "OperationHumanName": "Сдача ОТК (Армирование)",
-                    "DateOfChange": "27.10.2023 13.20.55",
-                    "RealExecutor": "Рабочий стол 3 (Сапрыкин)",
-                    "Status": "пауза",
-                    "OperationalDuration": 0
-                }, {
-                    "OperationNumber": 3,
-                    "Operation": "8541472a-72d0-11ec-8c01-00505681efea",
-                    "OperationHumanName": "Приёмо-сдаточные испытания и оформление документации (Армирование)",
-                    "DateOfChange": "27.10.2023 13.20.55",
-                    "RealExecutor": "Рабочий стол 3 (Сапрыкин)",
-                    "Status": "Сформировано",
-                    "OperationalDuration": 0
-                }, {
-                    "OperationNumber": 4,
-                    "Operation": "e1e19658-6aff-11ed-8c34-00505681efea",
-                    "OperationHumanName": "Упаковка (Армирование)",
-                    "DateOfChange": "27.10.2023 13.20.55",
-                    "RealExecutor": "Рабочий стол 3 (Сапрыкин)",
-                    "Status": "Пауза",
-                    "OperationalDuration": 0
-                }]
-            }, {
-                "SkusID": "12226bea-3b65-11ee-8c44-00505681f37b",
-                "SkusFriendlyName": "КБСО2 ",
-                "SkusSerial": "00000010442 80976",
-                "Operations": [{
-                    "OperationNumber": 1,
-                    "Operation": "55cf64f2-6b04-11ed-8c34-00505681efea",
-                    "OperationHumanName": "Маркировка кабеля (Армирование)",
-                    "DateOfChange": "27.10.2023 13.20.55",
-                    "RealExecutor": "Рабочий стол 3 (Сапрыкин)",
-                    "Status": "Сформировано",
-                    "OperationalDuration": 0
-                }, {
-                    "OperationNumber": 2,
-                    "Operation": "c2c5fb0e-6aff-11ed-8c34-00505681efea",
-                    "OperationHumanName": "Сдача ОТК (Армирование)",
-                    "DateOfChange": "27.10.2023 13.20.55",
-                    "RealExecutor": "Рабочий стол 3 (Сапрыкин)",
-                    "Status": "Сформировано",
-                    "OperationalDuration": 0
-                }, {
-                    "OperationNumber": 3,
-                    "Operation": "8541472a-72d0-11ec-8c01-00505681efea",
-                    "OperationHumanName": "Приёмо-сдаточные испытания и оформление документации (Армирование)",
-                    "DateOfChange": "27.10.2023 13.20.55",
-                    "RealExecutor": "Рабочий стол 3 (Сапрыкин)",
-                    "Status": "начато",
-                    "OperationalDuration": 0
-                }, {
-                    "OperationNumber": 4,
-                    "Operation": "e1e19658-6aff-11ed-8c34-00505681efea",
-                    "OperationHumanName": "Упаковка (Армирование)",
-                    "DateOfChange": "27.10.2023 13.20.55",
-                    "RealExecutor": "Рабочий стол 3 (Сапрыкин)",
-                    "Status": "Сформировано",
-                    "OperationalDuration": 0
-                }]
-            },
-            ]
-        },
-
-        ]
-    }]
-}
+// let localData = {
+//     "OperationsLists": [{
+//         "WcGuid": "1d09989e-a9dc-11ec-8c0f-00505681efea", "Boxes": [{
+//             "BoxSerial": "00000010442 02308", "ClientOrder": "270-23/Ц   ", "Skus": [{
+//                 "SkusID": "12226bea-3b65-11ee-8c44-00505681f37b",
+//                 "SkusFriendlyName": "КБСО - -3,0ESFC2Л ΔL\u003d+0,03м ",
+//                 "SkusSerial": "00000010442 023081",
+//                 "Operations": [{
+//                     "OperationNumber": 1,
+//                     "Operation": "55cf64f2-6b04-11ed-8c34-00505681efea",
+//                     "OperationHumanName": "Маркировка кабеля (Армирование)",
+//                     "DateOfChange": "27.10.2023 13.20.55",
+//                     "RealExecutor": "Рабочий стол 3 (Сапрыкин)",
+//                     "Status": "Сформировано",
+//                     "OperationalDuration": 0,
+//                 }, {
+//                     "OperationNumber": 2,
+//                     "Operation": "c2c5fb0e-6aff-11ed-8c34-00505681efea",
+//                     "OperationHumanName": "Сдача ОТК (Армирование)",
+//                     "DateOfChange": "27.10.2023 13.20.55",
+//                     "RealExecutor": "Рабочий стол 3 (Сапрыкин)",
+//                     "Status": "пауза",
+//                     "OperationalDuration": 0
+//                 }, {
+//                     "OperationNumber": 3,
+//                     "Operation": "8541472a-72d0-11ec-8c01-00505681efea",
+//                     "OperationHumanName": "Приёмо-сдаточные испытания и оформление документации (Армирование)",
+//                     "DateOfChange": "27.10.2023 13.20.55",
+//                     "RealExecutor": "Рабочий стол 3 (Сапрыкин)",
+//                     "Status": "начато",
+//                     "OperationalDuration": 0
+//                 }, {
+//                     "OperationNumber": 4,
+//                     "Operation": "e1e19658-6aff-11ed-8c34-00505681efea",
+//                     "OperationHumanName": "Упаковка (Армирование)",
+//                     "DateOfChange": "27.10.2023 13.20.55",
+//                     "RealExecutor": "Рабочий стол 3 (Сапрыкин)",
+//                     "Status": "начато",
+//                     "OperationalDuration": 0
+//                 }]
+//             }, {
+//                 "SkusID": "12226bea-3b65-11ee-8c44-00505681f37bc",
+//                 "SkusFriendlyName": "КБСО - -3,0ESFC2Л ΔL\u003d+0,03м ",
+//                 "SkusSerial": "00000010442 023082",
+//                 "Operations": [{
+//                     "OperationNumber": 1,
+//                     "Operation": "55cf64f2-6b04-11ed-8c34-00505681efea",
+//                     "OperationHumanName": "Маркировка кабеля (Армирование)",
+//                     "DateOfChange": "27.10.2023 13.20.55",
+//                     "RealExecutor": "Рабочий стол 3 (Сапрыкин)",
+//                     "Status": "Сформировано",
+//                     "OperationalDuration": 0
+//                 }, {
+//                     "OperationNumber": 2,
+//                     "Operation": "c2c5fb0e-6aff-11ed-8c34-00505681efea",
+//                     "OperationHumanName": "Сдача ОТК (Армирование)",
+//                     "DateOfChange": "27.10.2023 13.20.55",
+//                     "RealExecutor": "Рабочий стол 3 (Сапрыкин)",
+//                     "Status": "Сформировано",
+//                     "OperationalDuration": 0
+//                 }, {
+//                     "OperationNumber": 3,
+//                     "Operation": "8541472a-72d0-11ec-8c01-00505681efea",
+//                     "OperationHumanName": "Приёмо-сдаточные испытания и оформление документации (Армирование)",
+//                     "DateOfChange": "27.10.2023 13.20.55",
+//                     "RealExecutor": "Рабочий стол 3 (Сапрыкин)",
+//                     "Status": "Сформировано",
+//                     "OperationalDuration": 0,
+//                 }, {
+//                     "OperationNumber": 4,
+//                     "Operation": "e1e19658-6aff-11ed-8c34-00505681efea",
+//                     "OperationHumanName": "Упаковка (Армирование)",
+//                     "DateOfChange": "27.10.2023 13.20.55",
+//                     "RealExecutor": "Рабочий стол 3 (Сапрыкин)",
+//                     "Status": "начато",
+//                     "OperationalDuration": 0
+//                 }]
+//             }, {
+//                 "SkusID": "12226bea-3b65-11ee-8c44-00505681f37b7",
+//                 "SkusFriendlyName": "КБСО - -3,0ESFC2Л ΔL\u003d+0,03м ",
+//                 "SkusSerial": "00000010442 023083",
+//                 "Operations": [{
+//                     "OperationNumber": 1,
+//                     "Operation": "55cf64f2-6b04-11ed-8c34-00505681efea",
+//                     "OperationHumanName": "Маркировка кабеля (Армирование)",
+//                     "DateOfChange": "27.10.2023 13.20.55",
+//                     "RealExecutor": "Рабочий стол 3 (Сапрыкин)",
+//                     "Status": "Сформировано",
+//                     "OperationalDuration": 0
+//                 }, {
+//                     "OperationNumber": 2,
+//                     "Operation": "c2c5fb0e-6aff-11ed-8c34-00505681efea",
+//                     "OperationHumanName": "Сдача ОТК (Армирование)",
+//                     "DateOfChange": "27.10.2023 13.20.55",
+//                     "RealExecutor": "Рабочий стол 3 (Сапрыкин)",
+//                     "Status": "Сформировано",
+//                     "OperationalDuration": 0,
+//                 }, {
+//                     "OperationNumber": 3,
+//                     "Operation": "8541472a-72d0-11ec-8c01-00505681efea",
+//                     "OperationHumanName": "Приёмо-сдаточные испытания и оформление документации (Армирование)",
+//                     "DateOfChange": "27.10.2023 13.20.55",
+//                     "RealExecutor": "Рабочий стол 3 (Сапрыкин)",
+//                     "Status": "Сформировано",
+//                     "OperationalDuration": 0
+//                 }, {
+//                     "OperationNumber": 4,
+//                     "Operation": "e1e19658-6aff-11ed-8c34-00505681efea",
+//                     "OperationHumanName": "Упаковка (Армирование)",
+//                     "DateOfChange": "27.10.2023 13.20.55",
+//                     "RealExecutor": "Рабочий стол 3 (Сапрыкин)",
+//                     "Status": "Сформировано",
+//                     "OperationalDuration": 0
+//                 }]
+//             },
+//             ]
+//         }, {
+//             "BoxSerial": "00000010442 9999", "ClientOrder": "1985/Ц   ", "Skus": [{
+//                 "SkusID": "12226bea-3b65-11ee-8c44-00505681f37b",
+//                 "SkusFriendlyName": "КБСО  ",
+//                 "SkusSerial": "00000010442 989891",
+//                 "Operations": [{
+//                     "OperationNumber": 1,
+//                     "Operation": "55cf64f2-6b04-11ed-8c34-00505681efea",
+//                     "OperationHumanName": "Маркировка кабеля (Армирование)",
+//                     "DateOfChange": "27.10.2023 13.20.55",
+//                     "RealExecutor": "Рабочий стол 3 (Сапрыкин)",
+//                     "Status": "Сформировано",
+//                     "OperationalDuration": 0
+//                 }, {
+//                     "OperationNumber": 2,
+//                     "Operation": "c2c5fb0e-6aff-11ed-8c34-00505681efea",
+//                     "OperationHumanName": "Сдача ОТК (Армирование)",
+//                     "DateOfChange": "27.10.2023 13.20.55",
+//                     "RealExecutor": "Рабочий стол 3 (Сапрыкин)",
+//                     "Status": "пауза",
+//                     "OperationalDuration": 0
+//                 }, {
+//                     "OperationNumber": 3,
+//                     "Operation": "8541472a-72d0-11ec-8c01-00505681efea",
+//                     "OperationHumanName": "Приёмо-сдаточные испытания и оформление документации (Армирование)",
+//                     "DateOfChange": "27.10.2023 13.20.55",
+//                     "RealExecutor": "Рабочий стол 3 (Сапрыкин)",
+//                     "Status": "Сформировано",
+//                     "OperationalDuration": 0
+//                 }, {
+//                     "OperationNumber": 4,
+//                     "Operation": "e1e19658-6aff-11ed-8c34-00505681efea",
+//                     "OperationHumanName": "Упаковка (Армирование)",
+//                     "DateOfChange": "27.10.2023 13.20.55",
+//                     "RealExecutor": "Рабочий стол 3 (Сапрыкин)",
+//                     "Status": "Пауза",
+//                     "OperationalDuration": 0
+//                 }]
+//             }, {
+//                 "SkusID": "12226bea-3b65-11ee-8c44-00505681f37b",
+//                 "SkusFriendlyName": "КБСО2 ",
+//                 "SkusSerial": "00000010442 80976",
+//                 "Operations": [{
+//                     "OperationNumber": 1,
+//                     "Operation": "55cf64f2-6b04-11ed-8c34-00505681efea",
+//                     "OperationHumanName": "Маркировка кабеля (Армирование)",
+//                     "DateOfChange": "27.10.2023 13.20.55",
+//                     "RealExecutor": "Рабочий стол 3 (Сапрыкин)",
+//                     "Status": "Сформировано",
+//                     "OperationalDuration": 0
+//                 }, {
+//                     "OperationNumber": 2,
+//                     "Operation": "c2c5fb0e-6aff-11ed-8c34-00505681efea",
+//                     "OperationHumanName": "Сдача ОТК (Армирование)",
+//                     "DateOfChange": "27.10.2023 13.20.55",
+//                     "RealExecutor": "Рабочий стол 3 (Сапрыкин)",
+//                     "Status": "Сформировано",
+//                     "OperationalDuration": 0
+//                 }, {
+//                     "OperationNumber": 3,
+//                     "Operation": "8541472a-72d0-11ec-8c01-00505681efea",
+//                     "OperationHumanName": "Приёмо-сдаточные испытания и оформление документации (Армирование)",
+//                     "DateOfChange": "27.10.2023 13.20.55",
+//                     "RealExecutor": "Рабочий стол 3 (Сапрыкин)",
+//                     "Status": "начато",
+//                     "OperationalDuration": 0
+//                 }, {
+//                     "OperationNumber": 4,
+//                     "Operation": "e1e19658-6aff-11ed-8c34-00505681efea",
+//                     "OperationHumanName": "Упаковка (Армирование)",
+//                     "DateOfChange": "27.10.2023 13.20.55",
+//                     "RealExecutor": "Рабочий стол 3 (Сапрыкин)",
+//                     "Status": "Сформировано",
+//                     "OperationalDuration": 0
+//                 }]
+//             },
+//             ]
+//         },
+//
+//         ]
+//     }]
+// }
 
 class TimerManeger {
     constructor(allSkuSerialsArray) {
@@ -501,9 +501,7 @@ const handlerControlMapTimeAndButton = (BoxSerial, SkusSerial, OperationNumber, 
                 document.getElementById(`${InOperationNumber}status${SkusSerial}`).textContent = ('Пауза')
                 handlerSearchTimerMap(SkusSerial, BoxSerial, InOperationNumber, OperationNumber, checkBoxItemSkusSerial, false, length)
                 handlerSearchButtons(InOperationNumber, SkusSerial, OperationNumber)
-                let some = GlobalTimer.allTimers.get(SkusSerial).get(Number(OperationNumber)).getTime();
-                console.log(Math.round(some / 1000));
-                console.log(num, 'pause')
+
     }
     if(num === 1985){
                 document.getElementById(`${InOperationNumber}pause${SkusSerial}`).textContent = ('Пауза')
@@ -769,7 +767,6 @@ function handlerSearchLocalData(BoxSerial, SkusSerial, OperationNumber, textStat
                                     dataBaseAll.DateNow = data.toISOString()
                                     dataBaseAll.OperationalDuration = GlobalTimer.allTimers.get(itemCheckBoxSkusSerial.SkusSerial).get(Number(itemNumOperationsStatus.OperationNumber)).getTime()
                                     dataBase.push(dataBaseAll)
-                                    console.log(dataBase)
                                     itemNumOperationsStatus.Status = textStatus
                                 }
                             })
@@ -1167,21 +1164,6 @@ function handlerBoxSerial() {
     }
 }
 
-// функция добавляет новые ключ в обьект,номер строки
-function handlerAddObject() {
-    for (let i = 0; i < localData.OperationsLists.length; i++) {
-        for (let j = 0; j < localData.OperationsLists[i].Boxes.length; j++) {
-            for (let a = 0; a < localData.OperationsLists[i].Boxes[j].Skus.length; a++) {
-                let num = 1
-                for (let l = 0; l < localData.OperationsLists[i].Boxes[j].Skus[a].Operations.length; l++) {
-                    localData.OperationsLists[i].Boxes[j].Skus[a].Operations[l].InOperationNumber = `${num++}`
-                }
-            }
-
-        }
-    }
-}
-
 // функция связанная с таймером
 function handlerSkusSerial() {
     let allBoxLenght = localData.OperationsLists[0].Boxes.length
@@ -1229,7 +1211,6 @@ function axiosLogin() {
         .then(response => response.json())
         .then(function (result) {
             localData = result
-            handlerAddObject()
             handlerSkusSerial()
             setTimeout(handlerBoxSerial, 1000)
         })
@@ -1247,10 +1228,9 @@ function axiosLogin() {
 
 }
 
-handlerSkusSerial()
+
 GlobalTimer = new TimerManeger(allDataAboutOperations);
-setTimeout(handlerBoxSerial, 1000)
-// handlerAddObject()
-// axiosLogin()
+
+axiosLogin()
 slideCarouselBox()
 
