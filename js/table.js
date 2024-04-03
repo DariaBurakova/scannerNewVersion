@@ -1187,6 +1187,21 @@ function handlerSkusSerial() {
     }
 }
 
+// функция сортировки по номеру операции
+function handlerSortOperationNumber(){
+    localData.OperationsLists.find(itemBox => {
+        itemBox.Boxes.find(itemSkusSerial => {
+            itemSkusSerial.Skus.find(itemOperations=>{
+                itemOperations.Operations.sort((a,b)=>{
+                    return a.OperationNumber - b.OperationNumber
+                })
+            })
+
+        })
+
+    })
+}
+
 
 //запуск всех функций
 function axiosLogin() {
@@ -1211,6 +1226,7 @@ function axiosLogin() {
         .then(response => response.json())
         .then(function (result) {
             localData = result
+            handlerSortOperationNumber()
             handlerSkusSerial()
             setTimeout(handlerBoxSerial, 1000)
         })
