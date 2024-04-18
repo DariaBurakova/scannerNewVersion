@@ -2,12 +2,10 @@
 <html>
 
 <head>
-    <!-- <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script> -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>LoginPage</title>
     <link rel="icon" type="image/png" sizes="16x16" href="./assets/favicon-16x16.png">
-    <link rel="stylesheet" href="./css/index.css">
     <link rel="stylesheet" href="./css/table.css">
     <link rel="stylesheet" href="./css/bootstrap.css">
     <link rel="stylesheet" href="./css/main.css">
@@ -16,63 +14,59 @@
 
 <body>
 
-    <div class="d-flex flex-md-column " style="height: 100%;margin: 20px auto 20px;padding: 20px;">
-        <div class="d-flex justify-content-end mt-4" style="width: 766px;margin: 0 auto;">
-            <p class="time_button"></p>
-            <a href="index.html" onclick="handlerSendAllDataBase()">
-                <img src="./assets/icons8-logout-50.png" alt="logout" width="30" height="30"></a>
-        </div>
-        <div class="container_selected ">
-            <div class="row justify-content-md-around gx-md-2">
-                <div class="col-md-4 ">
-                    <p class="pt-1 mx-md-4">Сортировка документов:</p>
-                </div>
-                <div class="col-md-4">
-                    <select class="form-select select_option" aria-label="Пример выбора по умолчанию"
-                        id="selectedChoose">
-                        <option value="0" selected="selected">Откройте меню выбора</option>
-                        <option value="1">Все</option>
-                        <option value="2">Пауза</option>
-                        <option value="3">Начато</option>
-                    </select>
-                </div>
-                <div class="col-md-4 ">
-                    <button type="button" class="btn btn-outline-warning mx-md-5 btn1c "
-                        onclick="handlerSendAllDataBase()">
-                        Отправить в 1С
-                    </button>
-                </div>
+    <div class="container_all" >
+        <div class="container_selected">
+            <div>
+                <p class="pt-1 mx-md-4">Сортировка документов:</p>
+            </div>
+            <div>
+                <select class="form-select select_option form-select-sm" aria-label="Пример выбора по умолчанию"
+                                            id="selectedChoose">
+                                            <option value="0" selected="selected">Откройте меню выбора</option>
+                                            <option value="1">Все</option>
+                                            <option value="2">Пауза</option>
+                                            <option value="3">Начато</option>
+                                        </select>
+            </div>
+            <div>
+                                  <button type="button" class="btn btn-outline-warning  btn-sm btn1c text-center time_button"
+                                    onclick="handlerSendAllDataBase()">
+                                      Отправить В 1С
+                                 </button>
+            </div>
+            <div>
+<!--                <p class="time_button"></p>-->
+                                    <a href="index.html" onclick="handlerSendAllDataBase()">
+                                        <img src="./assets/icons8-logout-50.png" alt="logout" width="25" height="25"></a>
+            </div>
+
             </div>
             <div class=" container_carousel bg-white">
                 <div class="row-cols-md-auto justify-content-center ">
                     <div class="col-md-12 ">
                         <div id="carousel_box" class="carousel_box ">
-                            <button class="arrow_box prev_box btn ">Вперед</button>
+                            <button class="arrow_box prev_box btn ">&#8249;</button>
                             <div class="gallery_box">
                                 <ul class="gallery_list_box">
 
                                 </ul>
                             </div>
-                            <button class="arrow_box next_box  btn ">Назад</button>
+                            <button class="arrow_box next_box  btn ">&#8250;</button>
                         </div>
                     </div>
                 </div>
-                <div class="d-flex justify-content-between  " style="max-width: 766px">
+                <div class="container_serial " >
                     <div class="carousel_button_in block_checked ">
-
                     </div>
-                    <div class="col-md-8 carousel  align-self-center" id="carousel">
-                        <div class="gallery  ">
+                    <div class="col-md-8" id="carousel">
+                        <div class="gallery">
                             <ul class="gallery_list list-group " style="overflow-y: auto;"></ul>
                         </div>
-                    </div>
-                    <div class="carousel_button_in block_checked_interval" id="block_checked_interval">
-
                     </div>
                 </div>
             </div>
 
-        </div>
+
 
         <div id="control_tab ">
             <div>
@@ -101,7 +95,7 @@
 
             </div>
         </div>
-
+    </div>
     </div>
     <script src="js/stomp.js"></script>
     <script src="js/table.js"></script>

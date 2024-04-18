@@ -38,10 +38,2133 @@ let connetcClient = false
 
 //БДА 2023-11-06 Массив, который отсылается в мидлэнд со всеми нажатиями
 
+let micropartions= {
+    "32f1cfae-8e39-4985-a3bd-d52027a5d693": {
+    "BoxSerial": "БТМК ТЕСТ",
+        "Skus": [
+        {
+            "SkusSerial": "2592403",
+            "PartionOperations": [
+                {
+                    "OperationGuid": "f8caa9e0-eb3d-11ee-8c53-00505681f37b",
+                    "OpertionNumber": 2
+                }
+            ]
+        },
+        {
+            "SkusSerial": "2602403",
+            "PartionOperations": [
+                {
+                    "OperationGuid": "f8caa9e0-eb3d-11ee-8c53-00505681f37b",
+                    "OpertionNumber": 2
+                }
+            ]
+        }
+    ]
+},
+    "358569c0-4030-4a81-9c32-6939d9adcb85": {
+    "BoxSerial": "ФЛ44-03/24",
+        "Skus": [
+        {
+            "SkusSerial": "4202403",
+            "PartionOperations": [
+                {
+                    "OperationGuid": "1f06b009-eb4f-11ee-8c53-00505681f37b",
+                    "OpertionNumber": 68
+                }
+            ]
+        },
+        {
+            "SkusSerial": "4192403",
+            "PartionOperations": [
+                {
+                    "OperationGuid": "1f06b009-eb4f-11ee-8c53-00505681f37b",
+                    "OpertionNumber": 68
+                }
+            ]
+        },
+        {
+            "SkusSerial": "4182403",
+            "PartionOperations": [
+                {
+                    "OperationGuid": "1f06b009-eb4f-11ee-8c53-00505681f37b",
+                    "OpertionNumber": 68
+                }
+            ]
+        },
+        {
+            "SkusSerial": "4172403",
+            "PartionOperations": [
+                {
+                    "OperationGuid": "1f06b009-eb4f-11ee-8c53-00505681f37b",
+                    "OpertionNumber": 68
+                }
+            ]
+        },
+        {
+            "SkusSerial": "4162403",
+            "PartionOperations": [
+                {
+                    "OperationGuid": "1f06b009-eb4f-11ee-8c53-00505681f37b",
+                    "OpertionNumber": 68
+                }
+            ]
+        },
+        {
+            "SkusSerial": "4152403",
+            "PartionOperations": [
+                {
+                    "OperationGuid": "1f06b009-eb4f-11ee-8c53-00505681f37b",
+                    "OpertionNumber": 68
+                }
+            ]
+        },
+        {
+            "SkusSerial": "4142403",
+            "PartionOperations": [
+                {
+                    "OperationGuid": "1f06b009-eb4f-11ee-8c53-00505681f37b",
+                    "OpertionNumber": 68
+                }
+            ]
+        },
+        {
+            "SkusSerial": "4132403",
+            "PartionOperations": [
+                {
+                    "OperationGuid": "1f06b009-eb4f-11ee-8c53-00505681f37b",
+                    "OpertionNumber": 68
+                }
+            ]
+        },
+        {
+            "SkusSerial": "4122403",
+            "PartionOperations": [
+                {
+                    "OperationGuid": "1f06b009-eb4f-11ee-8c53-00505681f37b",
+                    "OpertionNumber": 68
+                }
+            ]
+        },
+        {
+            "SkusSerial": "4112403",
+            "PartionOperations": [
+                {
+                    "OperationGuid": "1f06b009-eb4f-11ee-8c53-00505681f37b",
+                    "OpertionNumber": 68
+                }
+            ]
+        }
+    ]
+},
+    "b70dfed1-4000-4cc2-9165-39b8ed4435d9": {
+    "BoxSerial": "ФЛ44-03/24",
+        "Skus": [
+        {
+            "SkusSerial": "4202403",
+            "PartionOperations": [
+                {
+                    "OperationGuid": "f5489b75-eb4d-11ee-8c53-00505681f37b",
+                    "OpertionNumber": 61
+                }
+            ]
+        },
+        {
+            "SkusSerial": "4192403",
+            "PartionOperations": [
+                {
+                    "OperationGuid": "f5489b75-eb4d-11ee-8c53-00505681f37b",
+                    "OpertionNumber": 61
+                }
+            ]
+        },
+        {
+            "SkusSerial": "4182403",
+            "PartionOperations": [
+                {
+                    "OperationGuid": "f5489b75-eb4d-11ee-8c53-00505681f37b",
+                    "OpertionNumber": 61
+                }
+            ]
+        },
+        {
+            "SkusSerial": "4172403",
+            "PartionOperations": [
+                {
+                    "OperationGuid": "f5489b75-eb4d-11ee-8c53-00505681f37b",
+                    "OpertionNumber": 61
+                }
+            ]
+        },
+        {
+            "SkusSerial": "4162403",
+            "PartionOperations": [
+                {
+                    "OperationGuid": "f5489b75-eb4d-11ee-8c53-00505681f37b",
+                    "OpertionNumber": 61
+                }
+            ]
+        },
+        {
+            "SkusSerial": "4152403",
+            "PartionOperations": [
+                {
+                    "OperationGuid": "f5489b75-eb4d-11ee-8c53-00505681f37b",
+                    "OpertionNumber": 61
+                }
+            ]
+        },
+        {
+            "SkusSerial": "4142403",
+            "PartionOperations": [
+                {
+                    "OperationGuid": "f5489b75-eb4d-11ee-8c53-00505681f37b",
+                    "OpertionNumber": 61
+                }
+            ]
+        },
+        {
+            "SkusSerial": "4132403",
+            "PartionOperations": [
+                {
+                    "OperationGuid": "f5489b75-eb4d-11ee-8c53-00505681f37b",
+                    "OpertionNumber": 61
+                }
+            ]
+        },
+        {
+            "SkusSerial": "4122403",
+            "PartionOperations": [
+                {
+                    "OperationGuid": "f5489b75-eb4d-11ee-8c53-00505681f37b",
+                    "OpertionNumber": 61
+                }
+            ]
+        },
+        {
+            "SkusSerial": "4112403",
+            "PartionOperations": [
+                {
+                    "OperationGuid": "f5489b75-eb4d-11ee-8c53-00505681f37b",
+                    "OpertionNumber": 61
+                }
+            ]
+        }
+    ]
+},
+    "ff9515c5-4a80-4887-b2f0-94b7f8574bf8": {
+    "BoxSerial": "ФЛ44-03/24",
+        "Skus": [
+        {
+            "SkusSerial": "4202403",
+            "PartionOperations": [
+                {
+                    "OperationGuid": "c12a8cec-eb4d-11ee-8c53-00505681f37b",
+                    "OpertionNumber": 59
+                }
+            ]
+        },
+        {
+            "SkusSerial": "4192403",
+            "PartionOperations": [
+                {
+                    "OperationGuid": "c12a8cec-eb4d-11ee-8c53-00505681f37b",
+                    "OpertionNumber": 59
+                }
+            ]
+        },
+        {
+            "SkusSerial": "4182403",
+            "PartionOperations": [
+                {
+                    "OperationGuid": "c12a8cec-eb4d-11ee-8c53-00505681f37b",
+                    "OpertionNumber": 59
+                }
+            ]
+        },
+        {
+            "SkusSerial": "4172403",
+            "PartionOperations": [
+                {
+                    "OperationGuid": "c12a8cec-eb4d-11ee-8c53-00505681f37b",
+                    "OpertionNumber": 59
+                }
+            ]
+        },
+        {
+            "SkusSerial": "4162403",
+            "PartionOperations": [
+                {
+                    "OperationGuid": "c12a8cec-eb4d-11ee-8c53-00505681f37b",
+                    "OpertionNumber": 59
+                }
+            ]
+        },
+        {
+            "SkusSerial": "4152403",
+            "PartionOperations": [
+                {
+                    "OperationGuid": "c12a8cec-eb4d-11ee-8c53-00505681f37b",
+                    "OpertionNumber": 59
+                }
+            ]
+        },
+        {
+            "SkusSerial": "4142403",
+            "PartionOperations": [
+                {
+                    "OperationGuid": "c12a8cec-eb4d-11ee-8c53-00505681f37b",
+                    "OpertionNumber": 59
+                }
+            ]
+        },
+        {
+            "SkusSerial": "4132403",
+            "PartionOperations": [
+                {
+                    "OperationGuid": "c12a8cec-eb4d-11ee-8c53-00505681f37b",
+                    "OpertionNumber": 59
+                }
+            ]
+        },
+        {
+            "SkusSerial": "4122403",
+            "PartionOperations": [
+                {
+                    "OperationGuid": "c12a8cec-eb4d-11ee-8c53-00505681f37b",
+                    "OpertionNumber": 59
+                }
+            ]
+        },
+        {
+            "SkusSerial": "4112403",
+            "PartionOperations": [
+                {
+                    "OperationGuid": "c12a8cec-eb4d-11ee-8c53-00505681f37b",
+                    "OpertionNumber": 59
+                }
+            ]
+        }
+    ]
+},
+
+
+//     "2c0119db-0219-499f-8dc9-4cb98bf9ae89": {
+//     "BoxSerial": "ФЛ44-03/24",
+//         "Skus": [
+//         {
+//             "SkusSerial": "4202403",
+//             "PartionOperations": [
+//                 {
+//                     "OperationGuid": "adef0801-eb4d-11ee-8c53-00505681f37b",
+//                     "OpertionNumber": 58
+//                 }
+//             ]
+//         },
+//         {
+//             "SkusSerial": "4192403",
+//             "PartionOperations": [
+//                 {
+//                     "OperationGuid": "adef0801-eb4d-11ee-8c53-00505681f37b",
+//                     "OpertionNumber": 58
+//                 }
+//             ]
+//         },
+//         {
+//             "SkusSerial": "4182403",
+//             "PartionOperations": [
+//                 {
+//                     "OperationGuid": "adef0801-eb4d-11ee-8c53-00505681f37b",
+//                     "OpertionNumber": 58
+//                 }
+//             ]
+//         },
+//         {
+//             "SkusSerial": "4172403",
+//             "PartionOperations": [
+//                 {
+//                     "OperationGuid": "adef0801-eb4d-11ee-8c53-00505681f37b",
+//                     "OpertionNumber": 58
+//                 }
+//             ]
+//         },
+//         {
+//             "SkusSerial": "4162403",
+//             "PartionOperations": [
+//                 {
+//                     "OperationGuid": "adef0801-eb4d-11ee-8c53-00505681f37b",
+//                     "OpertionNumber": 58
+//                 }
+//             ]
+//         },
+//         {
+//             "SkusSerial": "4152403",
+//             "PartionOperations": [
+//                 {
+//                     "OperationGuid": "adef0801-eb4d-11ee-8c53-00505681f37b",
+//                     "OpertionNumber": 58
+//                 }
+//             ]
+//         },
+//         {
+//             "SkusSerial": "4142403",
+//             "PartionOperations": [
+//                 {
+//                     "OperationGuid": "adef0801-eb4d-11ee-8c53-00505681f37b",
+//                     "OpertionNumber": 58
+//                 }
+//             ]
+//         },
+//         {
+//             "SkusSerial": "4132403",
+//             "PartionOperations": [
+//                 {
+//                     "OperationGuid": "adef0801-eb4d-11ee-8c53-00505681f37b",
+//                     "OpertionNumber": 58
+//                 }
+//             ]
+//         },
+//         {
+//             "SkusSerial": "4122403",
+//             "PartionOperations": [
+//                 {
+//                     "OperationGuid": "adef0801-eb4d-11ee-8c53-00505681f37b",
+//                     "OpertionNumber": 58
+//                 }
+//             ]
+//         },
+//         {
+//             "SkusSerial": "4112403",
+//             "PartionOperations": [
+//                 {
+//                     "OperationGuid": "adef0801-eb4d-11ee-8c53-00505681f37b",
+//                     "OpertionNumber": 58
+//                 }
+//             ]
+//         }
+//     ]
+// },
+//     "dc6276db-c33d-4f42-b8fd-2481e08bc3f7": {
+//     "BoxSerial": "ФЛ44-03/24",
+//         "Skus": [
+//         {
+//             "SkusSerial": "4202403",
+//             "PartionOperations": [
+//                 {
+//                     "OperationGuid": "da024dcc-eb4d-11ee-8c53-00505681f37b",
+//                     "OpertionNumber": 60
+//                 }
+//             ]
+//         },
+//         {
+//             "SkusSerial": "4192403",
+//             "PartionOperations": [
+//                 {
+//                     "OperationGuid": "da024dcc-eb4d-11ee-8c53-00505681f37b",
+//                     "OpertionNumber": 60
+//                 }
+//             ]
+//         },
+//         {
+//             "SkusSerial": "4182403",
+//             "PartionOperations": [
+//                 {
+//                     "OperationGuid": "da024dcc-eb4d-11ee-8c53-00505681f37b",
+//                     "OpertionNumber": 60
+//                 }
+//             ]
+//         },
+//         {
+//             "SkusSerial": "4172403",
+//             "PartionOperations": [
+//                 {
+//                     "OperationGuid": "da024dcc-eb4d-11ee-8c53-00505681f37b",
+//                     "OpertionNumber": 60
+//                 }
+//             ]
+//         },
+//         {
+//             "SkusSerial": "4162403",
+//             "PartionOperations": [
+//                 {
+//                     "OperationGuid": "da024dcc-eb4d-11ee-8c53-00505681f37b",
+//                     "OpertionNumber": 60
+//                 }
+//             ]
+//         },
+//         {
+//             "SkusSerial": "4152403",
+//             "PartionOperations": [
+//                 {
+//                     "OperationGuid": "da024dcc-eb4d-11ee-8c53-00505681f37b",
+//                     "OpertionNumber": 60
+//                 }
+//             ]
+//         },
+//         {
+//             "SkusSerial": "4142403",
+//             "PartionOperations": [
+//                 {
+//                     "OperationGuid": "da024dcc-eb4d-11ee-8c53-00505681f37b",
+//                     "OpertionNumber": 60
+//                 }
+//             ]
+//         },
+//         {
+//             "SkusSerial": "4132403",
+//             "PartionOperations": [
+//                 {
+//                     "OperationGuid": "da024dcc-eb4d-11ee-8c53-00505681f37b",
+//                     "OpertionNumber": 60
+//                 }
+//             ]
+//         },
+//         {
+//             "SkusSerial": "4122403",
+//             "PartionOperations": [
+//                 {
+//                     "OperationGuid": "da024dcc-eb4d-11ee-8c53-00505681f37b",
+//                     "OpertionNumber": 60
+//                 }
+//             ]
+//         },
+//         {
+//             "SkusSerial": "4112403",
+//             "PartionOperations": [
+//                 {
+//                     "OperationGuid": "da024dcc-eb4d-11ee-8c53-00505681f37b",
+//                     "OpertionNumber": 60
+//                 }
+//             ]
+//         }
+//     ]
+// },
+//     "05987a8c-d4bf-4d16-adf8-7732f8dd52e6": {
+//     "BoxSerial": "БТМК ТЕСТ",
+//         "Skus": [
+//         {
+//             "SkusSerial": "2592403",
+//             "PartionOperations": [
+//                 {
+//                     "OperationGuid": "3be50e1a-eb3e-11ee-8c53-00505681f37b",
+//                     "OpertionNumber": 4
+//                 }
+//             ]
+//         },
+//         {
+//             "SkusSerial": "2602403",
+//             "PartionOperations": [
+//                 {
+//                     "OperationGuid": "3be50e1a-eb3e-11ee-8c53-00505681f37b",
+//                     "OpertionNumber": 4
+//                 }
+//             ]
+//         }
+//     ]
+// },
+//     "8de184ea-b31a-4c51-85ea-ce4482f83398": {
+//     "BoxSerial": "БТМК ТЕСТ",
+//         "Skus": [
+//         {
+//             "SkusSerial": "2582403",
+//             "PartionOperations": [
+//                 {
+//                     "OperationGuid": "5d1fc3f4-eb3e-11ee-8c53-00505681f37b",
+//                     "OpertionNumber": 6
+//                 }
+//             ]
+//         },
+//         {
+//             "SkusSerial": "2592403",
+//             "PartionOperations": [
+//                 {
+//                     "OperationGuid": "5d1fc3f4-eb3e-11ee-8c53-00505681f37b",
+//                     "OpertionNumber": 6
+//                 }
+//             ]
+//         },
+//         {
+//             "SkusSerial": "2602403",
+//             "PartionOperations": [
+//                 {
+//                     "OperationGuid": "5d1fc3f4-eb3e-11ee-8c53-00505681f37b",
+//                     "OpertionNumber": 6
+//                 }
+//             ]
+//         }
+//     ]
+// },
+//     "85ae929a-c0a5-47c2-9e7f-99ea2cf3f55c": {
+//     "BoxSerial": "БТМК ТЕСТ",
+//         "Skus": [
+//         {
+//             "SkusSerial": "2582403",
+//             "PartionOperations": [
+//                 {
+//                     "OperationGuid": "89df4fd2-eb3e-11ee-8c53-00505681f37b",
+//                     "OpertionNumber": 7
+//                 }
+//             ]
+//         },
+//         {
+//             "SkusSerial": "2592403",
+//             "PartionOperations": [
+//                 {
+//                     "OperationGuid": "89df4fd2-eb3e-11ee-8c53-00505681f37b",
+//                     "OpertionNumber": 7
+//                 }
+//             ]
+//         },
+//         {
+//             "SkusSerial": "2602403",
+//             "PartionOperations": [
+//                 {
+//                     "OperationGuid": "89df4fd2-eb3e-11ee-8c53-00505681f37b",
+//                     "OpertionNumber": 7
+//                 }
+//             ]
+//         }
+//     ]
+// },
+//     "534feec2-03bb-4b0e-9174-97fc5ade4774": {
+//     "BoxSerial": "БТМК ТЕСТ",
+//         "Skus": [
+//         {
+//             "SkusSerial": "2512403",
+//             "PartionOperations": [
+//                 {
+//                     "OperationGuid": "f8caa9e0-eb3d-11ee-8c53-00505681f37b",
+//                     "OpertionNumber": 2
+//                 }
+//             ]
+//         }
+//     ]
+// },
+//     "2fcc29c7-e8b0-46e7-9357-c9f5c95957ba": {
+//     "BoxSerial": "0002702024041001",
+//         "Skus": [
+//         {
+//             "SkusSerial": "000270202404100124",
+//             "PartionOperations": [
+//                 {
+//                     "OperationGuid": "5bc0d294-6aff-11ed-8c34-00505681efea",
+//                     "OpertionNumber": 2
+//                 }
+//             ]
+//         },
+//         {
+//             "SkusSerial": "000270202404100123",
+//             "PartionOperations": [
+//                 {
+//                     "OperationGuid": "5bc0d294-6aff-11ed-8c34-00505681efea",
+//                     "OpertionNumber": 2
+//                 }
+//             ]
+//         },
+//         {
+//             "SkusSerial": "000270202404100122",
+//             "PartionOperations": [
+//                 {
+//                     "OperationGuid": "5bc0d294-6aff-11ed-8c34-00505681efea",
+//                     "OpertionNumber": 2
+//                 }
+//             ]
+//         },
+//         {
+//             "SkusSerial": "000270202404100121",
+//             "PartionOperations": [
+//                 {
+//                     "OperationGuid": "5bc0d294-6aff-11ed-8c34-00505681efea",
+//                     "OpertionNumber": 2
+//                 }
+//             ]
+//         },
+//         {
+//             "SkusSerial": "000270202404100120",
+//             "PartionOperations": [
+//                 {
+//                     "OperationGuid": "5bc0d294-6aff-11ed-8c34-00505681efea",
+//                     "OpertionNumber": 2
+//                 }
+//             ]
+//         },
+//         {
+//             "SkusSerial": "000270202404100119",
+//             "PartionOperations": [
+//                 {
+//                     "OperationGuid": "5bc0d294-6aff-11ed-8c34-00505681efea",
+//                     "OpertionNumber": 2
+//                 }
+//             ]
+//         },
+//         {
+//             "SkusSerial": "000270202404100118",
+//             "PartionOperations": [
+//                 {
+//                     "OperationGuid": "5bc0d294-6aff-11ed-8c34-00505681efea",
+//                     "OpertionNumber": 2
+//                 }
+//             ]
+//         },
+//         {
+//             "SkusSerial": "000270202404100117",
+//             "PartionOperations": [
+//                 {
+//                     "OperationGuid": "5bc0d294-6aff-11ed-8c34-00505681efea",
+//                     "OpertionNumber": 2
+//                 }
+//             ]
+//         },
+//         {
+//             "SkusSerial": "000270202404100116",
+//             "PartionOperations": [
+//                 {
+//                     "OperationGuid": "5bc0d294-6aff-11ed-8c34-00505681efea",
+//                     "OpertionNumber": 2
+//                 }
+//             ]
+//         },
+//         {
+//             "SkusSerial": "000270202404100115",
+//             "PartionOperations": [
+//                 {
+//                     "OperationGuid": "5bc0d294-6aff-11ed-8c34-00505681efea",
+//                     "OpertionNumber": 2
+//                 }
+//             ]
+//         },
+//         {
+//             "SkusSerial": "000270202404100114",
+//             "PartionOperations": [
+//                 {
+//                     "OperationGuid": "5bc0d294-6aff-11ed-8c34-00505681efea",
+//                     "OpertionNumber": 2
+//                 }
+//             ]
+//         },
+//         {
+//             "SkusSerial": "000270202404100113",
+//             "PartionOperations": [
+//                 {
+//                     "OperationGuid": "5bc0d294-6aff-11ed-8c34-00505681efea",
+//                     "OpertionNumber": 2
+//                 }
+//             ]
+//         },
+//         {
+//             "SkusSerial": "000270202404100112",
+//             "PartionOperations": [
+//                 {
+//                     "OperationGuid": "5bc0d294-6aff-11ed-8c34-00505681efea",
+//                     "OpertionNumber": 2
+//                 }
+//             ]
+//         },
+//         {
+//             "SkusSerial": "000270202404100111",
+//             "PartionOperations": [
+//                 {
+//                     "OperationGuid": "5bc0d294-6aff-11ed-8c34-00505681efea",
+//                     "OpertionNumber": 2
+//                 }
+//             ]
+//         },
+//         {
+//             "SkusSerial": "000270202404100110",
+//             "PartionOperations": [
+//                 {
+//                     "OperationGuid": "5bc0d294-6aff-11ed-8c34-00505681efea",
+//                     "OpertionNumber": 2
+//                 }
+//             ]
+//         },
+//         {
+//             "SkusSerial": "00027020240410019",
+//             "PartionOperations": [
+//                 {
+//                     "OperationGuid": "5bc0d294-6aff-11ed-8c34-00505681efea",
+//                     "OpertionNumber": 2
+//                 }
+//             ]
+//         },
+//         {
+//             "SkusSerial": "00027020240410018",
+//             "PartionOperations": [
+//                 {
+//                     "OperationGuid": "5bc0d294-6aff-11ed-8c34-00505681efea",
+//                     "OpertionNumber": 2
+//                 }
+//             ]
+//         },
+//         {
+//             "SkusSerial": "00027020240410017",
+//             "PartionOperations": [
+//                 {
+//                     "OperationGuid": "5bc0d294-6aff-11ed-8c34-00505681efea",
+//                     "OpertionNumber": 2
+//                 }
+//             ]
+//         },
+//         {
+//             "SkusSerial": "00027020240410016",
+//             "PartionOperations": [
+//                 {
+//                     "OperationGuid": "5bc0d294-6aff-11ed-8c34-00505681efea",
+//                     "OpertionNumber": 2
+//                 }
+//             ]
+//         },
+//         {
+//             "SkusSerial": "00027020240410015",
+//             "PartionOperations": [
+//                 {
+//                     "OperationGuid": "5bc0d294-6aff-11ed-8c34-00505681efea",
+//                     "OpertionNumber": 2
+//                 }
+//             ]
+//         },
+//         {
+//             "SkusSerial": "00027020240410014",
+//             "PartionOperations": [
+//                 {
+//                     "OperationGuid": "5bc0d294-6aff-11ed-8c34-00505681efea",
+//                     "OpertionNumber": 2
+//                 }
+//             ]
+//         },
+//         {
+//             "SkusSerial": "00027020240410013",
+//             "PartionOperations": [
+//                 {
+//                     "OperationGuid": "5bc0d294-6aff-11ed-8c34-00505681efea",
+//                     "OpertionNumber": 2
+//                 }
+//             ]
+//         },
+//         {
+//             "SkusSerial": "00027020240410012",
+//             "PartionOperations": [
+//                 {
+//                     "OperationGuid": "5bc0d294-6aff-11ed-8c34-00505681efea",
+//                     "OpertionNumber": 2
+//                 }
+//             ]
+//         },
+//         {
+//             "SkusSerial": "00027020240410011",
+//             "PartionOperations": [
+//                 {
+//                     "OperationGuid": "5bc0d294-6aff-11ed-8c34-00505681efea",
+//                     "OpertionNumber": 2
+//                 }
+//             ]
+//         }
+//     ]
+// },
+//     "2ee1335c-b53c-46e3-a4ab-c414dd00ad8c": {
+//     "BoxSerial": "0002702024041001",
+//         "Skus": [
+//         {
+//             "SkusSerial": "000270202404100124",
+//             "PartionOperations": [
+//                 {
+//                     "OperationGuid": "5bc0d294-6aff-11ed-8c34-00505681efea",
+//                     "OpertionNumber": 2
+//                 }
+//             ]
+//         },
+//         {
+//             "SkusSerial": "000270202404100123",
+//             "PartionOperations": [
+//                 {
+//                     "OperationGuid": "5bc0d294-6aff-11ed-8c34-00505681efea",
+//                     "OpertionNumber": 2
+//                 }
+//             ]
+//         },
+//         {
+//             "SkusSerial": "000270202404100122",
+//             "PartionOperations": [
+//                 {
+//                     "OperationGuid": "5bc0d294-6aff-11ed-8c34-00505681efea",
+//                     "OpertionNumber": 2
+//                 }
+//             ]
+//         },
+//         {
+//             "SkusSerial": "000270202404100121",
+//             "PartionOperations": [
+//                 {
+//                     "OperationGuid": "5bc0d294-6aff-11ed-8c34-00505681efea",
+//                     "OpertionNumber": 2
+//                 }
+//             ]
+//         },
+//         {
+//             "SkusSerial": "000270202404100120",
+//             "PartionOperations": [
+//                 {
+//                     "OperationGuid": "5bc0d294-6aff-11ed-8c34-00505681efea",
+//                     "OpertionNumber": 2
+//                 }
+//             ]
+//         },
+//         {
+//             "SkusSerial": "000270202404100119",
+//             "PartionOperations": [
+//                 {
+//                     "OperationGuid": "5bc0d294-6aff-11ed-8c34-00505681efea",
+//                     "OpertionNumber": 2
+//                 }
+//             ]
+//         },
+//         {
+//             "SkusSerial": "000270202404100118",
+//             "PartionOperations": [
+//                 {
+//                     "OperationGuid": "5bc0d294-6aff-11ed-8c34-00505681efea",
+//                     "OpertionNumber": 2
+//                 }
+//             ]
+//         },
+//         {
+//             "SkusSerial": "000270202404100117",
+//             "PartionOperations": [
+//                 {
+//                     "OperationGuid": "5bc0d294-6aff-11ed-8c34-00505681efea",
+//                     "OpertionNumber": 2
+//                 }
+//             ]
+//         },
+//         {
+//             "SkusSerial": "000270202404100116",
+//             "PartionOperations": [
+//                 {
+//                     "OperationGuid": "5bc0d294-6aff-11ed-8c34-00505681efea",
+//                     "OpertionNumber": 2
+//                 }
+//             ]
+//         },
+//         {
+//             "SkusSerial": "000270202404100115",
+//             "PartionOperations": [
+//                 {
+//                     "OperationGuid": "5bc0d294-6aff-11ed-8c34-00505681efea",
+//                     "OpertionNumber": 2
+//                 }
+//             ]
+//         },
+//         {
+//             "SkusSerial": "000270202404100114",
+//             "PartionOperations": [
+//                 {
+//                     "OperationGuid": "5bc0d294-6aff-11ed-8c34-00505681efea",
+//                     "OpertionNumber": 2
+//                 }
+//             ]
+//         },
+//         {
+//             "SkusSerial": "000270202404100113",
+//             "PartionOperations": [
+//                 {
+//                     "OperationGuid": "5bc0d294-6aff-11ed-8c34-00505681efea",
+//                     "OpertionNumber": 2
+//                 }
+//             ]
+//         },
+//         {
+//             "SkusSerial": "000270202404100112",
+//             "PartionOperations": [
+//                 {
+//                     "OperationGuid": "5bc0d294-6aff-11ed-8c34-00505681efea",
+//                     "OpertionNumber": 2
+//                 }
+//             ]
+//         },
+//         {
+//             "SkusSerial": "000270202404100111",
+//             "PartionOperations": [
+//                 {
+//                     "OperationGuid": "5bc0d294-6aff-11ed-8c34-00505681efea",
+//                     "OpertionNumber": 2
+//                 }
+//             ]
+//         },
+//         {
+//             "SkusSerial": "000270202404100110",
+//             "PartionOperations": [
+//                 {
+//                     "OperationGuid": "5bc0d294-6aff-11ed-8c34-00505681efea",
+//                     "OpertionNumber": 2
+//                 }
+//             ]
+//         },
+//         {
+//             "SkusSerial": "00027020240410019",
+//             "PartionOperations": [
+//                 {
+//                     "OperationGuid": "5bc0d294-6aff-11ed-8c34-00505681efea",
+//                     "OpertionNumber": 2
+//                 }
+//             ]
+//         },
+//         {
+//             "SkusSerial": "00027020240410018",
+//             "PartionOperations": [
+//                 {
+//                     "OperationGuid": "5bc0d294-6aff-11ed-8c34-00505681efea",
+//                     "OpertionNumber": 2
+//                 }
+//             ]
+//         },
+//         {
+//             "SkusSerial": "00027020240410017",
+//             "PartionOperations": [
+//                 {
+//                     "OperationGuid": "5bc0d294-6aff-11ed-8c34-00505681efea",
+//                     "OpertionNumber": 2
+//                 }
+//             ]
+//         },
+//         {
+//             "SkusSerial": "00027020240410016",
+//             "PartionOperations": [
+//                 {
+//                     "OperationGuid": "5bc0d294-6aff-11ed-8c34-00505681efea",
+//                     "OpertionNumber": 2
+//                 }
+//             ]
+//         },
+//         {
+//             "SkusSerial": "00027020240410015",
+//             "PartionOperations": [
+//                 {
+//                     "OperationGuid": "5bc0d294-6aff-11ed-8c34-00505681efea",
+//                     "OpertionNumber": 2
+//                 }
+//             ]
+//         },
+//         {
+//             "SkusSerial": "00027020240410014",
+//             "PartionOperations": [
+//                 {
+//                     "OperationGuid": "5bc0d294-6aff-11ed-8c34-00505681efea",
+//                     "OpertionNumber": 2
+//                 }
+//             ]
+//         },
+//         {
+//             "SkusSerial": "00027020240410013",
+//             "PartionOperations": [
+//                 {
+//                     "OperationGuid": "5bc0d294-6aff-11ed-8c34-00505681efea",
+//                     "OpertionNumber": 2
+//                 }
+//             ]
+//         },
+//         {
+//             "SkusSerial": "00027020240410012",
+//             "PartionOperations": [
+//                 {
+//                     "OperationGuid": "5bc0d294-6aff-11ed-8c34-00505681efea",
+//                     "OpertionNumber": 2
+//                 }
+//             ]
+//         },
+//         {
+//             "SkusSerial": "00027020240410011",
+//             "PartionOperations": [
+//                 {
+//                     "OperationGuid": "5bc0d294-6aff-11ed-8c34-00505681efea",
+//                     "OpertionNumber": 2
+//                 }
+//             ]
+//         }
+//     ]
+// },
+//     "1f0b8e6a-fdf3-45eb-9f88-4972bb98d9c8": {
+//     "BoxSerial": "БТМК ТЕСТ",
+//         "Skus": [
+//         {
+//             "SkusSerial": "2602403",
+//             "PartionOperations": [
+//                 {
+//                     "OperationGuid": "5371426b-eb4c-11ee-8c53-00505681f37b",
+//                     "OpertionNumber": 78
+//                 }
+//             ]
+//         },
+//         {
+//             "SkusSerial": "2592403",
+//             "PartionOperations": [
+//                 {
+//                     "OperationGuid": "5371426b-eb4c-11ee-8c53-00505681f37b",
+//                     "OpertionNumber": 78
+//                 }
+//             ]
+//         },
+//         {
+//             "SkusSerial": "2582403",
+//             "PartionOperations": [
+//                 {
+//                     "OperationGuid": "5371426b-eb4c-11ee-8c53-00505681f37b",
+//                     "OpertionNumber": 78
+//                 }
+//             ]
+//         },
+//         {
+//             "SkusSerial": "2572403",
+//             "PartionOperations": [
+//                 {
+//                     "OperationGuid": "5371426b-eb4c-11ee-8c53-00505681f37b",
+//                     "OpertionNumber": 78
+//                 }
+//             ]
+//         },
+//         {
+//             "SkusSerial": "2562403",
+//             "PartionOperations": [
+//                 {
+//                     "OperationGuid": "5371426b-eb4c-11ee-8c53-00505681f37b",
+//                     "OpertionNumber": 78
+//                 }
+//             ]
+//         },
+//         {
+//             "SkusSerial": "2552403",
+//             "PartionOperations": [
+//                 {
+//                     "OperationGuid": "5371426b-eb4c-11ee-8c53-00505681f37b",
+//                     "OpertionNumber": 78
+//                 }
+//             ]
+//         },
+//         {
+//             "SkusSerial": "2542403",
+//             "PartionOperations": [
+//                 {
+//                     "OperationGuid": "5371426b-eb4c-11ee-8c53-00505681f37b",
+//                     "OpertionNumber": 78
+//                 }
+//             ]
+//         },
+//         {
+//             "SkusSerial": "2532403",
+//             "PartionOperations": [
+//                 {
+//                     "OperationGuid": "5371426b-eb4c-11ee-8c53-00505681f37b",
+//                     "OpertionNumber": 78
+//                 }
+//             ]
+//         },
+//         {
+//             "SkusSerial": "2522403",
+//             "PartionOperations": [
+//                 {
+//                     "OperationGuid": "5371426b-eb4c-11ee-8c53-00505681f37b",
+//                     "OpertionNumber": 78
+//                 }
+//             ]
+//         },
+//         {
+//             "SkusSerial": "2512403",
+//             "PartionOperations": [
+//                 {
+//                     "OperationGuid": "5371426b-eb4c-11ee-8c53-00505681f37b",
+//                     "OpertionNumber": 78
+//                 }
+//             ]
+//         }
+//     ]
+// },
+//     "e66e2749-63ee-4ac3-9598-a16642b3889a": {
+//     "BoxSerial": "БТМК ТЕСТ",
+//         "Skus": [
+//         {
+//             "SkusSerial": "2602403",
+//             "PartionOperations": [
+//                 {
+//                     "OperationGuid": "5371426b-eb4c-11ee-8c53-00505681f37b",
+//                     "OpertionNumber": 73
+//                 }
+//             ]
+//         },
+//         {
+//             "SkusSerial": "2592403",
+//             "PartionOperations": [
+//                 {
+//                     "OperationGuid": "5371426b-eb4c-11ee-8c53-00505681f37b",
+//                     "OpertionNumber": 73
+//                 }
+//             ]
+//         },
+//         {
+//             "SkusSerial": "2582403",
+//             "PartionOperations": [
+//                 {
+//                     "OperationGuid": "5371426b-eb4c-11ee-8c53-00505681f37b",
+//                     "OpertionNumber": 73
+//                 }
+//             ]
+//         },
+//         {
+//             "SkusSerial": "2572403",
+//             "PartionOperations": [
+//                 {
+//                     "OperationGuid": "5371426b-eb4c-11ee-8c53-00505681f37b",
+//                     "OpertionNumber": 73
+//                 }
+//             ]
+//         },
+//         {
+//             "SkusSerial": "2562403",
+//             "PartionOperations": [
+//                 {
+//                     "OperationGuid": "5371426b-eb4c-11ee-8c53-00505681f37b",
+//                     "OpertionNumber": 73
+//                 }
+//             ]
+//         },
+//         {
+//             "SkusSerial": "2552403",
+//             "PartionOperations": [
+//                 {
+//                     "OperationGuid": "5371426b-eb4c-11ee-8c53-00505681f37b",
+//                     "OpertionNumber": 73
+//                 }
+//             ]
+//         },
+//         {
+//             "SkusSerial": "2542403",
+//             "PartionOperations": [
+//                 {
+//                     "OperationGuid": "5371426b-eb4c-11ee-8c53-00505681f37b",
+//                     "OpertionNumber": 73
+//                 }
+//             ]
+//         },
+//         {
+//             "SkusSerial": "2532403",
+//             "PartionOperations": [
+//                 {
+//                     "OperationGuid": "5371426b-eb4c-11ee-8c53-00505681f37b",
+//                     "OpertionNumber": 73
+//                 }
+//             ]
+//         },
+//         {
+//             "SkusSerial": "2522403",
+//             "PartionOperations": [
+//                 {
+//                     "OperationGuid": "5371426b-eb4c-11ee-8c53-00505681f37b",
+//                     "OpertionNumber": 73
+//                 }
+//             ]
+//         },
+//         {
+//             "SkusSerial": "2512403",
+//             "PartionOperations": [
+//                 {
+//                     "OperationGuid": "5371426b-eb4c-11ee-8c53-00505681f37b",
+//                     "OpertionNumber": 73
+//                 }
+//             ]
+//         }
+//     ]
+// },
+//     "148f17ac-a4f9-4a18-98a2-6f70ab07ad51": {
+//     "BoxSerial": "0002702024041001",
+//         "Skus": [
+//         {
+//             "SkusSerial": "000270202404100124",
+//             "PartionOperations": [
+//                 {
+//                     "OperationGuid": "5bc0d294-6aff-11ed-8c34-00505681efea",
+//                     "OpertionNumber": 2
+//                 }
+//             ]
+//         },
+//         {
+//             "SkusSerial": "000270202404100123",
+//             "PartionOperations": [
+//                 {
+//                     "OperationGuid": "5bc0d294-6aff-11ed-8c34-00505681efea",
+//                     "OpertionNumber": 2
+//                 }
+//             ]
+//         },
+//         {
+//             "SkusSerial": "000270202404100122",
+//             "PartionOperations": [
+//                 {
+//                     "OperationGuid": "5bc0d294-6aff-11ed-8c34-00505681efea",
+//                     "OpertionNumber": 2
+//                 }
+//             ]
+//         },
+//         {
+//             "SkusSerial": "000270202404100121",
+//             "PartionOperations": [
+//                 {
+//                     "OperationGuid": "5bc0d294-6aff-11ed-8c34-00505681efea",
+//                     "OpertionNumber": 2
+//                 }
+//             ]
+//         },
+//         {
+//             "SkusSerial": "000270202404100120",
+//             "PartionOperations": [
+//                 {
+//                     "OperationGuid": "5bc0d294-6aff-11ed-8c34-00505681efea",
+//                     "OpertionNumber": 2
+//                 }
+//             ]
+//         },
+//         {
+//             "SkusSerial": "000270202404100119",
+//             "PartionOperations": [
+//                 {
+//                     "OperationGuid": "5bc0d294-6aff-11ed-8c34-00505681efea",
+//                     "OpertionNumber": 2
+//                 }
+//             ]
+//         },
+//         {
+//             "SkusSerial": "000270202404100118",
+//             "PartionOperations": [
+//                 {
+//                     "OperationGuid": "5bc0d294-6aff-11ed-8c34-00505681efea",
+//                     "OpertionNumber": 2
+//                 }
+//             ]
+//         },
+//         {
+//             "SkusSerial": "000270202404100117",
+//             "PartionOperations": [
+//                 {
+//                     "OperationGuid": "5bc0d294-6aff-11ed-8c34-00505681efea",
+//                     "OpertionNumber": 2
+//                 }
+//             ]
+//         },
+//         {
+//             "SkusSerial": "000270202404100116",
+//             "PartionOperations": [
+//                 {
+//                     "OperationGuid": "5bc0d294-6aff-11ed-8c34-00505681efea",
+//                     "OpertionNumber": 2
+//                 }
+//             ]
+//         },
+//         {
+//             "SkusSerial": "000270202404100115",
+//             "PartionOperations": [
+//                 {
+//                     "OperationGuid": "5bc0d294-6aff-11ed-8c34-00505681efea",
+//                     "OpertionNumber": 2
+//                 }
+//             ]
+//         },
+//         {
+//             "SkusSerial": "000270202404100114",
+//             "PartionOperations": [
+//                 {
+//                     "OperationGuid": "5bc0d294-6aff-11ed-8c34-00505681efea",
+//                     "OpertionNumber": 2
+//                 }
+//             ]
+//         },
+//         {
+//             "SkusSerial": "000270202404100113",
+//             "PartionOperations": [
+//                 {
+//                     "OperationGuid": "5bc0d294-6aff-11ed-8c34-00505681efea",
+//                     "OpertionNumber": 2
+//                 }
+//             ]
+//         },
+//         {
+//             "SkusSerial": "000270202404100112",
+//             "PartionOperations": [
+//                 {
+//                     "OperationGuid": "5bc0d294-6aff-11ed-8c34-00505681efea",
+//                     "OpertionNumber": 2
+//                 }
+//             ]
+//         },
+//         {
+//             "SkusSerial": "000270202404100111",
+//             "PartionOperations": [
+//                 {
+//                     "OperationGuid": "5bc0d294-6aff-11ed-8c34-00505681efea",
+//                     "OpertionNumber": 2
+//                 }
+//             ]
+//         },
+//         {
+//             "SkusSerial": "000270202404100110",
+//             "PartionOperations": [
+//                 {
+//                     "OperationGuid": "5bc0d294-6aff-11ed-8c34-00505681efea",
+//                     "OpertionNumber": 2
+//                 }
+//             ]
+//         },
+//         {
+//             "SkusSerial": "00027020240410019",
+//             "PartionOperations": [
+//                 {
+//                     "OperationGuid": "5bc0d294-6aff-11ed-8c34-00505681efea",
+//                     "OpertionNumber": 2
+//                 }
+//             ]
+//         },
+//         {
+//             "SkusSerial": "00027020240410018",
+//             "PartionOperations": [
+//                 {
+//                     "OperationGuid": "5bc0d294-6aff-11ed-8c34-00505681efea",
+//                     "OpertionNumber": 2
+//                 }
+//             ]
+//         },
+//         {
+//             "SkusSerial": "00027020240410017",
+//             "PartionOperations": [
+//                 {
+//                     "OperationGuid": "5bc0d294-6aff-11ed-8c34-00505681efea",
+//                     "OpertionNumber": 2
+//                 }
+//             ]
+//         },
+//         {
+//             "SkusSerial": "00027020240410016",
+//             "PartionOperations": [
+//                 {
+//                     "OperationGuid": "5bc0d294-6aff-11ed-8c34-00505681efea",
+//                     "OpertionNumber": 2
+//                 }
+//             ]
+//         },
+//         {
+//             "SkusSerial": "00027020240410015",
+//             "PartionOperations": [
+//                 {
+//                     "OperationGuid": "5bc0d294-6aff-11ed-8c34-00505681efea",
+//                     "OpertionNumber": 2
+//                 }
+//             ]
+//         },
+//         {
+//             "SkusSerial": "00027020240410014",
+//             "PartionOperations": [
+//                 {
+//                     "OperationGuid": "5bc0d294-6aff-11ed-8c34-00505681efea",
+//                     "OpertionNumber": 2
+//                 }
+//             ]
+//         },
+//         {
+//             "SkusSerial": "00027020240410013",
+//             "PartionOperations": [
+//                 {
+//                     "OperationGuid": "5bc0d294-6aff-11ed-8c34-00505681efea",
+//                     "OpertionNumber": 2
+//                 }
+//             ]
+//         },
+//         {
+//             "SkusSerial": "00027020240410012",
+//             "PartionOperations": [
+//                 {
+//                     "OperationGuid": "5bc0d294-6aff-11ed-8c34-00505681efea",
+//                     "OpertionNumber": 2
+//                 }
+//             ]
+//         },
+//         {
+//             "SkusSerial": "00027020240410011",
+//             "PartionOperations": [
+//                 {
+//                     "OperationGuid": "5bc0d294-6aff-11ed-8c34-00505681efea",
+//                     "OpertionNumber": 2
+//                 }
+//             ]
+//         }
+//     ]
+// },
+//     "fc94da07-06c7-46ec-b1ad-4bb61bbd88dc": {
+//     "BoxSerial": "0002702024041001",
+//         "Skus": [
+//         {
+//             "SkusSerial": "000270202404100124",
+//             "PartionOperations": [
+//                 {
+//                     "OperationGuid": "5bc0d294-6aff-11ed-8c34-00505681efea",
+//                     "OpertionNumber": 2
+//                 }
+//             ]
+//         },
+//         {
+//             "SkusSerial": "000270202404100123",
+//             "PartionOperations": [
+//                 {
+//                     "OperationGuid": "5bc0d294-6aff-11ed-8c34-00505681efea",
+//                     "OpertionNumber": 2
+//                 }
+//             ]
+//         },
+//         {
+//             "SkusSerial": "000270202404100122",
+//             "PartionOperations": [
+//                 {
+//                     "OperationGuid": "5bc0d294-6aff-11ed-8c34-00505681efea",
+//                     "OpertionNumber": 2
+//                 }
+//             ]
+//         },
+//         {
+//             "SkusSerial": "000270202404100121",
+//             "PartionOperations": [
+//                 {
+//                     "OperationGuid": "5bc0d294-6aff-11ed-8c34-00505681efea",
+//                     "OpertionNumber": 2
+//                 }
+//             ]
+//         },
+//         {
+//             "SkusSerial": "000270202404100120",
+//             "PartionOperations": [
+//                 {
+//                     "OperationGuid": "5bc0d294-6aff-11ed-8c34-00505681efea",
+//                     "OpertionNumber": 2
+//                 }
+//             ]
+//         },
+//         {
+//             "SkusSerial": "000270202404100119",
+//             "PartionOperations": [
+//                 {
+//                     "OperationGuid": "5bc0d294-6aff-11ed-8c34-00505681efea",
+//                     "OpertionNumber": 2
+//                 }
+//             ]
+//         },
+//         {
+//             "SkusSerial": "000270202404100118",
+//             "PartionOperations": [
+//                 {
+//                     "OperationGuid": "5bc0d294-6aff-11ed-8c34-00505681efea",
+//                     "OpertionNumber": 2
+//                 }
+//             ]
+//         },
+//         {
+//             "SkusSerial": "000270202404100117",
+//             "PartionOperations": [
+//                 {
+//                     "OperationGuid": "5bc0d294-6aff-11ed-8c34-00505681efea",
+//                     "OpertionNumber": 2
+//                 }
+//             ]
+//         },
+//         {
+//             "SkusSerial": "000270202404100116",
+//             "PartionOperations": [
+//                 {
+//                     "OperationGuid": "5bc0d294-6aff-11ed-8c34-00505681efea",
+//                     "OpertionNumber": 2
+//                 }
+//             ]
+//         },
+//         {
+//             "SkusSerial": "000270202404100115",
+//             "PartionOperations": [
+//                 {
+//                     "OperationGuid": "5bc0d294-6aff-11ed-8c34-00505681efea",
+//                     "OpertionNumber": 2
+//                 }
+//             ]
+//         },
+//         {
+//             "SkusSerial": "000270202404100114",
+//             "PartionOperations": [
+//                 {
+//                     "OperationGuid": "5bc0d294-6aff-11ed-8c34-00505681efea",
+//                     "OpertionNumber": 2
+//                 }
+//             ]
+//         },
+//         {
+//             "SkusSerial": "000270202404100113",
+//             "PartionOperations": [
+//                 {
+//                     "OperationGuid": "5bc0d294-6aff-11ed-8c34-00505681efea",
+//                     "OpertionNumber": 2
+//                 }
+//             ]
+//         },
+//         {
+//             "SkusSerial": "000270202404100112",
+//             "PartionOperations": [
+//                 {
+//                     "OperationGuid": "5bc0d294-6aff-11ed-8c34-00505681efea",
+//                     "OpertionNumber": 2
+//                 }
+//             ]
+//         },
+//         {
+//             "SkusSerial": "000270202404100111",
+//             "PartionOperations": [
+//                 {
+//                     "OperationGuid": "5bc0d294-6aff-11ed-8c34-00505681efea",
+//                     "OpertionNumber": 2
+//                 }
+//             ]
+//         },
+//         {
+//             "SkusSerial": "000270202404100110",
+//             "PartionOperations": [
+//                 {
+//                     "OperationGuid": "5bc0d294-6aff-11ed-8c34-00505681efea",
+//                     "OpertionNumber": 2
+//                 }
+//             ]
+//         },
+//         {
+//             "SkusSerial": "00027020240410019",
+//             "PartionOperations": [
+//                 {
+//                     "OperationGuid": "5bc0d294-6aff-11ed-8c34-00505681efea",
+//                     "OpertionNumber": 2
+//                 }
+//             ]
+//         },
+//         {
+//             "SkusSerial": "00027020240410018",
+//             "PartionOperations": [
+//                 {
+//                     "OperationGuid": "5bc0d294-6aff-11ed-8c34-00505681efea",
+//                     "OpertionNumber": 2
+//                 }
+//             ]
+//         },
+//         {
+//             "SkusSerial": "00027020240410017",
+//             "PartionOperations": [
+//                 {
+//                     "OperationGuid": "5bc0d294-6aff-11ed-8c34-00505681efea",
+//                     "OpertionNumber": 2
+//                 }
+//             ]
+//         },
+//         {
+//             "SkusSerial": "00027020240410016",
+//             "PartionOperations": [
+//                 {
+//                     "OperationGuid": "5bc0d294-6aff-11ed-8c34-00505681efea",
+//                     "OpertionNumber": 2
+//                 }
+//             ]
+//         },
+//         {
+//             "SkusSerial": "00027020240410015",
+//             "PartionOperations": [
+//                 {
+//                     "OperationGuid": "5bc0d294-6aff-11ed-8c34-00505681efea",
+//                     "OpertionNumber": 2
+//                 }
+//             ]
+//         },
+//         {
+//             "SkusSerial": "00027020240410014",
+//             "PartionOperations": [
+//                 {
+//                     "OperationGuid": "5bc0d294-6aff-11ed-8c34-00505681efea",
+//                     "OpertionNumber": 2
+//                 }
+//             ]
+//         },
+//         {
+//             "SkusSerial": "00027020240410013",
+//             "PartionOperations": [
+//                 {
+//                     "OperationGuid": "5bc0d294-6aff-11ed-8c34-00505681efea",
+//                     "OpertionNumber": 2
+//                 }
+//             ]
+//         },
+//         {
+//             "SkusSerial": "00027020240410012",
+//             "PartionOperations": [
+//                 {
+//                     "OperationGuid": "5bc0d294-6aff-11ed-8c34-00505681efea",
+//                     "OpertionNumber": 2
+//                 }
+//             ]
+//         },
+//         {
+//             "SkusSerial": "00027020240410011",
+//             "PartionOperations": [
+//                 {
+//                     "OperationGuid": "5bc0d294-6aff-11ed-8c34-00505681efea",
+//                     "OpertionNumber": 2
+//                 }
+//             ]
+//         }
+//     ]
+// },
+//     "6d4bcd01-0436-420e-a701-60de5255fc76": {
+//     "BoxSerial": "0002702024041001",
+//         "Skus": [
+//         {
+//             "SkusSerial": "000270202404100124",
+//             "PartionOperations": [
+//                 {
+//                     "OperationGuid": "ce1cf905-72ce-11ec-8c01-00505681efea",
+//                     "OpertionNumber": 3
+//                 }
+//             ]
+//         },
+//         {
+//             "SkusSerial": "000270202404100123",
+//             "PartionOperations": [
+//                 {
+//                     "OperationGuid": "ce1cf905-72ce-11ec-8c01-00505681efea",
+//                     "OpertionNumber": 3
+//                 }
+//             ]
+//         },
+//         {
+//             "SkusSerial": "000270202404100122",
+//             "PartionOperations": [
+//                 {
+//                     "OperationGuid": "ce1cf905-72ce-11ec-8c01-00505681efea",
+//                     "OpertionNumber": 3
+//                 }
+//             ]
+//         },
+//         {
+//             "SkusSerial": "000270202404100121",
+//             "PartionOperations": [
+//                 {
+//                     "OperationGuid": "ce1cf905-72ce-11ec-8c01-00505681efea",
+//                     "OpertionNumber": 3
+//                 }
+//             ]
+//         },
+//         {
+//             "SkusSerial": "000270202404100120",
+//             "PartionOperations": [
+//                 {
+//                     "OperationGuid": "ce1cf905-72ce-11ec-8c01-00505681efea",
+//                     "OpertionNumber": 3
+//                 }
+//             ]
+//         },
+//         {
+//             "SkusSerial": "000270202404100119",
+//             "PartionOperations": [
+//                 {
+//                     "OperationGuid": "ce1cf905-72ce-11ec-8c01-00505681efea",
+//                     "OpertionNumber": 3
+//                 }
+//             ]
+//         },
+//         {
+//             "SkusSerial": "000270202404100118",
+//             "PartionOperations": [
+//                 {
+//                     "OperationGuid": "ce1cf905-72ce-11ec-8c01-00505681efea",
+//                     "OpertionNumber": 3
+//                 }
+//             ]
+//         },
+//         {
+//             "SkusSerial": "000270202404100117",
+//             "PartionOperations": [
+//                 {
+//                     "OperationGuid": "ce1cf905-72ce-11ec-8c01-00505681efea",
+//                     "OpertionNumber": 3
+//                 }
+//             ]
+//         },
+//         {
+//             "SkusSerial": "000270202404100116",
+//             "PartionOperations": [
+//                 {
+//                     "OperationGuid": "ce1cf905-72ce-11ec-8c01-00505681efea",
+//                     "OpertionNumber": 3
+//                 }
+//             ]
+//         },
+//         {
+//             "SkusSerial": "000270202404100115",
+//             "PartionOperations": [
+//                 {
+//                     "OperationGuid": "ce1cf905-72ce-11ec-8c01-00505681efea",
+//                     "OpertionNumber": 3
+//                 }
+//             ]
+//         },
+//         {
+//             "SkusSerial": "000270202404100114",
+//             "PartionOperations": [
+//                 {
+//                     "OperationGuid": "ce1cf905-72ce-11ec-8c01-00505681efea",
+//                     "OpertionNumber": 3
+//                 }
+//             ]
+//         },
+//         {
+//             "SkusSerial": "000270202404100113",
+//             "PartionOperations": [
+//                 {
+//                     "OperationGuid": "ce1cf905-72ce-11ec-8c01-00505681efea",
+//                     "OpertionNumber": 3
+//                 }
+//             ]
+//         },
+//         {
+//             "SkusSerial": "000270202404100112",
+//             "PartionOperations": [
+//                 {
+//                     "OperationGuid": "ce1cf905-72ce-11ec-8c01-00505681efea",
+//                     "OpertionNumber": 3
+//                 }
+//             ]
+//         },
+//         {
+//             "SkusSerial": "000270202404100111",
+//             "PartionOperations": [
+//                 {
+//                     "OperationGuid": "ce1cf905-72ce-11ec-8c01-00505681efea",
+//                     "OpertionNumber": 3
+//                 }
+//             ]
+//         },
+//         {
+//             "SkusSerial": "000270202404100110",
+//             "PartionOperations": [
+//                 {
+//                     "OperationGuid": "ce1cf905-72ce-11ec-8c01-00505681efea",
+//                     "OpertionNumber": 3
+//                 }
+//             ]
+//         },
+//         {
+//             "SkusSerial": "00027020240410019",
+//             "PartionOperations": [
+//                 {
+//                     "OperationGuid": "ce1cf905-72ce-11ec-8c01-00505681efea",
+//                     "OpertionNumber": 3
+//                 }
+//             ]
+//         },
+//         {
+//             "SkusSerial": "00027020240410018",
+//             "PartionOperations": [
+//                 {
+//                     "OperationGuid": "ce1cf905-72ce-11ec-8c01-00505681efea",
+//                     "OpertionNumber": 3
+//                 }
+//             ]
+//         },
+//         {
+//             "SkusSerial": "00027020240410017",
+//             "PartionOperations": [
+//                 {
+//                     "OperationGuid": "ce1cf905-72ce-11ec-8c01-00505681efea",
+//                     "OpertionNumber": 3
+//                 }
+//             ]
+//         },
+//         {
+//             "SkusSerial": "00027020240410016",
+//             "PartionOperations": [
+//                 {
+//                     "OperationGuid": "ce1cf905-72ce-11ec-8c01-00505681efea",
+//                     "OpertionNumber": 3
+//                 }
+//             ]
+//         },
+//         {
+//             "SkusSerial": "00027020240410015",
+//             "PartionOperations": [
+//                 {
+//                     "OperationGuid": "ce1cf905-72ce-11ec-8c01-00505681efea",
+//                     "OpertionNumber": 3
+//                 }
+//             ]
+//         },
+//         {
+//             "SkusSerial": "00027020240410014",
+//             "PartionOperations": [
+//                 {
+//                     "OperationGuid": "ce1cf905-72ce-11ec-8c01-00505681efea",
+//                     "OpertionNumber": 3
+//                 }
+//             ]
+//         },
+//         {
+//             "SkusSerial": "00027020240410013",
+//             "PartionOperations": [
+//                 {
+//                     "OperationGuid": "ce1cf905-72ce-11ec-8c01-00505681efea",
+//                     "OpertionNumber": 3
+//                 }
+//             ]
+//         },
+//         {
+//             "SkusSerial": "00027020240410012",
+//             "PartionOperations": [
+//                 {
+//                     "OperationGuid": "ce1cf905-72ce-11ec-8c01-00505681efea",
+//                     "OpertionNumber": 3
+//                 }
+//             ]
+//         },
+//         {
+//             "SkusSerial": "00027020240410011",
+//             "PartionOperations": [
+//                 {
+//                     "OperationGuid": "ce1cf905-72ce-11ec-8c01-00505681efea",
+//                     "OpertionNumber": 3
+//                 }
+//             ]
+//         }
+//     ]
+// },
+//     "70833bac-e0ed-470b-85cf-b15e1db97e01": {
+//     "BoxSerial": "0002702024041001",
+//         "Skus": [
+//         {
+//             "SkusSerial": "000270202404100124",
+//             "PartionOperations": [
+//                 {
+//                     "OperationGuid": "ce1cf905-72ce-11ec-8c01-00505681efea",
+//                     "OpertionNumber": 3
+//                 }
+//             ]
+//         },
+//         {
+//             "SkusSerial": "000270202404100123",
+//             "PartionOperations": [
+//                 {
+//                     "OperationGuid": "ce1cf905-72ce-11ec-8c01-00505681efea",
+//                     "OpertionNumber": 3
+//                 }
+//             ]
+//         },
+//         {
+//             "SkusSerial": "000270202404100122",
+//             "PartionOperations": [
+//                 {
+//                     "OperationGuid": "ce1cf905-72ce-11ec-8c01-00505681efea",
+//                     "OpertionNumber": 3
+//                 }
+//             ]
+//         },
+//         {
+//             "SkusSerial": "000270202404100121",
+//             "PartionOperations": [
+//                 {
+//                     "OperationGuid": "ce1cf905-72ce-11ec-8c01-00505681efea",
+//                     "OpertionNumber": 3
+//                 }
+//             ]
+//         },
+//         {
+//             "SkusSerial": "000270202404100120",
+//             "PartionOperations": [
+//                 {
+//                     "OperationGuid": "ce1cf905-72ce-11ec-8c01-00505681efea",
+//                     "OpertionNumber": 3
+//                 }
+//             ]
+//         },
+//         {
+//             "SkusSerial": "000270202404100119",
+//             "PartionOperations": [
+//                 {
+//                     "OperationGuid": "ce1cf905-72ce-11ec-8c01-00505681efea",
+//                     "OpertionNumber": 3
+//                 }
+//             ]
+//         },
+//         {
+//             "SkusSerial": "000270202404100118",
+//             "PartionOperations": [
+//                 {
+//                     "OperationGuid": "ce1cf905-72ce-11ec-8c01-00505681efea",
+//                     "OpertionNumber": 3
+//                 }
+//             ]
+//         },
+//         {
+//             "SkusSerial": "000270202404100117",
+//             "PartionOperations": [
+//                 {
+//                     "OperationGuid": "ce1cf905-72ce-11ec-8c01-00505681efea",
+//                     "OpertionNumber": 3
+//                 }
+//             ]
+//         },
+//         {
+//             "SkusSerial": "000270202404100116",
+//             "PartionOperations": [
+//                 {
+//                     "OperationGuid": "ce1cf905-72ce-11ec-8c01-00505681efea",
+//                     "OpertionNumber": 3
+//                 }
+//             ]
+//         },
+//         {
+//             "SkusSerial": "000270202404100115",
+//             "PartionOperations": [
+//                 {
+//                     "OperationGuid": "ce1cf905-72ce-11ec-8c01-00505681efea",
+//                     "OpertionNumber": 3
+//                 }
+//             ]
+//         },
+//         {
+//             "SkusSerial": "000270202404100114",
+//             "PartionOperations": [
+//                 {
+//                     "OperationGuid": "ce1cf905-72ce-11ec-8c01-00505681efea",
+//                     "OpertionNumber": 3
+//                 }
+//             ]
+//         },
+//         {
+//             "SkusSerial": "000270202404100113",
+//             "PartionOperations": [
+//                 {
+//                     "OperationGuid": "ce1cf905-72ce-11ec-8c01-00505681efea",
+//                     "OpertionNumber": 3
+//                 }
+//             ]
+//         },
+//         {
+//             "SkusSerial": "000270202404100112",
+//             "PartionOperations": [
+//                 {
+//                     "OperationGuid": "ce1cf905-72ce-11ec-8c01-00505681efea",
+//                     "OpertionNumber": 3
+//                 }
+//             ]
+//         },
+//         {
+//             "SkusSerial": "000270202404100111",
+//             "PartionOperations": [
+//                 {
+//                     "OperationGuid": "ce1cf905-72ce-11ec-8c01-00505681efea",
+//                     "OpertionNumber": 3
+//                 }
+//             ]
+//         },
+//         {
+//             "SkusSerial": "000270202404100110",
+//             "PartionOperations": [
+//                 {
+//                     "OperationGuid": "ce1cf905-72ce-11ec-8c01-00505681efea",
+//                     "OpertionNumber": 3
+//                 }
+//             ]
+//         },
+//         {
+//             "SkusSerial": "00027020240410019",
+//             "PartionOperations": [
+//                 {
+//                     "OperationGuid": "ce1cf905-72ce-11ec-8c01-00505681efea",
+//                     "OpertionNumber": 3
+//                 }
+//             ]
+//         },
+//         {
+//             "SkusSerial": "00027020240410018",
+//             "PartionOperations": [
+//                 {
+//                     "OperationGuid": "ce1cf905-72ce-11ec-8c01-00505681efea",
+//                     "OpertionNumber": 3
+//                 }
+//             ]
+//         },
+//         {
+//             "SkusSerial": "00027020240410017",
+//             "PartionOperations": [
+//                 {
+//                     "OperationGuid": "ce1cf905-72ce-11ec-8c01-00505681efea",
+//                     "OpertionNumber": 3
+//                 }
+//             ]
+//         },
+//         {
+//             "SkusSerial": "00027020240410016",
+//             "PartionOperations": [
+//                 {
+//                     "OperationGuid": "ce1cf905-72ce-11ec-8c01-00505681efea",
+//                     "OpertionNumber": 3
+//                 }
+//             ]
+//         },
+//         {
+//             "SkusSerial": "00027020240410015",
+//             "PartionOperations": [
+//                 {
+//                     "OperationGuid": "ce1cf905-72ce-11ec-8c01-00505681efea",
+//                     "OpertionNumber": 3
+//                 }
+//             ]
+//         },
+//         {
+//             "SkusSerial": "00027020240410014",
+//             "PartionOperations": [
+//                 {
+//                     "OperationGuid": "ce1cf905-72ce-11ec-8c01-00505681efea",
+//                     "OpertionNumber": 3
+//                 }
+//             ]
+//         },
+//         {
+//             "SkusSerial": "00027020240410013",
+//             "PartionOperations": [
+//                 {
+//                     "OperationGuid": "ce1cf905-72ce-11ec-8c01-00505681efea",
+//                     "OpertionNumber": 3
+//                 }
+//             ]
+//         },
+//         {
+//             "SkusSerial": "00027020240410012",
+//             "PartionOperations": [
+//                 {
+//                     "OperationGuid": "ce1cf905-72ce-11ec-8c01-00505681efea",
+//                     "OpertionNumber": 3
+//                 }
+//             ]
+//         },
+//         {
+//             "SkusSerial": "00027020240410011",
+//             "PartionOperations": [
+//                 {
+//                     "OperationGuid": "ce1cf905-72ce-11ec-8c01-00505681efea",
+//                     "OpertionNumber": 3
+//                 }
+//             ]
+//         }
+//     ]
+// }
+}
+
+
+
 let localData = {
     "OperationsLists": [{
         "WcGuid": "1d09989e-a9dc-11ec-8c0f-00505681efea",
-        "Boxes": [{
+        "Boxes": [
+            {
                 "BoxSerial": "00000010442 02308", "ClientOrder": "270-23/Ц   ",
                 "Skus": [{
                 "SkusID": "12226bea-3b65-11ee-8c44-00505681f37b",
@@ -156,7 +2279,8 @@ let localData = {
                 }]
             },
             ]
-        }, {
+        },
+            {
             "BoxSerial": "00000010442 9999", "ClientOrder": "1985/Ц   ", "Skus": [{
                 "SkusID": "12226bea-3b65-11ee-8c44-00505681f37b",
                 "SkusFriendlyName": "КБСО  ",
@@ -239,6 +2363,90 @@ let localData = {
             },
             ]
         },
+            {
+                "BoxSerial": "00000010442 9990", "ClientOrder": "1985/Ц   ", "Skus": [{
+                    "SkusID": "12226bea-3b65-11ee-8c44-00505681f37b",
+                    "SkusFriendlyName": "КБСО  ",
+                    "SkusSerial": "00000010442 989891",
+                    "Operations": [
+                        {
+                            "OperationNumber": 3,
+                            "Operation": "8541472a-72d0-11ec-8c01-00505681efea",
+                            "OperationHumanName": "Приёмо-сдаточные испытания и оформление документации (Армирование)",
+                            "DateOfChange": "27.10.2023 13.20.55",
+                            "RealExecutor": "Рабочий стол 3 (Сапрыкин)",
+                            "Status": "Сформировано",
+                            "OperationalDuration": 0
+                        },
+                        {
+                            "OperationNumber": 1,
+                            "Operation": "55cf64f2-6b04-11ed-8c34-00505681efea",
+                            "OperationHumanName": "Маркировка кабеля (Армирование)",
+                            "DateOfChange": "27.10.2023 13.20.55",
+                            "RealExecutor": "Рабочий стол 3 (Сапрыкин)",
+                            "Status": "Сформировано",
+                            "OperationalDuration": 0
+                        },  {
+                            "OperationNumber": 4,
+                            "Operation": "e1e19658-6aff-11ed-8c34-00505681efea",
+                            "OperationHumanName": "Упаковка (Армирование)",
+                            "DateOfChange": "27.10.2023 13.20.55",
+                            "RealExecutor": "Рабочий стол 3 (Сапрыкин)",
+                            "Status": "Пауза",
+                            "OperationalDuration": 0
+                        },
+                        {
+                            "OperationNumber": 2,
+                            "Operation": "c2c5fb0e-6aff-11ed-8c34-00505681efea",
+                            "OperationHumanName": "Сдача ОТК (Армирование)",
+                            "DateOfChange": "27.10.2023 13.20.55",
+                            "RealExecutor": "Рабочий стол 3 (Сапрыкин)",
+                            "Status": "пауза",
+                            "OperationalDuration": 0
+                        }]
+                }, {
+                    "SkusID": "12226bea-3b65-11ee-8c44-00505681f37b",
+                    "SkusFriendlyName": "КБСО2 ",
+                    "SkusSerial": "00000010442 80976",
+                    "Operations": [
+                        {
+                            "OperationNumber": 4,
+                            "Operation": "e1e19658-6aff-11ed-8c34-00505681efea",
+                            "OperationHumanName": "Упаковка (Армирование)",
+                            "DateOfChange": "27.10.2023 13.20.55",
+                            "RealExecutor": "Рабочий стол 3 (Сапрыкин)",
+                            "Status": "Сформировано",
+                            "OperationalDuration": 0
+                        },
+                        {
+                            "OperationNumber": 1,
+                            "Operation": "55cf64f2-6b04-11ed-8c34-00505681efea",
+                            "OperationHumanName": "Маркировка кабеля (Армирование)",
+                            "DateOfChange": "27.10.2023 13.20.55",
+                            "RealExecutor": "Рабочий стол 3 (Сапрыкин)",
+                            "Status": "Сформировано",
+                            "OperationalDuration": 0
+                        }, {
+                            "OperationNumber": 2,
+                            "Operation": "c2c5fb0e-6aff-11ed-8c34-00505681efea",
+                            "OperationHumanName": "Сдача ОТК (Армирование)",
+                            "DateOfChange": "27.10.2023 13.20.55",
+                            "RealExecutor": "Рабочий стол 3 (Сапрыкин)",
+                            "Status": "Сформировано",
+                            "OperationalDuration": 0
+                        }, {
+                            "OperationNumber": 3,
+                            "Operation": "8541472a-72d0-11ec-8c01-00505681efea",
+                            "OperationHumanName": "Приёмо-сдаточные испытания и оформление документации (Армирование)",
+                            "DateOfChange": "27.10.2023 13.20.55",
+                            "RealExecutor": "Рабочий стол 3 (Сапрыкин)",
+                            "Status": "начато",
+                            "OperationalDuration": 0
+                        }, ]
+                },
+                ]
+            },
+
 
         ]
     }]
@@ -348,21 +2556,21 @@ document.querySelector('#selectedChoose').addEventListener('change', function (e
 // рисует кнопки вперед назад и саму карусель
 const slideCarouselBox = () => {
     let i = 1;
-    for (let li of carouselBox.querySelectorAll('li')) {
+    for (let li of document.querySelectorAll('.htm_box')) {
         li.insertAdjacentHTML('beforeend', `<span style="position:absolute;left:0;top:0">${i}</span>`);
         i++;
     }
 
     /* конфигурация */
-    let width = 149; // ширина картинки
-    let count = 4; // видимое количество изображений
+    let width = 180; // ширина картинки 146
+    let count = 1; // видимое количество изображений
 
-    let list = carouselBox.querySelector('ul');
-    let listElems = carouselBox.querySelectorAll('li');
+    let list = document.querySelector('.gallery_list_box');
+    let listElems = document.querySelectorAll('.htm_box');
 
     let position = 0; // положение ленты прокрутки
 
-    carouselBox.querySelector('.prev_box').onclick = function () {
+    document.querySelector('.prev_box').onclick = function () {
         // сдвиг влево
         position += width * count;
         // последнее передвижение влево может быть не на 3, а на 2 или 1 элемент
@@ -372,12 +2580,12 @@ const slideCarouselBox = () => {
         list.style.marginLeft = position + 'px';
     };
 
-    carouselBox.querySelector('.next_box').onclick = function () {
+    document.querySelector('.next_box').onclick = function () {
         // сдвиг вправо
         position -= width * count;
         // последнее передвижение вправо может быть не на 3, а на 2 или 1 элемент
-        position = Math.min(position, 0)
-        // position = Math.max(position, -width * (listElems.length - count));
+        // position = Math.min(position, 0)
+        position = Math.max(position, +width * (listElems.length - count));
         list.style.marginLeft = position + 'px';
     }
 }
@@ -599,13 +2807,12 @@ const handlerSearchTimerMap = (SkusSerial, BoxSerial, InOperationNumber, Operati
 
 //создаем кнопки серий
 const htmlButtonSkusSerial = (itemSkusSerial, itemBoxSerial, itemSkusFriendlyName) => {
-    let htmlButton = (`<li  class="liButton list-group-item "  style="border: 1px solid #e9e9e9;" id =''>
-                        <div class="d-flex ">
+    let htmlButton = (`<li  class="liButton "  id =''>
+                        <div class="container_button_serial">
                         <button class="btn  m-1 btn-sm align-content-center btnIn btnSkusSerialIn" id ='${itemSkusSerial}' onclick="handlerShowTable('${itemBoxSerial}','${itemSkusSerial}'),handlerButtonSkusSerialStyle('${itemSkusSerial}')">${itemSkusFriendlyName}<br>${itemSkusSerial}</button>
                         <div class="d-flex flex-grow-1 justify-content-end" >
                         <div class="switch-btn checkButtonInput align-self-center  ${itemSkusSerial}" type="button"  id="${itemSkusSerial}flexCheckDefault" onclick="handlerInputCheck('${itemSkusSerial}')">
                         </div></div></li>`)
-    // console.log(htmlButton)
     listGallery.insertAdjacentHTML('afterbegin', htmlButton)
     addClassList(listGallery, 'load')
 }
@@ -613,7 +2820,7 @@ const htmlButtonSkusSerial = (itemSkusSerial, itemBoxSerial, itemSkusFriendlyNam
 //создаем боксы
 const htmlBoxSerial = (itemBoxSerial, itemWcGuid, itemClientOrder) => {
     htmlBox = (`<li id='' class="html_box">
-                <button class=" btn btn_carousel btnIn btnSBoxSerial" id ='${itemBoxSerial}' onclick="handlerBoxSkusSerial('${itemBoxSerial}')">${itemClientOrder}</button>
+                <button class=" btn btn_carousel btnIn btnSBoxSerial" id ='${itemBoxSerial}' onclick="handlerBoxSkusSerial('${itemBoxSerial}')">${itemBoxSerial}</button>
                 </li>`)
     listGalleryBox.insertAdjacentHTML('afterbegin', htmlBox)
 }
@@ -650,28 +2857,50 @@ const createJsonForBackend = (micropartions) => {
     return mapToJson;
 }
 
+// функция переводит микропартию из json
 const createParseJsonForFront = (micropartions) => {
-    micropartions.forEach(item => {
-        let arrayIn = []
-        let micropartionsGuid = item.MicropartionGuid
-        let micropartionsBox = item.Box.BoxSerial
-        microPartions_global.set(item.MicropartionGuid, new Map())
-        microPartions_global.get(item.MicropartionGuid).set(item.Box.BoxSerial, new Map());
-        item.Box.Skus.forEach(itemIn => {
-            microPartions_global.get(item.MicropartionGuid).get(item.Box.BoxSerial).set(itemIn.SkuSerial, new Map());
-            microPartions_global.get(item.MicropartionGuid).get(item.Box.BoxSerial).get(itemIn.SkuSerial).set(itemIn.PartionOperations.OperationGuid, itemIn.PartionOperations.OperationNumber);
-            console.log(microPartions_global)
+    // micropartions.forEach(item => {
+    //     let arrayIn = []
+    //     let micropartionsGuid = item.MicropartionGuid
+    //     let micropartionsBox = item.Box.BoxSerial
+    //     microPartions_global.set(item.MicropartionGuid, new Map())
+    //     microPartions_global.get(item.MicropartionGuid).set(item.Box.BoxSerial, new Map());
+    //     item.Box.Skus.forEach(itemIn => {
+    //         microPartions_global.get(item.MicropartionGuid).get(item.Box.BoxSerial).set(itemIn.SkuSerial, new Map());
+    //         microPartions_global.get(item.MicropartionGuid).get(item.Box.BoxSerial).get(itemIn.SkuSerial).set(itemIn.PartionOperations.OperationGuid, itemIn.PartionOperations.OperationNumber);
+    //         console.log(microPartions_global)
+    //
+    //     })
+    // })
+    for (let key in micropartions) {
+        let micropartionsGuid = key
+        // console.log(micropartions[key])
+        let micropartionsBox = micropartions[key].BoxSerial
+        // console.log(micropartionsGuid,micropartionsBox )
+        microPartions_global.set(key, new Map())
+        microPartions_global.get(key).set(micropartions[key].BoxSerial, new Map());
+        micropartions[key].Skus.forEach( itemSkus=>{
+            // console.log(itemSkus.SkusSerial)
+            microPartions_global.get(key).get(micropartions[key].BoxSerial).set(itemSkus.SkusSerial, new Map());
+                itemSkus.PartionOperations.forEach( itemOperatios =>{
+                    // console.log(itemOperatios.OperationGuid, itemOperatios.OpertionNumber)
+                    microPartions_global.get(key).get(micropartions[key].BoxSerial).get(itemSkus.SkusSerial,).set(itemOperatios.OperationGuid, itemOperatios.OpertionNumber);
+                })
+            })
 
-        })
-    })
+    }
+    console.log(microPartions_global)
 
 }
 
 //отправка всего в 1с
 function handlerSendAllDataBase() {
     let dateTimeButton = new Date()
-    dateTimeButton = dateTimeButton.toLocaleTimeString()
-    buttonSendTime.textContent = `${dateTimeButton}`
+    // dateTimeButton = dateTimeButton.toLocaleTimeString()
+    let hours =dateTimeButton.getHours()
+    let minutes=dateTimeButton.getMinutes()
+    buttonSendTime.textContent = `Отправлено ${hours}:${minutes}`
+    // buttonSendTime.textContent = `Отправлено ${dateTimeButton}`
     let myHeaders = new Headers();
     myHeaders.append("Content-Type", "application/json");
     let allData = JSON.stringify(dataBase);
@@ -831,6 +3060,7 @@ function create_new_micropartion(main_micropartion_object, micropartion_guid, sk
         main_micropartion_object.get(micropartion_guid).get(box_serial).set(serial, new Map());
         main_micropartion_object.get(micropartion_guid).get(box_serial).get(serial).set(operation_guid, operation_number);
     });
+    console.log(microPartions_global)
 }
 
 function check_do_we_have_micropartion_with_this_operation(all_micropartions, box_serial, sku_serial, operation_guid, operation_number) {
@@ -1223,10 +3453,13 @@ function axiosLogin() {
     });
 
     let requestOptions = {
-        method: 'POST', headers: myHeaders, body: raw, redirect: 'follow'
+        method: 'POST',
+        headers: myHeaders,
+        body: raw,
+        redirect: 'follow'
     };
 
-    const requestOptionsMicroPartion = {
+    let requestOptionsMicroPartion = {
         method: 'GET',
         headers: myHeaders,
         redirect: 'follow'
@@ -1242,7 +3475,7 @@ function axiosLogin() {
         })
         .catch(error => console.log('error', error));
 
-    fetch(mainUrlMicroParti, requestOptionsMicroPartion)
+    fetch(`${mainUrlMicroParti}?=${param.get('id')}`, requestOptionsMicroPartion)
         .then(response => response.json())
         .then(function (result) {
             if(result.length>0){
@@ -1274,5 +3507,6 @@ handlerSortOperationNumber()
 setTimeout(handlerBoxSerial, 1000)
 // handlerAddObject()
 // axiosLogin()
+createParseJsonForFront(micropartions)
 slideCarouselBox()
 
