@@ -90,8 +90,8 @@ class BtmcTimer {
         }
 
         this.isRunning = false;
-        let tem_time =  this._getTimeElapsedSinceLastStart();
-        this.overallTime = this.overallTime + Math.round((tem_time / length)/1000);
+        let tem_time = this._getTimeElapsedSinceLastStart();
+        this.overallTime = this.overallTime + Math.round((tem_time / length) / 1000);
 
     }
 
@@ -120,16 +120,16 @@ class BtmcTimer {
     }
 }
 
-let isProduction = true
+let isProduction = false
 let mainUrl = ""
 let mainUrlMicroParti = ""
 
 if (!isProduction) {
     mainUrl = "http://localhost:5103/api/"
-    mainUrlMicroParti = "http://127.0.0.1:3000/micro"
+    mainUrlMicroParti = "http://localhost:5167/micro"
 } else {
-    mainUrl = "https://prod.centervospi.ru:444/api/"
-    mainUrlMicroParti = "http://127.0.0.1:3000/micro"
+    mainUrl = "https://172.16.0.99:444/api/"
+    mainUrlMicroParti = "http://172.16.0.99:445/micro"
 }
 
 //отслеживает есть ли сортировка
@@ -298,20 +298,20 @@ const handlerControlMapTimeAndButton = (BoxSerial, SkusSerial, OperationNumber, 
         handlerSearchButtons(InOperationNumber, SkusSerial, OperationNumber)
 
     }
-    if(num === 2){
-                document.getElementById(`${InOperationNumber}pause${SkusSerial}`).textContent = ('Продолжить')
-                document.getElementById(`${InOperationNumber}status${SkusSerial}`).textContent = ('Пауза')
-                handlerSearchTimerMap(SkusSerial, BoxSerial, InOperationNumber, OperationNumber, checkBoxItemSkusSerial, false, length)
-                handlerSearchButtons(InOperationNumber, SkusSerial, OperationNumber)
-                let some = GlobalTimer.allTimers.get(SkusSerial).get(Number(OperationNumber)).getTime();
-                console.log(Math.round(some / 1000));
-                console.log(num, 'pause')
+    if (num === 2) {
+        document.getElementById(`${InOperationNumber}pause${SkusSerial}`).textContent = ('Продолжить')
+        document.getElementById(`${InOperationNumber}status${SkusSerial}`).textContent = ('Пауза')
+        handlerSearchTimerMap(SkusSerial, BoxSerial, InOperationNumber, OperationNumber, checkBoxItemSkusSerial, false, length)
+        handlerSearchButtons(InOperationNumber, SkusSerial, OperationNumber)
+        let some = GlobalTimer.allTimers.get(SkusSerial).get(Number(OperationNumber)).getTime();
+        console.log(Math.round(some / 1000));
+        console.log(num, 'pause')
     }
-    if(num === 1985){
-                document.getElementById(`${InOperationNumber}pause${SkusSerial}`).textContent = ('Пауза')
-                document.getElementById(`${InOperationNumber}status${SkusSerial}`).textContent = ('Начато')
-                handlerSearchTimerMap(SkusSerial, BoxSerial, InOperationNumber, OperationNumber, checkBoxItemSkusSerial, true, length)
-                handlerSearchButtons(InOperationNumber, SkusSerial, OperationNumber)
+    if (num === 1985) {
+        document.getElementById(`${InOperationNumber}pause${SkusSerial}`).textContent = ('Пауза')
+        document.getElementById(`${InOperationNumber}status${SkusSerial}`).textContent = ('Начато')
+        handlerSearchTimerMap(SkusSerial, BoxSerial, InOperationNumber, OperationNumber, checkBoxItemSkusSerial, true, length)
+        handlerSearchButtons(InOperationNumber, SkusSerial, OperationNumber)
     }
 
     if (num === 3) {
@@ -449,21 +449,22 @@ const createParseJsonForFront = (micropartions) => {
     for (let key in micropartions) {
         microPartions_global.set(key, new Map())
         microPartions_global.get(key).set(micropartions[key].BoxSerial, new Map());
-        micropartions[key].Skus.forEach( itemSkus=>{
+        micropartions[key].Skus.forEach(itemSkus => {
             microPartions_global.get(key).get(micropartions[key].BoxSerial).set(itemSkus.SkusSerial, new Map());
-                itemSkus.PartionOperations.forEach( itemOperatios =>{
-                    microPartions_global.get(key).get(micropartions[key].BoxSerial).get(itemSkus.SkusSerial,).set(itemOperatios.OperationGuid, itemOperatios.OpertionNumber);
-                })
+            itemSkus.PartionOperations.forEach(itemOperatios => {
+                microPartions_global.get(key).get(micropartions[key].BoxSerial).get(itemSkus.SkusSerial,).set(itemOperatios.OperationGuid, itemOperatios.OpertionNumber);
             })
+        })
     }
+    console.log("Partions parsing done")
 }
 
 //отправка всего в 1с
 function handlerSendAllDataBase() {
     let dateTimeButton = new Date()
     // dateTimeButton = dateTimeButton.toLocaleTimeString()
-    let hours =dateTimeButton.getHours()
-    let minutes=dateTimeButton.getMinutes()
+    let hours = dateTimeButton.getHours()
+    let minutes = dateTimeButton.getMinutes()
     buttonSendTime.textContent = `Отправлено ${hours}:${minutes}`
     // buttonSendTime.textContent = `Отправлено ${dateTimeButton}`
     let myHeaders = new Headers();
@@ -480,8 +481,8 @@ function handlerSendAllDataBase() {
         .then(function (result) {
         })
         .catch(error => console.log('error', error));
-// BAO отправка микропартий
-    if(microPartions_global.size>0){
+    // BAO отправка микропартий
+    if (microPartions_global.size > 0) {
         let mapToJson = createJsonForBackend(microPartions_global)
         let requestOptionsMapMicropartion = {
             method: 'POST',
@@ -496,7 +497,7 @@ function handlerSendAllDataBase() {
             .catch(error => console.log('error', error));
     }
 
-
+    dataBase = []
     // if (connetcClient) {
     //     client.send('/queue/btmchash_2', {"content-type": "text/plain"}, raw)
     //     dataBase = []
@@ -977,7 +978,6 @@ function handlerAddObject() {
                     localData.OperationsLists[i].Boxes[j].Skus[a].Operations[l].InOperationNumber = `${num++}`
                 }
             }
-
         }
     }
 }
@@ -992,12 +992,12 @@ function handlerSkusSerial() {
             for (let concreteOperationNumber = 0; concreteOperationNumber < allOperationsOfSkuLenght; concreteOperationNumber++) {
                 if (!allDataAboutOperations.has(localData.OperationsLists[0].Boxes[box].Skus[concreteSku].SkusSerial)) {
                     allDataAboutOperations.set(localData.OperationsLists[0].Boxes[box].Skus[concreteSku].SkusSerial, new Map());
-                    allDataAboutOperations.get(localData.OperationsLists[0].Boxes[box].Skus[concreteSku].SkusSerial).set(localData.OperationsLists[0].Boxes[box].Skus[concreteSku].Operations[concreteOperationNumber].OperationNumber, new BtmcTimer(localData.OperationsLists[0].Boxes[box].Skus[concreteSku].Operations[concreteOperationNumber].OperationalDuration));
+                    allDataAboutOperations.get(localData.OperationsLists[0].Boxes[box].Skus[concreteSku].SkusSerial).set(localData.OperationsLists[0].Boxes[box].Skus[concreteSku].Operations[concreteOperationNumber].OperationNumber, new BtmcTimer(localData.OperationsLists[0].Boxes[box].Skus[concreteSku].Operations[concreteOperationNumber].OperationDuration));
                 } else {
                     if (allDataAboutOperations.has(localData.OperationsLists[0].Boxes[box].Skus[concreteSku].Operations[concreteOperationNumber].OperationNumber)) {
                         console.log("Ошибка в разобре, повторно встретился номера операции уже существующий в нашей структуре");
                     } else {
-                        allDataAboutOperations.get(localData.OperationsLists[0].Boxes[box].Skus[concreteSku].SkusSerial).set(localData.OperationsLists[0].Boxes[box].Skus[concreteSku].Operations[concreteOperationNumber].OperationNumber, new BtmcTimer(localData.OperationsLists[0].Boxes[box].Skus[concreteSku].Operations[concreteOperationNumber].OperationalDuration));
+                        allDataAboutOperations.get(localData.OperationsLists[0].Boxes[box].Skus[concreteSku].SkusSerial).set(localData.OperationsLists[0].Boxes[box].Skus[concreteSku].Operations[concreteOperationNumber].OperationNumber, new BtmcTimer(localData.OperationsLists[0].Boxes[box].Skus[concreteSku].Operations[concreteOperationNumber].OperationDuration));
                     }
                 }
             }
@@ -1006,17 +1006,15 @@ function handlerSkusSerial() {
 }
 
 //функция сортирует полученные данные по номеру операций
-function handlerSortOperationNumber(){
+function handlerSortOperationNumber() {
     localData.OperationsLists.find(itemBox => {
         itemBox.Boxes.find(itemSkusSerial => {
-            itemSkusSerial.Skus.find(itemOperations=>{
-                itemOperations.Operations.sort((a,b)=>{
+            itemSkusSerial.Skus.find(itemOperations => {
+                itemOperations.Operations.sort((a, b) => {
                     return a.OperationNumber - b.OperationNumber
                 })
             })
-
         })
-
     })
 }
 
@@ -1050,17 +1048,28 @@ function axiosLogin() {
             handlerSkusSerial()
             setTimeout(handlerBoxSerial, 1000)
         })
+        .then(
+            fetch(mainUrlMicroParti, requestOptionsMicroPartion)
+                .then(response => response.json())
+                .then(function (result) {
+                    if (Object.keys(result).length != 0) {
+                        createParseJsonForFront(result)
+                    }
+
+                })
+                .catch(error => console.log('error', error))
+        )
         .catch(error => console.log('error', error));
 
-    fetch(`${mainUrlMicroParti}?=${param.get('id')}`, requestOptionsMicroPartion)
-        .then(response => response.json())
-        .then(function (result) {
-            if(result.length>0){
-                createParseJsonForFront(result)
-            }
-
-        })
-        .catch(error => console.log('error', error))
+    // bao - закомментировал тк этот api сейчас не функционирует
+    // fetch(`${mainUrlMicroParti}?=${param.get('id')}`, requestOptionsMicroPartion)
+    //     .then(response => response.json())
+    //     .then(function (result) {
+    //         if (result.length > 0) {
+    //             createParseJsonForFront(result)
+    //         }
+    //     })
+    //     .catch(error => console.log('error', error))
 
 }
 
@@ -1068,4 +1077,3 @@ GlobalTimer = new TimerManeger(allDataAboutOperations);
 
 axiosLogin()
 slideCarouselBox()
-
