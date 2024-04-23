@@ -14,57 +14,61 @@
 
 <body>
 
-    <div class="container_all" >
+    <div class="container_all">
         <div class="container_selected">
+            <div>
+                <button type="button" class="btn btnUpList btnIn btn-sm "
+                    onclick="handlerTextButoonBoxSerial()">Договор</button>
+            </div>
             <div>
                 <p class="pt-1 mx-md-4">Сортировка документов:</p>
             </div>
             <div>
                 <select class="form-select select_option form-select-sm" aria-label="Пример выбора по умолчанию"
-                                            id="selectedChoose">
-                                            <option value="0" selected="selected">Откройте меню выбора</option>
-                                            <option value="1">Все</option>
-                                            <option value="2">Пауза</option>
-                                            <option value="3">Начато</option>
-                                        </select>
+                    id="selectedChoose">
+                    <option value="0" selected="selected">Откройте меню выбора</option>
+                    <option value="1">Все</option>
+                    <option value="2">Пауза</option>
+                    <option value="3">Начато</option>
+                </select>
             </div>
             <div>
-                                  <button type="button" class="btn btn-outline-warning  btn-sm btn1c text-center time_button"
-                                    onclick="handlerSendAllDataBase()">
-                                      Отправить В 1С
-                                 </button>
+                <button type="button" class="btn btn-outline-warning  btn-sm btn1c text-center time_button"
+                    onclick="handlerSendAllDataBase()">
+                    Отправить В 1С
+                </button>
             </div>
             <div>
-<!--                <p class="time_button"></p>-->
-                                    <a href="index.html" onclick="handlerSendAllDataBase()">
-                                        <img src="./assets/icons8-logout-50.png" alt="logout" width="25" height="25"></a>
+                <!--                <p class="time_button"></p>-->
+                <a href="index.html" onclick="handlerSendAllDataBase()">
+                    <img src="./assets/icons8-logout-50.png" alt="logout" width="25" height="25"></a>
             </div>
 
-            </div>
-            <div class=" container_carousel bg-white">
-                <div class="row-cols-md-auto justify-content-center ">
-                    <div class="col-md-12 ">
-                        <div id="carousel_box" class="carousel_box ">
-                            <button class="arrow_box prev_box btn ">&#8249;</button>
-                            <div class="gallery_box">
-                                <ul class="gallery_list_box">
+        </div>
+        <div class=" container_carousel bg-white">
+            <div class="row-cols-md-auto justify-content-center ">
+                <div class="col-md-12 ">
+                    <div id="carousel_box" class="carousel_box ">
+                        <button class="arrow_box prev_box btn ">&#8249;</button>
+                        <div class="gallery_box">
+                            <ul class="gallery_list_box">
 
-                                </ul>
-                            </div>
-                            <button class="arrow_box next_box  btn ">&#8250;</button>
+                            </ul>
                         </div>
-                    </div>
-                </div>
-                <div class="container_serial " >
-                    <div class="carousel_button_in block_checked ">
-                    </div>
-                    <div class="col-md-8" id="carousel">
-                        <div class="gallery">
-                            <ul class="gallery_list list-group " style="overflow-y: auto;"></ul>
-                        </div>
+                        <button class="arrow_box next_box  btn ">&#8250;</button>
                     </div>
                 </div>
             </div>
+            <div class="container_serial ">
+                <div class="carousel_button_in block_checked ">
+                </div>
+                <div class="col-md-8" id="carousel">
+                    <div class="gallery">
+                        <ul class="gallery_list list-group " style="overflow-y: auto;"></ul>
+                    </div>
+                </div>
+            </div>
+        </div>
 
 
 

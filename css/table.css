@@ -1,236 +1,234 @@
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-.container_all{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    height: 100%;
+.container_all {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 100%;
 }
-.time_button{
-    margin: 0;
-    padding: 0 70px 0 0;
+.time_button {
+  margin: 0;
+  padding: 0 70px 0 0;
 }
-.container_selected{
-    display: flex !important;
-    gap:10px;
-    margin: 20px;
+.container_selected {
+  display: flex !important;
+  gap: 10px;
+  margin: 20px;
 }
-.container_serial{
-    display: flex !important;
-    gap:12px;
-    justify-content: center;
-
+.container_serial {
+  display: flex !important;
+  gap: 12px;
+  justify-content: center;
 }
-.container_button_serial{
-    display: flex;
-    padding: 5px;
+.container_button_serial {
+  display: flex;
+  padding: 5px;
 }
 .container_carousel {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
 .table_container {
-    margin: 0px 50px;
-    box-sizing: border-box;
+  margin: 0px 50px;
+  box-sizing: border-box;
 }
 .gallery_list {
-    max-height: 22vh;
-    width: 100%;
+  max-height: 22vh;
+  width: 100%;
+}
+.gallery {
+}
+.hidden {
+  display: none !important;
+  transition: opacity;
+}
+.btnIn:hover {
+  box-shadow: rgb(38, 57, 77) 0px 20px 30px -10px !important;
+}
+.btnCheckIn {
+  border: 2px solid #4682b4 !important;
+  color: #4682b4 !important;
+}
+.btnUpList {
+  border: 2px solid #4682b4 !important;
+  color: #4682b4 !important;
+}
+.btnSkusSerialIn {
+  border-color: #0000cd !important;
+  background-color: white;
+  color: #0000cd !important;
+}
+.btnSkusSerialInCheckAll {
+  background-color: #0000cd !important;
+  color: white !important;
+}
+.btnSBoxSerial {
+  border-color: #006400 !important;
+  background-color: white;
+  color: #006400 !important;
+}
+.btnBegin {
+  background-color: #0000cd !important;
+  color: white !important;
+}
+.btnFinish {
+  background-color: #800000 !important;
+  color: white !important;
+}
+.btnPause {
+  background-color: #008080 !important;
+  color: white !important;
+}
 
-}
-.gallery{
-
-}
-.hidden{
-    display: none !important;
-    transition: opacity;
-}
-.btnIn:hover{
-    box-shadow: rgb(38, 57, 77) 0px 20px 30px -10px !important;
-}
-.btnCheckIn{
-    border:2px solid #4682B4 !important;
-    color: #4682B4 !important;
-}
-.btnSkusSerialIn{
-    border-color: #0000CD !important;
-    background-color: white;
-    color: #0000CD !important;
-}
-.btnSkusSerialInCheckAll{
-    background-color:#0000CD !important;
-    color: white !important;
-}
-.btnSBoxSerial{
-    border-color: #006400 !important;
-    background-color: white;
-    color: #006400 !important;
-}
-.btnBegin{
-    background-color: #0000CD !important;
-    color: white !important;
-}
-.btnFinish{
-    background-color: #800000 !important;
-    color: white !important;
-}
-.btnPause{
-    background-color: #008080 !important;
-    color: white !important;
-}
-
-.btn1c:hover{
-    box-shadow: rgb(38, 57, 77) 0px 20px 30px -10px !important;
+.btn1c:hover {
+  box-shadow: rgb(38, 57, 77) 0px 20px 30px -10px !important;
 }
 
 .text_down {
-    margin: 10px auto;
+  margin: 10px auto;
 }
 
 .text_down h5 {
-    border: 1px solid green;
-    border-radius: 5px;
+  border: 1px solid green;
+  border-radius: 5px;
 }
 .carousel_box {
-    display: flex;
-    width: 600px;
-    margin: 0 auto;
+  display: flex;
+  width: 600px;
+  margin: 0 auto;
 }
 
 .btn_carousel {
-    margin: 0px 2px 0px 2px;
-    display: flex;
+  margin: 0px 2px 0px 2px;
+  display: flex;
 }
 
 .arrow_box:focus {
-    outline: none;
+  outline: none;
 }
-.arrow_box{
-    background-color: #4682B4 !important;
-    border-color: #4682B4 !important;
-    color: white !important;
+.arrow_box {
+  background-color: #4682b4 !important;
+  border-color: #4682b4 !important;
+  color: white !important;
 }
 .arrow_box:hover {
-    cursor: pointer;
+  cursor: pointer;
 }
 
 .prev_box {
-    height: 40px;
-    margin: 1px 3px 0px 3px;
+  height: 40px;
+  margin: 1px 3px 0px 3px;
 }
 
 .next_box {
-    height: 40px;
-    margin: 1px 3px 0px 3px;
+  height: 40px;
+  margin: 1px 3px 0px 3px;
 }
 
 .gallery_box {
-    margin: 0 auto;
-    width: 600px;
-    overflow: hidden;
+  margin: 0 auto;
+  width: 600px;
+  overflow: hidden;
 }
 
 .gallery_list_box {
-    height: 100px;
-    width: 9999px;
-    margin: 0 auto;
-    padding: 0;
-    list-style: none !important;
-    transition: margin-left 900ms;
-    /* удаляем пустое пространство между элементами li, у которых установлен inline-block */
-    /* http://davidwalsh.name/remove-whitespace-inline-block */
-    font-size: 0;
+  height: 100px;
+  width: 9999px;
+  margin: 0 auto;
+  padding: 0;
+  list-style: none !important;
+  transition: margin-left 900ms;
+  /* удаляем пустое пространство между элементами li, у которых установлен inline-block */
+  /* http://davidwalsh.name/remove-whitespace-inline-block */
+  font-size: 0;
 }
 
 .gallery_list_box li {
-    display: inline-block;
+  display: inline-block;
 }
-.gallery_opacity{
-    opacity: 0.5;
+.gallery_opacity {
+  opacity: 0.5;
 }
-.carousel{
-    max-width: 650px;
+.carousel {
+  max-width: 650px;
 }
-.carousel_button_in{
-    min-width: 100px;
-    margin-left: 2px;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-
+.carousel_button_in {
+  min-width: 100px;
+  margin-left: 2px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 select:active,
 select:hover,
-select:focus{
-    outline: none !important;
-    border: none !important;
+select:focus {
+  outline: none !important;
+  border: none !important;
 }
-
 
 .switch-btn {
-    display: inline-block;
-    min-width: 35px; /* ширина */
-    height: 20px; /* высота */
-    border-radius: 19px; /* радиус скругления */
-    background: #ffffff; /* цвет фона */
-    border: 1px solid #0000CD;
-    z-index: 0;
-    margin: 0;
-    padding: 0px;
-    cursor: pointer;
-    position: relative;
-    transition-duration: 300ms; /* анимация */
+  display: inline-block;
+  min-width: 35px; /* ширина */
+  height: 20px; /* высота */
+  border-radius: 19px; /* радиус скругления */
+  background: #ffffff; /* цвет фона */
+  border: 1px solid #0000cd;
+  z-index: 0;
+  margin: 0;
+  padding: 0px;
+  cursor: pointer;
+  position: relative;
+  transition-duration: 300ms; /* анимация */
 }
 .switch-btn::after {
-    content: "";
-    height: 15px; /* высота кнопки */
-    width: 15px; /* ширина кнопки */
-    border-radius: 17px;
-    background: #0000CD; /* цвет кнопки */
-    top: 2px; /* положение кнопки по вертикали относительно основы */
-    left: 2px; /* положение кнопки по горизонтали относительно основы */
-    transition-duration: 300ms; /* анимация */
-    position: absolute;
-    z-index: 1;
+  content: "";
+  height: 15px; /* высота кнопки */
+  width: 15px; /* ширина кнопки */
+  border-radius: 17px;
+  background: #0000cd; /* цвет кнопки */
+  top: 2px; /* положение кнопки по вертикали относительно основы */
+  left: 2px; /* положение кнопки по горизонтали относительно основы */
+  transition-duration: 300ms; /* анимация */
+  position: absolute;
+  z-index: 1;
 }
 .switch-on {
-    background: #0000CD;
+  background: #0000cd;
 }
 .switch-on::after {
-    left: 18px;
-    background: #ffffff;
+  left: 18px;
+  background: #ffffff;
 }
-.liButton{
-    list-style: none;
-    border: 1px solid #e9e9e9;
+.liButton {
+  list-style: none;
+  border: 1px solid #e9e9e9;
 }
-.modal-win{
-    display: block;
-    opacity:1 !important;
-    background-color: white !important;
-    margin: 0 auto !important;
-    position: absolute !important;;
-    border-radius: 3px;
-    top:5%;
-    left:30%;
-    right: 30%;
-    padding: 20px;
-    box-shadow: rgb(38, 57, 77) 0px 20px 30px -10px;
-    font-family: 'Montserrat', sans-serif;
-    font-size: 10px;
-    text-transform: uppercase;
-    line-height: 25px;
-    letter-spacing: 3px;
-    font-weight: 600;
-    text-align: center;
+.modal-win {
+  display: block;
+  opacity: 1 !important;
+  background-color: white !important;
+  margin: 0 auto !important;
+  position: absolute !important;
+  border-radius: 3px;
+  top: 5%;
+  left: 30%;
+  right: 30%;
+  padding: 20px;
+  box-shadow: rgb(38, 57, 77) 0px 20px 30px -10px;
+  font-family: "Montserrat", sans-serif;
+  font-size: 10px;
+  text-transform: uppercase;
+  line-height: 25px;
+  letter-spacing: 3px;
+  font-weight: 600;
+  text-align: center;
 }
-.gallery-pos{
-    position: relative;
+.gallery-pos {
+  position: relative;
 }
-

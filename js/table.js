@@ -25,6 +25,7 @@ let allDataAboutOperations = new Map();
 let localData = {}
 let microPartions_global = new Map();
 let connetcClient = false
+let buttonListOrDocument = false
 // const client = Stomp.client('ws://localhost:15674/ws');
 // const on_connect = function () {
 //     connetcClient = true
@@ -120,7 +121,7 @@ class BtmcTimer {
     }
 }
 
-let isProduction = false
+let isProduction = true
 let mainUrl = ""
 let mainUrlMicroParti = ""
 
@@ -129,7 +130,7 @@ if (!isProduction) {
     mainUrlMicroParti = "http://localhost:5167/micro"
 } else {
     mainUrl = "https://172.16.0.99:444/api/"
-    mainUrlMicroParti = "http://172.16.0.99:445/micro"
+    mainUrlMicroParti = "https://172.16.0.99:445/micro"
 }
 
 //отслеживает есть ли сортировка
@@ -407,9 +408,14 @@ const htmlButtonSkusSerial = (itemSkusSerial, itemBoxSerial, itemSkusFriendlyNam
 //создаем боксы
 const htmlBoxSerial = (itemBoxSerial, itemWcGuid, itemClientOrder) => {
     htmlBox = (`<li id='' class="html_box">
-                <button class=" btn btn_carousel btnIn btnSBoxSerial" id ='${itemBoxSerial}' onclick="handlerBoxSkusSerial('${itemBoxSerial}')">${itemBoxSerial}</button>
+                <button class=" btn btn_carousel btnIn btnSBoxSerial" id ='${itemBoxSerial}' onclick="handlerBoxSkusSerial('${itemBoxSerial}')"><span class="clientOrder">${itemClientOrder}</span><span class="boxSerialNumber">${itemBoxSerial}</span></button>
                 </li>`)
     listGalleryBox.insertAdjacentHTML('afterbegin', htmlBox)
+    if (!buttonListOrDocument) {
+        addClassListAll(document.querySelectorAll('.boxSerialNumber'), 'hidden')
+    } else {
+        addClassListAll(document.querySelectorAll('.clientOrder'), 'hidden')
+    }
 }
 // функция перводит микропартию в объект json
 const createJsonForBackend = (micropartions) => {
@@ -457,6 +463,22 @@ const createParseJsonForFront = (micropartions) => {
         })
     }
     console.log("Partions parsing done")
+}
+
+// функция меняет текст вывода боксов договор или лист 
+
+function handlerTextButoonBoxSerial() {
+    if (document.querySelector('.btnUpList').textContent === 'Договор') {
+        document.querySelector('.btnUpList').textContent = 'Лист'
+        deleteClassListAll(document.querySelectorAll('.boxSerialNumber'), 'hidden')
+        addClassListAll(document.querySelectorAll('.clientOrder'), 'hidden')
+        buttonListOrDocument = true
+    } else if (document.querySelector('.btnUpList').textContent === 'Лист') {
+        document.querySelector('.btnUpList').textContent = 'Договор'
+        addClassListAll(document.querySelectorAll('.boxSerialNumber'), 'hidden')
+        deleteClassListAll(document.querySelectorAll('.clientOrder'), 'hidden')
+        buttonListOrDocument = false
+    }
 }
 
 //отправка всего в 1с
