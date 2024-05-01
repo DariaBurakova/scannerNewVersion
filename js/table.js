@@ -25,6 +25,7 @@ let allDataAboutOperations = new Map();
 // let localData = {}
 let microPartions_global = new Map();
 let connetcClient = false
+let buttonListOrDocument=false
 // const client = Stomp.client('ws://localhost:15674/ws');
 // const on_connect = function () {
 //     connetcClient = true
@@ -2403,7 +2404,35 @@ let localData = {
                             "RealExecutor": "Рабочий стол 3 (Сапрыкин)",
                             "Status": "пауза",
                             "OperationalDuration": 0
-                        }]
+                        },
+                        {
+                            "OperationNumber": 0,
+                            "Operation": "c2c5fb0e-6aff-11ed-8c34-00505681efea",
+                            "OperationHumanName": "Сдача ОТК (Армирование)",
+                            "DateOfChange": "27.10.2023 13.20.55",
+                            "RealExecutor": "Рабочий стол 3 (Сапрыкин)",
+                            "Status": "пауза",
+                            "OperationalDuration": 0
+                        },
+                        {
+                            "OperationNumber": 0,
+                            "Operation": "c2c5fb0e-6aff-11ed-8c34-00505681efea",
+                            "OperationHumanName": "Сдача ОТК (Армирование)",
+                            "DateOfChange": "27.10.2023 13.20.55",
+                            "RealExecutor": "Рабочий стол 3 (Сапрыкин)",
+                            "Status": "пауза",
+                            "OperationalDuration": 0
+                        },
+                        {
+                            "OperationNumber": 0,
+                            "Operation": "c2c5fb0e-6aff-11ed-8c34-00505681efea",
+                            "OperationHumanName": "Сдача ОТК (Армирование)",
+                            "DateOfChange": "27.10.2023 13.20.55",
+                            "RealExecutor": "Рабочий стол 3 (Сапрыкин)",
+                            "Status": "пауза",
+                            "OperationalDuration": 0
+                        }
+                    ]
                 }, {
                     "SkusID": "12226bea-3b65-11ee-8c44-00505681f37b",
                     "SkusFriendlyName": "КБСО2 ",
@@ -2545,6 +2574,7 @@ if (!isProduction) {
     mainUrlMicroParti = "http://127.0.0.1:3000/micro"
 }
 
+
 //отслеживает есть ли сортировка
 document.querySelector('#selectedChoose').addEventListener('change', function (e) {
     selectionChoose = e.target.value
@@ -2584,8 +2614,8 @@ const slideCarouselBox = () => {
         // сдвиг вправо
         position -= width * count;
         // последнее передвижение вправо может быть не на 3, а на 2 или 1 элемент
-        // position = Math.min(position, 0)
-        position = Math.max(position, +width * (listElems.length - count));
+        position = Math.min(position, 0)
+        // position = Math.max(position, +width * (listElems.length - count));
         list.style.marginLeft = position + 'px';
     }
 }
@@ -2687,6 +2717,7 @@ const handlerSearchButtons = (InOperationNumber, SkusSerial, OperationNumber) =>
 //модальное окно с ошибкой
 const htmlModalWindow = (headText, text, serialControl) => {
     let htmlModal = (`
+<div class="modal-wrap">
   <div class="modal-win" >
       <div class="modal-dialog">
         <h2 class="text-center mb-1">${headText}</h2>
@@ -2696,10 +2727,10 @@ const htmlModalWindow = (headText, text, serialControl) => {
         <p>${serialControl}</p>
       </div>
       <div class="text-end " >
-        <button type="button" class="btn btn-secondary " onclick="deleteElems(document.querySelectorAll('.modal-win'))">Закрыть</button>
+        <button type="button" class="btn btn-secondary " onclick="deleteElems(document.querySelectorAll('.modal-wrap'))">Закрыть</button>
       </div>
   </div>
-
+</div>
     `)
     document.body.insertAdjacentHTML('afterbegin', htmlModal)
 }
@@ -2820,9 +2851,14 @@ const htmlButtonSkusSerial = (itemSkusSerial, itemBoxSerial, itemSkusFriendlyNam
 //создаем боксы
 const htmlBoxSerial = (itemBoxSerial, itemWcGuid, itemClientOrder) => {
     htmlBox = (`<li id='' class="html_box">
-                <button class=" btn btn_carousel btnIn btnSBoxSerial" id ='${itemBoxSerial}' onclick="handlerBoxSkusSerial('${itemBoxSerial}')">${itemBoxSerial}</button>
+                <button class=" btn btn_carousel btnIn btnSBoxSerial" id ='${itemBoxSerial}' onclick="handlerBoxSkusSerial('${itemBoxSerial}')"><span class="clientOrder ">${itemClientOrder}</span><span class="boxSerialNumber">${itemBoxSerial}</span></button>
                 </li>`)
     listGalleryBox.insertAdjacentHTML('afterbegin', htmlBox)
+    if(!buttonListOrDocument){
+        addClassListAll(document.querySelectorAll('.boxSerialNumber'),'hidden')
+    }else{
+        addClassListAll(document.querySelectorAll('.clientOrder'),'hidden')
+    }
 }
 // функция перводит микропартию в объект json
 const createJsonForBackend = (micropartions) => {
@@ -2891,6 +2927,20 @@ const createParseJsonForFront = (micropartions) => {
     }
     console.log(microPartions_global)
 
+}
+
+function handlerTextButoonBoxSerial() {
+    if (document.querySelector('.btnUpList').textContent === 'Договор'){
+        document.querySelector('.btnUpList').textContent = 'Лист'
+        deleteClassListAll(document.querySelectorAll('.boxSerialNumber'),'hidden')
+        addClassListAll(document.querySelectorAll('.clientOrder'),'hidden')
+        buttonListOrDocument=true
+    } else if (document.querySelector('.btnUpList').textContent === 'Лист'){
+        document.querySelector('.btnUpList').textContent = 'Договор'
+        addClassListAll(document.querySelectorAll('.boxSerialNumber'),'hidden')
+        deleteClassListAll(document.querySelectorAll('.clientOrder'),'hidden')
+        buttonListOrDocument=false
+    }
 }
 
 //отправка всего в 1с
