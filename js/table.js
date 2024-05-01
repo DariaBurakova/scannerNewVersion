@@ -275,6 +275,7 @@ const handlerSearchButtons = (InOperationNumber, SkusSerial, OperationNumber) =>
 //модальное окно с ошибкой
 const htmlModalWindow = (headText, text, serialControl) => {
     let htmlModal = (`
+<div class="modal-wrap">
   <div class="modal-win" >
       <div class="modal-dialog">
         <h2 class="text-center mb-1">${headText}</h2>
@@ -284,10 +285,10 @@ const htmlModalWindow = (headText, text, serialControl) => {
         <p>${serialControl}</p>
       </div>
       <div class="text-end " >
-        <button type="button" class="btn btn-secondary " onclick="deleteElems(document.querySelectorAll('.modal-win'))">Закрыть</button>
+        <button type="button" class="btn btn-secondary " onclick="deleteElems(document.querySelectorAll('.modal-wrap'))">Закрыть</button>
       </div>
   </div>
-
+</div>
     `)
     document.body.insertAdjacentHTML('afterbegin', htmlModal)
 }
@@ -465,7 +466,7 @@ const createParseJsonForFront = (micropartions) => {
     console.log("Partions parsing done")
 }
 
-// функция меняет текст вывода боксов договор или лист 
+// функция меняет текст вывода боксов договор или лист
 
 function handlerTextButoonBoxSerial() {
     if (document.querySelector('.btnUpList').textContent === 'Договор') {

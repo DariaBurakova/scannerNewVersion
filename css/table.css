@@ -4,27 +4,28 @@
   box-sizing: border-box;
 }
 
-.container_all {
+.container_all{
   display: flex;
   flex-direction: column;
   align-items: center;
   height: 100%;
 }
-.time_button {
+.time_button{
   margin: 0;
   padding: 0 70px 0 0;
 }
-.container_selected {
+.container_selected{
   display: flex !important;
-  gap: 10px;
+  gap:10px;
   margin: 20px;
 }
-.container_serial {
+.container_serial{
   display: flex !important;
-  gap: 12px;
+  gap:12px;
   justify-content: center;
+
 }
-.container_button_serial {
+.container_button_serial{
   display: flex;
   padding: 5px;
 }
@@ -41,52 +42,54 @@
 .gallery_list {
   max-height: 22vh;
   width: 100%;
+
 }
-.gallery {
+.gallery{
+
 }
-.hidden {
+.hidden{
   display: none !important;
   transition: opacity;
 }
-.btnIn:hover {
+.btnIn:hover{
   box-shadow: rgb(38, 57, 77) 0px 20px 30px -10px !important;
 }
-.btnCheckIn {
-  border: 2px solid #4682b4 !important;
-  color: #4682b4 !important;
+.btnCheckIn{
+  border:2px solid #4682B4 !important;
+  color: #4682B4 !important;
 }
-.btnUpList {
-  border: 2px solid #4682b4 !important;
-  color: #4682b4 !important;
+.btnUpList{
+  border:2px solid #4682B4 !important;
+  color: #4682B4 !important;
 }
-.btnSkusSerialIn {
-  border-color: #0000cd !important;
+.btnSkusSerialIn{
+  border-color: #0000CD !important;
   background-color: white;
-  color: #0000cd !important;
+  color: #0000CD !important;
 }
-.btnSkusSerialInCheckAll {
-  background-color: #0000cd !important;
+.btnSkusSerialInCheckAll{
+  background-color:#0000CD !important;
   color: white !important;
 }
-.btnSBoxSerial {
+.btnSBoxSerial{
   border-color: #006400 !important;
   background-color: white;
   color: #006400 !important;
 }
-.btnBegin {
-  background-color: #0000cd !important;
+.btnBegin{
+  background-color: #0000CD !important;
   color: white !important;
 }
-.btnFinish {
+.btnFinish{
   background-color: #800000 !important;
   color: white !important;
 }
-.btnPause {
+.btnPause{
   background-color: #008080 !important;
   color: white !important;
 }
 
-.btn1c:hover {
+.btn1c:hover{
   box-shadow: rgb(38, 57, 77) 0px 20px 30px -10px !important;
 }
 
@@ -112,9 +115,9 @@
 .arrow_box:focus {
   outline: none;
 }
-.arrow_box {
-  background-color: #4682b4 !important;
-  border-color: #4682b4 !important;
+.arrow_box{
+  background-color: #4682B4 !important;
+  border-color: #4682B4 !important;
   color: white !important;
 }
 .arrow_box:hover {
@@ -152,25 +155,27 @@
 .gallery_list_box li {
   display: inline-block;
 }
-.gallery_opacity {
+.gallery_opacity{
   opacity: 0.5;
 }
-.carousel {
+.carousel{
   max-width: 650px;
 }
-.carousel_button_in {
+.carousel_button_in{
   min-width: 100px;
   margin-left: 2px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+
 }
 select:active,
 select:hover,
-select:focus {
+select:focus{
   outline: none !important;
   border: none !important;
 }
+
 
 .switch-btn {
   display: inline-block;
@@ -178,7 +183,7 @@ select:focus {
   height: 20px; /* высота */
   border-radius: 19px; /* радиус скругления */
   background: #ffffff; /* цвет фона */
-  border: 1px solid #0000cd;
+  border: 1px solid #0000CD;
   z-index: 0;
   margin: 0;
   padding: 0px;
@@ -191,7 +196,7 @@ select:focus {
   height: 15px; /* высота кнопки */
   width: 15px; /* ширина кнопки */
   border-radius: 17px;
-  background: #0000cd; /* цвет кнопки */
+  background: #0000CD; /* цвет кнопки */
   top: 2px; /* положение кнопки по вертикали относительно основы */
   left: 2px; /* положение кнопки по горизонтали относительно основы */
   transition-duration: 300ms; /* анимация */
@@ -199,29 +204,37 @@ select:focus {
   z-index: 1;
 }
 .switch-on {
-  background: #0000cd;
+  background: #0000CD;
 }
 .switch-on::after {
   left: 18px;
   background: #ffffff;
 }
-.liButton {
+.liButton{
   list-style: none;
   border: 1px solid #e9e9e9;
 }
+.modal-wrap{
+  display: flex;
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  justify-content: center;
+  align-items: center;
+  z-index: 1;
+}
 .modal-win {
   display: block;
-  opacity: 1 !important;
+  opacity:1 !important;
   background-color: white !important;
-  margin: 0 auto !important;
-  position: absolute !important;
-  border-radius: 3px;
-  top: 5%;
-  left: 30%;
-  right: 30%;
+  margin: auto 120px !important;
   padding: 20px;
   box-shadow: rgb(38, 57, 77) 0px 20px 30px -10px;
-  font-family: "Montserrat", sans-serif;
+  font-family: 'Montserrat', sans-serif;
   font-size: 10px;
   text-transform: uppercase;
   line-height: 25px;
@@ -229,6 +242,7 @@ select:focus {
   font-weight: 600;
   text-align: center;
 }
-.gallery-pos {
+.gallery-pos{
   position: relative;
 }
+
