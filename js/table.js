@@ -26,6 +26,26 @@ let localData = {}
 let microPartions_global = new Map();
 let connetcClient = false
 let buttonListOrDocument = false
+
+const executors = new Map();
+executors.set("24ae3488-6419-11ee-8c48-00505681f37b", "БТМК");
+executors.set("f5857713-2171-11ee-8c43-00505681f37b", "Жильцова Анастасия Сергеевна");
+executors.set("24608102-ec2f-11ee-8c53-00505681f37b", "Гончарова Лидия Ивановна");
+executors.set("d223a1f4-2172-11ee-8c43-00505681f37b", "Чувилина Екатерина Вадимовна");
+executors.set("366f9139-2172-11ee-8c43-00505681f37b", "Матвеев Иван Александрович");
+executors.set("db9d3bf2-2171-11ee-8c43-00505681f37b", "Григорьев Сергей Васильевич");
+executors.set("39d903a2-2172-11ee-8c43-00505681f37b", "Петрухин Иван Юрьевич");
+executors.set("4e4f31ee-2172-11ee-8c43-00505681f37b", "Семешкина Дианна Васильевна");
+executors.set("e96b00d6-2171-11ee-8c43-00505681f37b", "Дашкова Алёна Владимировна");
+executors.set("fd2caab6-2171-11ee-8c43-00505681f37b", "Зубков Дмитрий Владимирович");
+executors.set("172603d5-085a-11ef-8c55-00505681f37b", "Рябков Михаил Юрьевич");
+executors.set("804092a0-ec2f-11ee-8c53-00505681f37b", "Новикова Алина Анатольевна");
+executors.set("55ee0682-2172-11ee-8c43-00505681f37b", "Фрекауцан Олеся Анатольевна");
+executors.set("1d09989d-a9dc-11ec-8c0f-00505681efea", "Кривошеев Юрий Борисович");
+executors.set("170996f8-a9dc-11ec-8c0f-00505681efea", "Бубынин Александр Александрович");
+executors.set("1d09989f-a9dc-11ec-8c0f-00505681efea", "Москвичев Михаил Николаевич");
+executors.set("71690b93-c863-11ed-8c3b-00505681f37b", "Копцов Александр Сергеевич");
+
 // const client = Stomp.client('ws://localhost:15674/ws');
 // const on_connect = function () {
 //     connetcClient = true
@@ -140,7 +160,20 @@ document.querySelector('#selectedChoose').addEventListener('change', function (e
     deleteElems(document.querySelectorAll('.html_box')) //нельзя вынести переменную
     handlerBoxSerial()//запускаем заново отрисовку в соответствии с параметрами сортировки
 })
-
+//выводим имя
+const handlerGuidName=()=>{
+    let guidName=''
+    localData.OperationsLists.find(itemGuid=>{
+        const name_to_show = "";
+        if (executors.has(itemGuid.WcGuid)) {
+            guidName = executors.get(itemGuid.WcGuid);
+        } else {
+            guidName = itemGuid.WcGuid;
+        }
+    })
+    let htmlGuid =(`<p class="mt-3">${guidName}</p>`)
+    document.querySelector('.guid-name').insertAdjacentHTML('afterend', htmlGuid)
+}
 // рисует кнопки вперед назад и саму карусель
 const slideCarouselBox = () => {
     let i = 1;
@@ -1067,6 +1100,7 @@ function axiosLogin() {
         .then(response => response.json())
         .then(function (result) {
             localData = result
+            handlerGuidName()
             handlerSortOperationNumber()
             handlerSkusSerial()
             setTimeout(handlerBoxSerial, 1000)
