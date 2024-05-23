@@ -88,7 +88,10 @@
     background-color: #008080 !important;
     color: white !important;
 }
-
+.btnDefect{
+    background-color: #DAA520 !important;
+    color: white !important;
+}
 .btn1c:hover{
     box-shadow: rgb(38, 57, 77) 0px 20px 30px -10px !important;
 }

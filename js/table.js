@@ -39,6 +39,26 @@ let buttonListOrDocument=false
 
 //БДА 2023-11-06 Массив, который отсылается в мидлэнд со всеми нажатиями
 
+const executors = new Map();
+executors.set("24ae3488-6419-11ee-8c48-00505681f37b", "БТМК");
+executors.set("f5857713-2171-11ee-8c43-00505681f37b", "Жильцова Анастасия Сергеевна");
+executors.set("24608102-ec2f-11ee-8c53-00505681f37b", "Гончарова Лидия Ивановна");
+executors.set("d223a1f4-2172-11ee-8c43-00505681f37b", "Чувилина Екатерина Вадимовна");
+executors.set("366f9139-2172-11ee-8c43-00505681f37b", "Матвеев Иван Александрович");
+executors.set("db9d3bf2-2171-11ee-8c43-00505681f37b", "Григорьев Сергей Васильевич");
+executors.set("39d903a2-2172-11ee-8c43-00505681f37b", "Петрухин Иван Юрьевич");
+executors.set("4e4f31ee-2172-11ee-8c43-00505681f37b", "Семешкина Дианна Васильевна");
+executors.set("e96b00d6-2171-11ee-8c43-00505681f37b", "Дашкова Алёна Владимировна");
+executors.set("fd2caab6-2171-11ee-8c43-00505681f37b", "Зубков Дмитрий Владимирович");
+executors.set("172603d5-085a-11ef-8c55-00505681f37b", "Рябков Михаил Юрьевич");
+executors.set("804092a0-ec2f-11ee-8c53-00505681f37b", "Новикова Алина Анатольевна");
+executors.set("55ee0682-2172-11ee-8c43-00505681f37b", "Фрекауцан Олеся Анатольевна");
+executors.set("1d09989d-a9dc-11ec-8c0f-00505681efea", "Кривошеев Юрий Борисович");
+executors.set("170996f8-a9dc-11ec-8c0f-00505681efea", "Бубынин Александр Александрович");
+executors.set("1d09989f-a9dc-11ec-8c0f-00505681efea", "Москвичев Михаил Николаевич");
+executors.set("71690b93-c863-11ed-8c3b-00505681f37b", "Копцов Александр Сергеевич");
+
+
 let micropartions= {
     "32f1cfae-8e39-4985-a3bd-d52027a5d693": {
     "BoxSerial": "БТМК ТЕСТ",
@@ -2163,7 +2183,7 @@ let micropartions= {
 
 let localData = {
     "OperationsLists": [{
-        "WcGuid": "1d09989e-a9dc-11ec-8c0f-00505681efea",
+        "WcGuid": "f5857713-2171-11ee-8c43-00505681f37b",
         "Boxes": [
             {
                 "BoxSerial": "00000010442 02308", "ClientOrder": "270-23/Ц   ",
@@ -2583,6 +2603,19 @@ document.querySelector('#selectedChoose').addEventListener('change', function (e
     handlerBoxSerial()//запускаем заново отрисовку в соответствии с параметрами сортировки
 })
 
+const handlerGuidName=()=>{
+    let guidName=''
+    localData.OperationsLists.find(itemGuid=>{
+        const name_to_show = "";
+        if (executors.has(itemGuid.WcGuid)) {
+            guidName = executors.get(itemGuid.WcGuid);
+        } else {
+            guidName = "guid";
+        }
+    })
+    let htmlGuid =(`<p class="mt-3">${guidName}</p>`)
+    document.querySelector('.guid-name').insertAdjacentHTML('afterend', htmlGuid)
+}
 // рисует кнопки вперед назад и саму карусель
 const slideCarouselBox = () => {
     let i = 1;
@@ -2676,6 +2709,7 @@ const handlerButtonHidden = (allButtons) => {
         if (document.getElementById(itemId.itemStatusId).textContent.toLowerCase() == 'сформировано') {
             addClassList(document.getElementById(itemId.itemButtonPause), 'hidden')
             addClassList(document.getElementById(itemId.itemButtonFinish), 'hidden')
+            addClassList(document.getElementById(itemId.itemButtonDefect), 'hidden')
         }
         if (document.getElementById(itemId.itemStatusId).textContent.toLowerCase() == 'начато') {
             addClassList(document.getElementById(itemId.itemButtonBegin), 'hidden')
@@ -2690,6 +2724,7 @@ const handlerButtonHidden = (allButtons) => {
             deleteClassList(document.getElementById(itemId.itemButtonBegin), 'hidden')
             addClassList(document.getElementById(itemId.itemButtonFinish), 'hidden')
             addClassList(document.getElementById(itemId.itemButtonPause), 'hidden')
+            addClassList(document.getElementById(itemId.itemButtonDefect), 'hidden')
         }
     })
 }
@@ -2700,17 +2735,20 @@ const handlerSearchButtons = (InOperationNumber, SkusSerial, OperationNumber) =>
         addClassList(document.getElementById(`${InOperationNumber}begin${SkusSerial}`), 'hidden')
         deleteClassList(document.getElementById(`${InOperationNumber}finish${SkusSerial}`), 'hidden')
         deleteClassList(document.getElementById(`${InOperationNumber}pause${SkusSerial}`), 'hidden')
+        deleteClassList(document.getElementById(`${InOperationNumber}defect${SkusSerial}`), 'hidden')
     }
     if (document.getElementById(`${InOperationNumber}status${SkusSerial}`).textContent.toLowerCase() == 'пауза') {
         document.getElementById(`${InOperationNumber}pause${SkusSerial}`).textContent = ('Продолжить')
         document.getElementById(`${InOperationNumber}pause${SkusSerial}`).style.opacity = '0.6'
         addClassList(document.getElementById(`${InOperationNumber}begin${SkusSerial}`), 'hidden')
         addClassList(document.getElementById(`${InOperationNumber}finish${SkusSerial}`), 'hidden')
+
     }
     if (document.getElementById(`${InOperationNumber}status${SkusSerial}`).textContent.toLowerCase() == 'закончено') {
         deleteClassList(document.getElementById(`${InOperationNumber}begin${SkusSerial}`), 'hidden')
         addClassList(document.getElementById(`${InOperationNumber}finish${SkusSerial}`), 'hidden')
         addClassList(document.getElementById(`${InOperationNumber}pause${SkusSerial}`), 'hidden')
+        addClassList(document.getElementById(`${InOperationNumber}defect${SkusSerial}`), 'hidden')
     }
 }
 
@@ -2735,6 +2773,26 @@ const htmlModalWindow = (headText, text, serialControl) => {
     document.body.insertAdjacentHTML('afterbegin', htmlModal)
 }
 
+//
+const htmlModalWindowDefect = (BoxSerial, SkusSerial, OperationNumber, textStatus, WcGuid, num, InOperationNumber, Status) => {
+    let htmlModalDefect = (`
+<div class="modal-wrap">
+  <div class="modal-win" >
+      <div class="modal-dialog">
+        <h2 class="text-center mb-1">Предупреждение</h2>
+      </div>
+      <div class="">
+        <p>Данное изделие относится к браку</p>
+      </div>
+      <div class="text-end " >
+        <button type="button" class="btn btn-secondary " onclick="deleteElems(document.querySelectorAll('.modal-wrap'))">Нет</button>
+        <button type="button" class="btn btn-secondary " onclick="handlerControlStatus('${BoxSerial}', '${SkusSerial}', '${OperationNumber}', '${textStatus}', '${WcGuid}', '${num}', '${InOperationNumber}', '${Status}'),deleteElems(document.querySelectorAll('.modal-wrap'))">Да</button>
+      </div>
+  </div>
+</div>
+    `)
+    document.body.insertAdjacentHTML('afterbegin', htmlModalDefect)
+}
 const handlerControlMapTimeAndButton = (BoxSerial, SkusSerial, OperationNumber, textStatus, WcGuid, num, InOperationNumber, length) => {
     if (num === 1) {
         document.getElementById(`${InOperationNumber}status${SkusSerial}`).innerHTML = ('Начато')
@@ -2748,14 +2806,16 @@ const handlerControlMapTimeAndButton = (BoxSerial, SkusSerial, OperationNumber, 
                 handlerSearchTimerMap(SkusSerial, BoxSerial, InOperationNumber, OperationNumber, checkBoxItemSkusSerial, false, length)
                 handlerSearchButtons(InOperationNumber, SkusSerial, OperationNumber)
                 let some = GlobalTimer.allTimers.get(SkusSerial).get(Number(OperationNumber)).getTime();
-                console.log(Math.round(some / 1000));
-                console.log(num, 'pause')
+                // console.log(Math.round(some / 1000));
+                // console.log(num, 'pause')
     }
     if(num === 1985){
+
                 document.getElementById(`${InOperationNumber}pause${SkusSerial}`).textContent = ('Пауза')
                 document.getElementById(`${InOperationNumber}status${SkusSerial}`).textContent = ('Начато')
                 handlerSearchTimerMap(SkusSerial, BoxSerial, InOperationNumber, OperationNumber, checkBoxItemSkusSerial, true, length)
                 handlerSearchButtons(InOperationNumber, SkusSerial, OperationNumber)
+        console.log(num, 'prodol')
     }
 
     if (num === 3) {
@@ -2768,6 +2828,7 @@ const handlerControlMapTimeAndButton = (BoxSerial, SkusSerial, OperationNumber, 
 
 // данная функция нужна для работы коректной проверки контроля статуса
 const handlerControlStatus = (BoxSerial, SkusSerial, OperationNumber, textStatus, WcGuid, num, InOperationNumber, Status) => {
+    console.log(Status)
     let errorsControl = []
     let headText = "Ошибка в статусах"
     let textControl = "У изделий в операциях разный статус"
@@ -2795,6 +2856,7 @@ const handlerControlStatus = (BoxSerial, SkusSerial, OperationNumber, textStatus
                                             deleteClassList(document.getElementById(`${itemSkusSerial.SkusSerial}flexCheckDefault`), 'switch-on')
                                             deleteClassList(document.getElementById(`${itemSkusSerial.SkusSerial}`), 'btnSkusSerialInCheckAll')
                                             checkBoxItemSkusSerial = checkBoxItemSkusSerial.filter(item => (item.SkusSerial !== itemSkusSerial.SkusSerial))
+                                            console.log(998)
                                         }
                                     }
                                 }
@@ -2809,9 +2871,11 @@ const handlerControlStatus = (BoxSerial, SkusSerial, OperationNumber, textStatus
         htmlModalWindow(headText, textControl, errorsControl.join(' ,'))
         controlStatus = 0
         errorsControl = []
-    } else {
-        microPartionChecker(BoxSerial, InOperationNumber, SkusSerial, OperationNumber, textStatus, WcGuid, num)
-    }
+    } else if(num != 0 ){
+            microPartionChecker(BoxSerial, InOperationNumber, SkusSerial, OperationNumber, textStatus, WcGuid, num)
+        }else{
+            console.log(99)
+        }
 }
 
 //функция запускает и останавливает время у соответсвующих изделий
@@ -2925,7 +2989,7 @@ const createParseJsonForFront = (micropartions) => {
             })
 
     }
-    console.log(microPartions_global)
+    // console.log(microPartions_global)
 
 }
 
@@ -3055,7 +3119,7 @@ function handlerSearchLocalData(BoxSerial, SkusSerial, OperationNumber, textStat
                                     dataBaseAll.DateNow = data.toISOString()
                                     dataBaseAll.OperationalDuration = GlobalTimer.allTimers.get(itemCheckBoxSkusSerial.SkusSerial).get(Number(itemNumOperationsStatus.OperationNumber)).getTime()
                                     dataBase.push(dataBaseAll)
-                                    console.log(dataBase)
+                                    // console.log(dataBase)
                                     itemNumOperationsStatus.Status = textStatus
                                 }
                             })
@@ -3110,7 +3174,7 @@ function create_new_micropartion(main_micropartion_object, micropartion_guid, sk
         main_micropartion_object.get(micropartion_guid).get(box_serial).set(serial, new Map());
         main_micropartion_object.get(micropartion_guid).get(box_serial).get(serial).set(operation_guid, operation_number);
     });
-    console.log(microPartions_global)
+    // console.log(microPartions_global)
 }
 
 function check_do_we_have_micropartion_with_this_operation(all_micropartions, box_serial, sku_serial, operation_guid, operation_number) {
@@ -3243,6 +3307,11 @@ function handlerSendInLocal(SkusSerial, WcGuid, BoxSerial, Operation, num, Statu
             textStatus = 'Закончено'
             handlerControlStatus(BoxSerial, SkusSerial, OperationNumber, textStatus, WcGuid, num, InOperationNumber, Status)
         }
+        if (num === 0) {
+            textStatus = 'Брак'
+            htmlModalWindowDefect(BoxSerial, SkusSerial, OperationNumber, textStatus, WcGuid, num, InOperationNumber, Status)
+            // handlerControlStatus(BoxSerial, SkusSerial, OperationNumber, textStatus, WcGuid, num, InOperationNumber, Status)
+        }
     } else {
         htmlModalWindow('Ошибка серии не выбраны', 'Выберите серии', '')
     }
@@ -3276,6 +3345,8 @@ function handlerShowTable(BoxSerial, SkusSerial) {
                                      document.getElementById('${itemSkusSerial.Operations[i].OperationNumber}status${SkusSerial}').textContent)"><i class="far fa-eye"></i>Начать</button>
                                      <button type="button"  class="btn btnPause btnIn" id="${itemSkusSerial.Operations[i].OperationNumber}pause${SkusSerial}" onclick="handlerSendInLocal('${SkusSerial}','${item.WcGuid}','${BoxSerial}','${itemSkusSerial.Operations[i].Operation}',2,'${itemSkusSerial.Operations[i].Status}','${itemSkusSerial.Operations[i].OperationNumber}','${itemSkusSerial.Operations[i].OperationNumber}',document.getElementById('${itemSkusSerial.Operations[i].OperationNumber}status${SkusSerial}').textContent)"><i class="fas fa-edit"></i>Пауза</button>
                                      <button type="button"  class="btn btnFinish btnIn" id="${itemSkusSerial.Operations[i].OperationNumber}finish${SkusSerial}" onclick="handlerSendInLocal('${SkusSerial}','${item.WcGuid}','${BoxSerial}','${itemSkusSerial.Operations[i].Operation}',3,'${itemSkusSerial.Operations[i].Status}','${itemSkusSerial.Operations[i].OperationNumber}','${itemSkusSerial.Operations[i].OperationNumber}',document.getElementById('${itemSkusSerial.Operations[i].OperationNumber}status${SkusSerial}').textContent)"><i class="far fa-trash-alt"></i>Закончить</button>
+                                   <button type="button"  class="btn btnDefect btnIn" id="${itemSkusSerial.Operations[i].OperationNumber}defect${SkusSerial}" onclick="handlerSendInLocal('${SkusSerial}','${item.WcGuid}','${BoxSerial}','${itemSkusSerial.Operations[i].Operation}',0,'${itemSkusSerial.Operations[i].Status}','${itemSkusSerial.Operations[i].OperationNumber}','${itemSkusSerial.Operations[i].OperationNumber}',
+                                     document.getElementById('${itemSkusSerial.Operations[i].OperationNumber}status${SkusSerial}').textContent)"><i class="far fa-eye"></i>Брак</button>
                                    </td>
                                 </tr>
                                 </tbody>`)
@@ -3284,7 +3355,8 @@ function handlerShowTable(BoxSerial, SkusSerial) {
                                 itemStatusId: `${itemSkusSerial.Operations[i].OperationNumber}status${SkusSerial}`,
                                 itemButtonBegin: `${itemSkusSerial.Operations[i].OperationNumber}begin${SkusSerial}`,
                                 itemButtonPause: `${itemSkusSerial.Operations[i].OperationNumber}pause${SkusSerial}`,
-                                itemButtonFinish: `${itemSkusSerial.Operations[i].OperationNumber}finish${SkusSerial}`
+                                itemButtonFinish: `${itemSkusSerial.Operations[i].OperationNumber}finish${SkusSerial}`,
+                                itemButtonDefect: `${itemSkusSerial.Operations[i].OperationNumber}defect${SkusSerial}`
                             }
                             allButtonsIn.push(buttonsIn)
                             handlerButtonHidden(allButtonsIn)
@@ -3519,6 +3591,7 @@ function axiosLogin() {
         .then(response => response.json())
         .then(function (result) {
             localData = result
+            handlerGuidName()
             handlerAddObject()
             handlerSkusSerial()
             setTimeout(handlerBoxSerial, 1000)
@@ -3557,6 +3630,7 @@ handlerSortOperationNumber()
 setTimeout(handlerBoxSerial, 1000)
 // handlerAddObject()
 // axiosLogin()
+handlerGuidName()
 createParseJsonForFront(micropartions)
 slideCarouselBox()
 
