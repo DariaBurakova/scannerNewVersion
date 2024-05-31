@@ -1,7 +1,6 @@
 // import localData from "./mockLocalData.mjs";
 
 let dataBase = [] //массив отправки данных в 1с
-let dataBaseDefect=[] //массив брака
 let buttonSendTime = document.querySelector('.time_button')
 let carouselBox = document.querySelector('.carousel_box')
 let listGalleryBox = document.querySelector('.gallery_list_box')
@@ -530,9 +529,9 @@ let localData = {
             {
             "BoxSerial": "00000010442 9999", "ClientOrder": "1985/Ц   ",
                 "Skus": [{
-                "SkusID": "12226bea-3b65-11ee-8c44-00505681f37b",
+                "SkusID": "12226bea-3b65-11ee-8c44-00505681f37blklkl",
                 "SkusFriendlyName": "КБСО  ",
-                "SkusSerial": "00000010442 989891",
+                "SkusSerial": "00000010442 98981231",
                 "Operations": [
                     {
                         "OperationNumber": 3,
@@ -570,9 +569,9 @@ let localData = {
                         "OperationalDuration": 0
                     }]
             }, {
-                "SkusID": "12226bea-3b65-11ee-8c44-00505681f37b",
+                "SkusID": "12226bea-3b65-11ee-8c44-00505681f37bpl",
                 "SkusFriendlyName": "КБСО2 ",
-                "SkusSerial": "00000010442 80976",
+                "SkusSerial": "00000010442 834217",
                 "Operations": [
                     {
                         "OperationNumber": 4,
@@ -612,7 +611,7 @@ let localData = {
             ]
         },
             {
-                "BoxSerial": "00000010442 9990", "ClientOrder": "1985/Ц   ", "Skus": [{
+                "BoxSerial": "00000010442 9990", "ClientOrder": "17/Ц   ", "Skus": [{
                     "SkusID": "12226bea-3b65-11ee-8c44-00505681f37b",
                     "SkusFriendlyName": "КБСО  ",
                     "SkusSerial": "00000010442 989891",
@@ -652,33 +651,7 @@ let localData = {
                             "Status": "пауза",
                             "OperationalDuration": 0
                         },
-                        {
-                            "OperationNumber": 0,
-                            "Operation": "c2c5fb0e-6aff-11ed-8c34-00505681efea",
-                            "OperationHumanName": "Сдача ОТК (Армирование)",
-                            "DateOfChange": "27.10.2023 13.20.55",
-                            "RealExecutor": "Рабочий стол 3 (Сапрыкин)",
-                            "Status": "пауза",
-                            "OperationalDuration": 0
-                        },
-                        {
-                            "OperationNumber": 0,
-                            "Operation": "c2c5fb0e-6aff-11ed-8c34-00505681efea",
-                            "OperationHumanName": "Сдача ОТК (Армирование)",
-                            "DateOfChange": "27.10.2023 13.20.55",
-                            "RealExecutor": "Рабочий стол 3 (Сапрыкин)",
-                            "Status": "пауза",
-                            "OperationalDuration": 0
-                        },
-                        {
-                            "OperationNumber": 0,
-                            "Operation": "c2c5fb0e-6aff-11ed-8c34-00505681efea",
-                            "OperationHumanName": "Сдача ОТК (Армирование)",
-                            "DateOfChange": "27.10.2023 13.20.55",
-                            "RealExecutor": "Рабочий стол 3 (Сапрыкин)",
-                            "Status": "пауза",
-                            "OperationalDuration": 0
-                        }
+
                     ]
                 }, {
                     "SkusID": "12226bea-3b65-11ee-8c44-00505681f37b",
@@ -722,7 +695,91 @@ let localData = {
                 },
                 ]
             },
+            {
+                "BoxSerial": "00000010442 999987", "ClientOrder": "1985/тест   ", "Skus": [{
+                    "SkusID": "12226bea-3b65-11ee-8c44-00505681f37bl;l;",
+                    "SkusFriendlyName": "КБСО-тест  ",
+                    "SkusSerial": "00000010442 989890000",
+                    "Operations": [
+                        {
+                            "OperationNumber": 3,
+                            "Operation": "8541472a-72d0-11ec-8c01-00505681efea",
+                            "OperationHumanName": "Приёмо-сдаточные испытания и оформление документации (Армирование)",
+                            "DateOfChange": "27.10.2023 13.20.55",
+                            "RealExecutor": "Рабочий стол 3 (Сапрыкин)",
+                            "Status": "Брак",
+                            "OperationalDuration": 0
+                        },
+                        {
+                            "OperationNumber": 1,
+                            "Operation": "55cf64f2-6b04-11ed-8c34-00505681efea",
+                            "OperationHumanName": "Маркировка кабеля (Армирование)",
+                            "DateOfChange": "27.10.2023 13.20.55",
+                            "RealExecutor": "Рабочий стол 3 (Сапрыкин)",
+                            "Status": "Сформировано",
+                            "OperationalDuration": 0
+                        },  {
+                            "OperationNumber": 4,
+                            "Operation": "e1e19658-6aff-11ed-8c34-00505681efea",
+                            "OperationHumanName": "Упаковка (Армирование)",
+                            "DateOfChange": "27.10.2023 13.20.55",
+                            "RealExecutor": "Рабочий стол 3 (Сапрыкин)",
+                            "Status": "Пауза",
+                            "OperationalDuration": 0
+                        },
+                        {
+                            "OperationNumber": 2,
+                            "Operation": "c2c5fb0e-6aff-11ed-8c34-00505681efea",
+                            "OperationHumanName": "Сдача ОТК (Армирование)",
+                            "DateOfChange": "27.10.2023 13.20.55",
+                            "RealExecutor": "Рабочий стол 3 (Сапрыкин)",
+                            "Status": "пауза",
+                            "OperationalDuration": 0
+                        },
 
+                    ]
+                }, {
+                    "SkusID": "12226bea-3b65-11ee-8c44-00505681f37bgfd",
+                    "SkusFriendlyName": "КБСО2-tect ",
+                    "SkusSerial": "00000010442 80",
+                    "Operations": [
+                        {
+                            "OperationNumber": 4,
+                            "Operation": "e1e19658-6aff-11ed-8c34-00505681efea",
+                            "OperationHumanName": "Упаковка (Армирование)",
+                            "DateOfChange": "27.10.2023 13.20.55",
+                            "RealExecutor": "Рабочий стол 3 (Сапрыкин)",
+                            "Status": "Сформировано",
+                            "OperationalDuration": 0
+                        },
+                        {
+                            "OperationNumber": 1,
+                            "Operation": "55cf64f2-6b04-11ed-8c34-00505681efea",
+                            "OperationHumanName": "Маркировка кабеля (Армирование)",
+                            "DateOfChange": "27.10.2023 13.20.55",
+                            "RealExecutor": "Рабочий стол 3 (Сапрыкин)",
+                            "Status": "Сформировано",
+                            "OperationalDuration": 0
+                        }, {
+                            "OperationNumber": 2,
+                            "Operation": "c2c5fb0e-6aff-11ed-8c34-00505681efea",
+                            "OperationHumanName": "Сдача ОТК (Армирование)",
+                            "DateOfChange": "27.10.2023 13.20.55",
+                            "RealExecutor": "Рабочий стол 3 (Сапрыкин)",
+                            "Status": "Сформировано",
+                            "OperationalDuration": 0
+                        }, {
+                            "OperationNumber": 3,
+                            "Operation": "8541472a-72d0-11ec-8c01-00505681efea",
+                            "OperationHumanName": "Приёмо-сдаточные испытания и оформление документации (Армирование)",
+                            "DateOfChange": "27.10.2023 13.20.55",
+                            "RealExecutor": "Рабочий стол 3 (Сапрыкин)",
+                            "Status": "начато",
+                            "OperationalDuration": 0
+                        }, ]
+                },
+                ]
+            },
 
         ]
     }]
@@ -820,7 +877,6 @@ if (!isProduction) {
     mainUrl = "https://prod.centervospi.ru:444/api/"
     mainUrlMicroParti = "http://127.0.0.1:3000/micro"
 }
-
 
 //отслеживает есть ли сортировка
 document.querySelector('#selectedChoose').addEventListener('change', function (e) {
@@ -947,6 +1003,7 @@ const handlerButtonHidden = (allButtons) => {
             document.getElementById(itemId.itemButtonPause).style.opacity = '0.6'
             addClassList(document.getElementById(itemId.itemButtonBegin), 'hidden')
             addClassList(document.getElementById(itemId.itemButtonFinish), 'hidden')
+            addClassList(document.getElementById(itemId.itemButtonDefect), 'hidden')
         }
         if (document.getElementById(itemId.itemStatusId).textContent.toLowerCase() == 'закончено') {
             deleteClassList(document.getElementById(itemId.itemButtonBegin), 'hidden')
@@ -970,6 +1027,7 @@ const handlerSearchButtons = (InOperationNumber, SkusSerial, OperationNumber) =>
         document.getElementById(`${InOperationNumber}pause${SkusSerial}`).style.opacity = '0.6'
         addClassList(document.getElementById(`${InOperationNumber}begin${SkusSerial}`), 'hidden')
         addClassList(document.getElementById(`${InOperationNumber}finish${SkusSerial}`), 'hidden')
+        addClassList(document.getElementById(`${InOperationNumber}defect${SkusSerial}`), 'hidden')
 
     }
     if (document.getElementById(`${InOperationNumber}status${SkusSerial}`).textContent.toLowerCase() == 'закончено') {
@@ -1014,7 +1072,7 @@ const htmlModalWindowDefect = (BoxSerial, SkusSerial, OperationNumber, textStatu
       </div>
       <div class="text-end " >
         <button type="button" class="btn btn-secondary " onclick="deleteElems(document.querySelectorAll('.modal-wrap'))">Нет</button>
-        <button type="button" class="btn btn-secondary " onclick="microPartionChecker('${BoxSerial}','${InOperationNumber}', '${SkusSerial}', '${OperationNumber}', '${textStatus}', '${WcGuid}', '${parseInt(num)}'),deleteElems(document.querySelectorAll('.modal-wrap'))">Да</button>
+        <button type="button" class="btn btn-secondary " onclick="microPartionChecker('${BoxSerial}','${InOperationNumber}', '${SkusSerial}', '${OperationNumber}', '${textStatus}', '${WcGuid}', Number('${num}')),deleteElems(document.querySelectorAll('.modal-wrap'))">Да</button>
       </div>
   </div>
 </div>
@@ -1054,8 +1112,7 @@ const handlerControlMapTimeAndButton = (BoxSerial, SkusSerial, OperationNumber, 
     }
     if (num === 0) {
         console.log(990)
-        handlerSearchTimerMapOneDefect(SkusSerial, BoxSerial, InOperationNumber, OperationNumber, false, length)
-        console.log(GlobalTimer.allTimers.get(SkusSerial).get(Number(OperationNumber)).getTime() / 1000)
+        handlerSearchTimerMap(SkusSerial, BoxSerial, InOperationNumber, OperationNumber, checkBoxItemSkusSerial, false, length)
     }
 }
 
@@ -1130,7 +1187,7 @@ function handlerDeleteLocalDataDefect(BoxSerial, SkusSerial, OperationNumber, te
                           dataBaseAll.CheckBox = checkBox
                           dataBaseAll.DateNow = data.toISOString()
                           dataBaseAll.OperationalDuration = GlobalTimer.allTimers.get(itemSkusSerial.SkusSerial).get(Number(itemSkusSerialIn.OperationNumber)).getTime()
-                          dataBaseDefect.push(dataBaseAll)
+                          dataBase.push(dataBaseAll)
                           itemSkusSerial.SkusSerial= 'Брак'
                   }
               })
@@ -1153,6 +1210,7 @@ const handlerSearchTimerMap = (SkusSerial, BoxSerial, InOperationNumber, Operati
                             itemSkusSerial.Operations.find(itemNumOperationsStatus => {
                                 if (itemNumOperationsStatus.OperationNumber == parseInt(InOperationNumber)) {//
                                     GlobalTimer.changeTimerState(itemAllSkusSerialItem.SkusSerial, Number(itemNumOperationsStatus.OperationNumber), startOrStop, length)
+                                    console.log(GlobalTimer.allTimers.get(itemAllSkusSerialItem.SkusSerial).get(Number(OperationNumber)).getTime() / 1000)
                                 }
                             })
                         }
@@ -1555,9 +1613,8 @@ function microPartionChecker(BoxSerial, InOperationNumber, SkusSerial, Operation
                 handlerDeleteLocalDataDefect(BoxSerial, SkusSerial, OperationNumber, textStatus, WcGuid, num, InOperationNumber)
                 checkBoxItem = checkBoxItem - 1
                 checkBoxItemSkusSerial = checkBoxItemSkusSerial.filter(item => (item.SkusSerial !== SkusSerial))
-                console.log(checkBoxItemSkusSerial)
+                handlerSearchTimerMap(SkusSerial, BoxSerial, InOperationNumber, OperationNumber, checkBoxItemSkusSerial, true, length)
                 microPartions_global.get(guidMicro).get(BoxSerial).delete(SkusSerial)
-                console.log(microPartions_global)
             }
             // если все одинаковы и НЕ равны empty
             // Запись времени. Если статус завершить или пауза, то при записи время надо поделить на длину allOperationsArray.length
@@ -1597,6 +1654,7 @@ function handlerSendInLocal(SkusSerial, WcGuid, BoxSerial, Operation, num, Statu
             handlerControlStatus(BoxSerial, SkusSerial, OperationNumber, textStatus, WcGuid, num, InOperationNumber, Status)
         }
         if (num === 0) {
+            console.log('yes')
             textStatus = 'Брак'
             htmlModalWindowDefect(BoxSerial, SkusSerial, OperationNumber, textStatus, WcGuid, num, InOperationNumber, Status)
             // handlerControlStatus(BoxSerial, SkusSerial, OperationNumber, textStatus, WcGuid, num, InOperationNumber, Status)
@@ -1649,6 +1707,9 @@ function handlerShowTable(BoxSerial, SkusSerial) {
                             }
                             allButtonsIn.push(buttonsIn)
                             handlerButtonHidden(allButtonsIn)
+                            // if(document.getElementById(`${itemSkusSerial.Operations[i].OperationNumber}status${SkusSerial}`).textContent.toLowerCase() == "брак"){
+                            //     addClassList(document.querySelector(`.${itemSkusSerial.Operations[i].Status}`),'hidden')
+                            // }
                         }
                     }
                 })
@@ -1733,31 +1794,32 @@ function handlerBoxSkusSerial(itemBoxSerial) {
                 itemSkusSerial.Skus.find(itemSerial => {
                     if(itemSerial.SkusSerial != 'Брак'){
                         itemSerial.Operations.find(itemSerialStatus => {
-                            if (selectionChoose == 1 || selectionChoose == 0) {
-                                let statusControl = new Object()
-                                statusControl.SkusSerial = itemSerial.SkusSerial
-                                statusControl.BoxSerial = itemSkusSerial.BoxSerial
-                                statusControl.SkusFriendlyName = itemSerial.SkusFriendlyName
-                                filterSerial.push(statusControl)
-                            }
-                            if (selectionChoose == 2) {
-                                if (itemSerialStatus.Status.toLowerCase() === 'пауза') {
-                                    let statusControl = new Object()
-                                    statusControl.SkusSerial = itemSerial.SkusSerial
-                                    statusControl.BoxSerial = itemSkusSerial.BoxSerial
-                                    statusControl.SkusFriendlyName = itemSerial.SkusFriendlyName
-                                    filterSerial.push(statusControl)
+                                if (selectionChoose == 1 || selectionChoose == 0) {
+                                        let statusControl = new Object()
+                                        statusControl.SkusSerial = itemSerial.SkusSerial
+                                        statusControl.BoxSerial = itemSkusSerial.BoxSerial
+                                        statusControl.SkusFriendlyName = itemSerial.SkusFriendlyName
+                                        filterSerial.push(statusControl)
                                 }
-                            }
-                            if (selectionChoose == 3) {
-                                if (itemSerialStatus.Status.toLowerCase() === 'начато') {
-                                    let statusControl = new Object()
-                                    statusControl.SkusSerial = itemSerial.SkusSerial
-                                    statusControl.BoxSerial = itemSkusSerial.BoxSerial
-                                    statusControl.SkusFriendlyName = itemSerial.SkusFriendlyName
-                                    filterSerial.push(statusControl)
+                                if (selectionChoose == 2) {
+                                    if (itemSerialStatus.Status.toLowerCase() === 'пауза') {
+                                        let statusControl = new Object()
+                                        statusControl.SkusSerial = itemSerial.SkusSerial
+                                        statusControl.BoxSerial = itemSkusSerial.BoxSerial
+                                        statusControl.SkusFriendlyName = itemSerial.SkusFriendlyName
+                                        filterSerial.push(statusControl)
+                                    }
                                 }
-                            }
+                                if (selectionChoose == 3) {
+                                    if (itemSerialStatus.Status.toLowerCase() === 'начато') {
+                                        let statusControl = new Object()
+                                        statusControl.SkusSerial = itemSerial.SkusSerial
+                                        statusControl.BoxSerial = itemSkusSerial.BoxSerial
+                                        statusControl.SkusFriendlyName = itemSerial.SkusFriendlyName
+                                        filterSerial.push(statusControl)
+                                    }
+                                }
+
                         })
                     }
                 })
