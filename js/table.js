@@ -61,6 +61,7 @@ executors.set("71690b93-c863-11ed-8c3b-00505681f37b", "Копцов Алекса
 
 let micropartions= {
     "32f1cfae-8e39-4985-a3bd-d52027a5d693": {
+        "OperationDate" : "2024-05-31T09:22:03.449Z",
     "BoxSerial": "БТМК ТЕСТ",
         "Skus": [
         {
@@ -69,7 +70,6 @@ let micropartions= {
                 {
                     "OperationGuid": "f8caa9e0-eb3d-11ee-8c53-00505681f37b",
                     "OpertionNumber": 2,
-                    "OperationDate": 'Fri May 24 2024 12:20:21 GMT+0300 (Москва, стандартное время)'
                 }
             ]
         },
@@ -79,13 +79,13 @@ let micropartions= {
                 {
                     "OperationGuid": "f8caa9e0-eb3d-11ee-8c53-00505681f37b",
                     "OpertionNumber": 2,
-                    "OperationDate": 'Fri May 24 2024 12:20:21 GMT+0300 (Москва, стандартное время)'
                 }
             ]
         }
     ]
 },
     "358569c0-4030-4a81-9c32-6939d9adcb85": {
+        "OperationDate" : "2024-05-31T09:22:03.449Z",
     "BoxSerial": "ФЛ44-03/24",
         "Skus": [
         {
@@ -94,7 +94,6 @@ let micropartions= {
                 {
                     "OperationGuid": "1f06b009-eb4f-11ee-8c53-00505681f37b",
                     "OpertionNumber": 68,
-                    "OperationDate": 'Fri May 24 2024 12:20:21 GMT+0300 (Москва, стандартное время)'
                 }
             ]
         },
@@ -104,7 +103,7 @@ let micropartions= {
                 {
                     "OperationGuid": "1f06b009-eb4f-11ee-8c53-00505681f37b",
                     "OpertionNumber": 68,
-                    "OperationDate": 'Fri May 24 2024 12:20:21 GMT+0300 (Москва, стандартное время)'
+
                 }
             ]
         },
@@ -114,7 +113,7 @@ let micropartions= {
                 {
                     "OperationGuid": "1f06b009-eb4f-11ee-8c53-00505681f37b",
                     "OpertionNumber": 68,
-                    "OperationDate": 'Fri May 24 2024 12:20:21 GMT+0300 (Москва, стандартное время)'
+
                 }
             ]
         },
@@ -124,7 +123,7 @@ let micropartions= {
                 {
                     "OperationGuid": "1f06b009-eb4f-11ee-8c53-00505681f37b",
                     "OpertionNumber": 68,
-                    "OperationDate": 'Fri May 24 2024 12:20:21 GMT+0300 (Москва, стандартное время)'
+
                 }
             ]
         },
@@ -134,7 +133,7 @@ let micropartions= {
                 {
                     "OperationGuid": "1f06b009-eb4f-11ee-8c53-00505681f37b",
                     "OpertionNumber": 68,
-                    "OperationDate": 'Fri May 24 2024 12:20:21 GMT+0300 (Москва, стандартное время)'
+
                 }
             ]
         },
@@ -144,7 +143,7 @@ let micropartions= {
                 {
                     "OperationGuid": "1f06b009-eb4f-11ee-8c53-00505681f37b",
                     "OpertionNumber": 68,
-                    "OperationDate": 'Fri May 24 2024 12:20:21 GMT+0300 (Москва, стандартное время)'
+
                 }
             ]
         },
@@ -154,7 +153,7 @@ let micropartions= {
                 {
                     "OperationGuid": "1f06b009-eb4f-11ee-8c53-00505681f37b",
                     "OpertionNumber": 68,
-                    "OperationDate": 'Fri May 24 2024 12:20:21 GMT+0300 (Москва, стандартное время)'
+
                 }
             ]
         },
@@ -164,7 +163,7 @@ let micropartions= {
                 {
                     "OperationGuid": "1f06b009-eb4f-11ee-8c53-00505681f37b",
                     "OpertionNumber": 68,
-                    "OperationDate": 'Fri May 24 2024 12:20:21 GMT+0300 (Москва, стандартное время)'
+
                 }
             ]
         },
@@ -174,7 +173,7 @@ let micropartions= {
                 {
                     "OperationGuid": "1f06b009-eb4f-11ee-8c53-00505681f37b",
                     "OpertionNumber": 68,
-                    "OperationDate": 'Fri May 24 2024 12:20:21 GMT+0300 (Москва, стандартное время)'
+
                 }
             ]
         },
@@ -184,13 +183,14 @@ let micropartions= {
                 {
                     "OperationGuid": "1f06b009-eb4f-11ee-8c53-00505681f37b",
                     "OpertionNumber": 68,
-                    "OperationDate": 'Fri May 24 2024 12:20:21 GMT+0300 (Москва, стандартное время)'
+
                 }
             ]
         }
     ]
 },
     "b70dfed1-4000-4cc2-9165-39b8ed4435d9": {
+        "OperationDate" : "2024-05-31T09:22:03.449Z",
     "BoxSerial": "ФЛ44-03/24",
         "Skus": [
         {
@@ -199,7 +199,7 @@ let micropartions= {
                 {
                     "OperationGuid": "f5489b75-eb4d-11ee-8c53-00505681f37b",
                     "OpertionNumber": 61,
-                    "OperationDate": 'Fri May 24 2024 12:20:21 GMT+0300 (Москва, стандартное время)'
+
                 }
             ]
         },
@@ -209,7 +209,7 @@ let micropartions= {
                 {
                     "OperationGuid": "f5489b75-eb4d-11ee-8c53-00505681f37b",
                     "OpertionNumber": 61,
-                    "OperationDate": 'Fri May 24 2024 12:20:21 GMT+0300 (Москва, стандартное время)'
+
                 }
             ]
         },
@@ -219,7 +219,7 @@ let micropartions= {
                 {
                     "OperationGuid": "f5489b75-eb4d-11ee-8c53-00505681f37b",
                     "OpertionNumber": 61,
-                    "OperationDate": 'Fri May 24 2024 12:20:21 GMT+0300 (Москва, стандартное время)'
+
                 }
             ]
         },
@@ -229,7 +229,7 @@ let micropartions= {
                 {
                     "OperationGuid": "f5489b75-eb4d-11ee-8c53-00505681f37b",
                     "OpertionNumber": 61,
-                    "OperationDate": 'Fri May 24 2024 12:20:21 GMT+0300 (Москва, стандартное время)'
+
                 }
             ]
         },
@@ -239,7 +239,7 @@ let micropartions= {
                 {
                     "OperationGuid": "f5489b75-eb4d-11ee-8c53-00505681f37b",
                     "OpertionNumber": 61,
-                    "OperationDate": 'Fri May 24 2024 12:20:21 GMT+0300 (Москва, стандартное время)'
+
                 }
             ]
         },
@@ -249,7 +249,7 @@ let micropartions= {
                 {
                     "OperationGuid": "f5489b75-eb4d-11ee-8c53-00505681f37b",
                     "OpertionNumber": 61,
-                    "OperationDate": 'Fri May 24 2024 12:20:21 GMT+0300 (Москва, стандартное время)'
+
                 }
             ]
         },
@@ -259,7 +259,7 @@ let micropartions= {
                 {
                     "OperationGuid": "f5489b75-eb4d-11ee-8c53-00505681f37b",
                     "OpertionNumber": 61,
-                    "OperationDate": 'Fri May 24 2024 12:20:21 GMT+0300 (Москва, стандартное время)'
+
                 }
             ]
         },
@@ -269,7 +269,7 @@ let micropartions= {
                 {
                     "OperationGuid": "f5489b75-eb4d-11ee-8c53-00505681f37b",
                     "OpertionNumber": 61,
-                    "OperationDate": 'Fri May 24 2024 12:20:21 GMT+0300 (Москва, стандартное время)'
+
                 }
             ]
         },
@@ -279,7 +279,7 @@ let micropartions= {
                 {
                     "OperationGuid": "f5489b75-eb4d-11ee-8c53-00505681f37b",
                     "OpertionNumber": 61,
-                    "OperationDate": 'Fri May 24 2024 12:20:21 GMT+0300 (Москва, стандартное время)'
+
                 }
             ]
         },
@@ -289,13 +289,14 @@ let micropartions= {
                 {
                     "OperationGuid": "f5489b75-eb4d-11ee-8c53-00505681f37b",
                     "OpertionNumber": 61,
-                    "OperationDate": 'Fri May 24 2024 12:20:21 GMT+0300 (Москва, стандартное время)'
+
                 }
             ]
         }
     ]
 },
     "ff9515c5-4a80-4887-b2f0-94b7f8574bf8": {
+        "OperationDate" : "2024-05-31T09:22:03.449Z",
     "BoxSerial": "ФЛ44-03/24",
         "Skus": [
         {
@@ -304,7 +305,6 @@ let micropartions= {
                 {
                     "OperationGuid": "c12a8cec-eb4d-11ee-8c53-00505681f37b",
                     "OpertionNumber": 59,
-                    "OperationDate": 'Fri May 24 2024 12:20:21 GMT+0300 (Москва, стандартное время)'
                 }
             ]
         },
@@ -314,7 +314,7 @@ let micropartions= {
                 {
                     "OperationGuid": "c12a8cec-eb4d-11ee-8c53-00505681f37b",
                     "OpertionNumber": 59,
-                    "OperationDate": 'Fri May 24 2024 12:20:21 GMT+0300 (Москва, стандартное время)'
+
                 }
             ]
         },
@@ -324,7 +324,7 @@ let micropartions= {
                 {
                     "OperationGuid": "c12a8cec-eb4d-11ee-8c53-00505681f37b",
                     "OpertionNumber": 59,
-                    "OperationDate": 'Fri May 24 2024 12:20:21 GMT+0300 (Москва, стандартное время)'
+
                 }
             ]
         },
@@ -334,7 +334,7 @@ let micropartions= {
                 {
                     "OperationGuid": "c12a8cec-eb4d-11ee-8c53-00505681f37b",
                     "OpertionNumber": 59,
-                    "OperationDate": 'Fri May 24 2024 12:20:21 GMT+0300 (Москва, стандартное время)'
+
                 }
             ]
         },
@@ -344,7 +344,7 @@ let micropartions= {
                 {
                     "OperationGuid": "c12a8cec-eb4d-11ee-8c53-00505681f37b",
                     "OpertionNumber": 59,
-                    "OperationDate": 'Fri May 24 2024 12:20:21 GMT+0300 (Москва, стандартное время)'
+
                 }
             ]
         },
@@ -354,7 +354,7 @@ let micropartions= {
                 {
                     "OperationGuid": "c12a8cec-eb4d-11ee-8c53-00505681f37b",
                     "OpertionNumber": 59,
-                    "OperationDate": 'Fri May 24 2024 12:20:21 GMT+0300 (Москва, стандартное время)'
+
                 }
             ]
         },
@@ -364,7 +364,7 @@ let micropartions= {
                 {
                     "OperationGuid": "c12a8cec-eb4d-11ee-8c53-00505681f37b",
                     "OpertionNumber": 59,
-                    "OperationDate": 'Fri May 24 2024 12:20:21 GMT+0300 (Москва, стандартное время)'
+
                 }
             ]
         },
@@ -374,7 +374,7 @@ let micropartions= {
                 {
                     "OperationGuid": "c12a8cec-eb4d-11ee-8c53-00505681f37b",
                     "OpertionNumber": 59,
-                    "OperationDate": 'Fri May 24 2024 12:20:21 GMT+0300 (Москва, стандартное время)'
+
                 }
             ]
         },
@@ -384,7 +384,7 @@ let micropartions= {
                 {
                     "OperationGuid": "c12a8cec-eb4d-11ee-8c53-00505681f37b",
                     "OpertionNumber": 59,
-                    "OperationDate": 'Fri May 24 2024 12:20:21 GMT+0300 (Москва, стандартное время)'
+
                 }
             ]
         },
@@ -394,7 +394,7 @@ let micropartions= {
                 {
                     "OperationGuid": "c12a8cec-eb4d-11ee-8c53-00505681f37b",
                     "OpertionNumber": 59,
-                    "OperationDate": 'Fri May 24 2024 12:20:21 GMT+0300 (Москва, стандартное время)'
+
                 }
             ]
         }
@@ -1275,50 +1275,52 @@ const createJsonForBackend = (micropartions) => {
         object['MicropartionGuid'] = key;
         object['Box'] = new Object();
         // key - это box_serial
-        value.forEach(function (value_2, key_2, map_2) {
+        value.forEach(function (value_1, key_1, value_2, key_2, map_2) {
+            object['Box']['OperationDate'] = key_1;
             object['Box']['BoxSerial'] = key_2;
             object['Box']['Skus'] = [];
             // key - это sku_serial
-            value_2.forEach(function (value_3, key_3, map_3) {
-                let temp_obj = new Object();
-                temp_obj['SkuSerial'] = key_3;
-                // key - это operation_guid value - это номер операции
-                value_3.forEach(function (value_4, key_4, map_4) {
-                    let fin_temp_obj = new Object();
-                    fin_temp_obj['OperationGuid'] = key_4;
-                    fin_temp_obj['OperationNumber'] = value_4;
-                    temp_obj['PartionOperations'] = fin_temp_obj;
-                })
-                object['Box']['Skus'].push(temp_obj);
-            })
+            // value_2.forEach(function (value_3, key_3, map_3) {
+            //     let temp_obj = new Object();
+            //     temp_obj['SkuSerial'] = key_3;
+            //     // key - это operation_guid value - это номер операции
+            //     value_3.forEach(function (value_4, key_4, map_4) {
+            //         let fin_temp_obj = new Object();
+            //         fin_temp_obj['OperationGuid'] = key_4;
+            //         fin_temp_obj['OperationNumber'] = value_4;
+            //         temp_obj['PartionOperations'] = fin_temp_obj;
+            //     })
+            //     object['Box']['Skus'].push(temp_obj);
+            // })
         })
 
         raw_for_json.push(object)
     })
+
     const mapToJson = JSON.stringify(raw_for_json);
+    console.log(mapToJson)
     return mapToJson;
+
 }
 
 // функция переводит микропартию из json
 const createParseJsonForFront = (micropartions) => {
-
     for (let key in micropartions) {
+        let dateNow='operation_date'
         let micropartionsGuid = key
         let micropartionsBox = micropartions[key].BoxSerial
         microPartions_global.set(key, new Map())
+       microPartions_global.get(key).set(dateNow,micropartions[key].OperationDate)
         microPartions_global.get(key).set(micropartions[key].BoxSerial, new Map());
         micropartions[key].Skus.forEach( itemSkus=>{
             microPartions_global.get(key).get(micropartions[key].BoxSerial).set(itemSkus.SkusSerial, new Map());
                 itemSkus.PartionOperations.forEach( itemOperatios =>{
-                    let dateNow='operation_date'
                     microPartions_global.get(key).get(micropartions[key].BoxSerial).get(itemSkus.SkusSerial,).set(itemOperatios.OperationGuid, itemOperatios.OpertionNumber);
-                    microPartions_global.get(key).get(micropartions[key].BoxSerial).get(itemSkus.SkusSerial,).set(dateNow,itemOperatios.OperationDate);
                 })
             })
 
     }
-
-
+console.log(microPartions_global)
 }
 
 //функция выбора показа договора или листа
@@ -1498,14 +1500,15 @@ function create_new_micropartion(main_micropartion_object, micropartion_guid, sk
     let start = true
     sku_serials_array.forEach(serial => {
         if (start) {
+            main_micropartion_object.get(micropartion_guid).set(dateNow,new Date().toISOString())
             main_micropartion_object.get(micropartion_guid).set(box_serial, new Map());
             start = false;
+
         }
         main_micropartion_object.get(micropartion_guid).get(box_serial).set(serial, new Map());
         main_micropartion_object.get(micropartion_guid).get(box_serial).get(serial).set(operation_guid, operation_number,dateNow);
-        main_micropartion_object.get(micropartion_guid).get(box_serial).get(serial).set(dateNow, new Date());
     });
-    // console.log(microPartions_global)
+    console.log(microPartions_global)
 }
 
 function check_do_we_have_micropartion_with_this_operation(all_micropartions, box_serial, sku_serial, operation_guid, operation_number) {
@@ -1682,7 +1685,7 @@ function handlerShowTable(BoxSerial, SkusSerial) {
                             addClassList(tableContainer, 'loading')
                             allButtonsIn = []
                             let table = (`
-                                <tbody class="control_table " id="${SkusSerial}"  >
+                                <tbody class="control_table ${itemSkusSerial.Operations[i].Status} " id="${SkusSerial}"  >
                                 <tr  class="tr_table" id="" >
                                    <td class="m-1 " id="numOperation">${itemSkusSerial.Operations[i].OperationNumber}</td>
                                      <td>${itemSkusSerial.Operations[i].OperationHumanName}</td>
@@ -1707,9 +1710,9 @@ function handlerShowTable(BoxSerial, SkusSerial) {
                             }
                             allButtonsIn.push(buttonsIn)
                             handlerButtonHidden(allButtonsIn)
-                            // if(document.getElementById(`${itemSkusSerial.Operations[i].OperationNumber}status${SkusSerial}`).textContent.toLowerCase() == "брак"){
-                            //     addClassList(document.querySelector(`.${itemSkusSerial.Operations[i].Status}`),'hidden')
-                            // }
+                            if(document.getElementById(`${itemSkusSerial.Operations[i].OperationNumber}status${SkusSerial}`).textContent.toLowerCase() == "брак"){
+                                addClassList(document.querySelector(`.${itemSkusSerial.Operations[i].Status}`),'hidden')
+                            }
                         }
                     }
                 })
@@ -1984,5 +1987,6 @@ setTimeout(handlerBoxSerial, 1000)
 // axiosLogin()
 handlerGuidName()
 createParseJsonForFront(micropartions)
+// createJsonForBackend(microPartions_global)
 slideCarouselBox()
 
