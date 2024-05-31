@@ -279,6 +279,7 @@ const handlerButtonHidden = (allButtons) => {
             document.getElementById(itemId.itemButtonPause).style.opacity = '0.6'
             addClassList(document.getElementById(itemId.itemButtonBegin), 'hidden')
             addClassList(document.getElementById(itemId.itemButtonFinish), 'hidden')
+            addClassList(document.getElementById(itemId.itemButtonDefect), 'hidden')
         }
         if (document.getElementById(itemId.itemStatusId).textContent.toLowerCase() == 'закончено') {
             deleteClassList(document.getElementById(itemId.itemButtonBegin), 'hidden')
@@ -302,6 +303,8 @@ const handlerSearchButtons = (InOperationNumber, SkusSerial, OperationNumber) =>
         document.getElementById(`${InOperationNumber}pause${SkusSerial}`).style.opacity = '0.6'
         addClassList(document.getElementById(`${InOperationNumber}begin${SkusSerial}`), 'hidden')
         addClassList(document.getElementById(`${InOperationNumber}finish${SkusSerial}`), 'hidden')
+        addClassList(document.getElementById(`${InOperationNumber}defect${SkusSerial}`), 'hidden')
+
 
     }
     if (document.getElementById(`${InOperationNumber}status${SkusSerial}`).textContent.toLowerCase() == 'закончено') {
@@ -383,7 +386,7 @@ const handlerControlMapTimeAndButton = (BoxSerial, SkusSerial, OperationNumber, 
         handlerSearchButtons(InOperationNumber, SkusSerial, OperationNumber)
     }
     if (num === 0) {
-        handlerSearchTimerMapOneDefect(SkusSerial, BoxSerial, InOperationNumber, OperationNumber, false, length)
+        handlerSearchTimerMap(SkusSerial, BoxSerial, InOperationNumber, OperationNumber, checkBoxItemSkusSerial, false, length)
     }
 }
 
@@ -493,25 +496,25 @@ const handlerSearchTimerMap = (SkusSerial, BoxSerial, InOperationNumber, Operati
 }
 
 //функция  останавливает время у изделий с браком
-const handlerSearchTimerMapOneDefect = (SkusSerial, BoxSerial, InOperationNumber, OperationNumber, startOrStop, length) => {
-    localData.OperationsLists.find(itemBox => {
-        itemBox.Boxes.find(itemBoxSerial => {
-            if (itemBoxSerial.BoxSerial === BoxSerial) {
-                itemBoxSerial.Skus.find(itemSkusSerial => {
-                    if(itemSkusSerial.SkusSerial==SkusSerial){
-                       itemSkusSerial.Operations.find(itemNumOperationsStatus => {
-                           if (itemNumOperationsStatus.OperationNumber == parseInt(InOperationNumber)){
-                               GlobalTimer.changeTimerState(itemSkusSerial.SkusSerial, Number(itemNumOperationsStatus.OperationNumber), startOrStop, length)
-                               console.log(GlobalTimer.allTimers.get(SkusSerial).get(Number(OperationNumber)).getTime() / 1000)
-                           }
-                       })
-                    }
-                })
-            }
-        })
-
-    })
-}
+// const handlerSearchTimerMapOneDefect = (SkusSerial, BoxSerial, InOperationNumber, OperationNumber, startOrStop, length) => {
+//     localData.OperationsLists.find(itemBox => {
+//         itemBox.Boxes.find(itemBoxSerial => {
+//             if (itemBoxSerial.BoxSerial === BoxSerial) {
+//                 itemBoxSerial.Skus.find(itemSkusSerial => {
+//                     if(itemSkusSerial.SkusSerial==SkusSerial){
+//                        itemSkusSerial.Operations.find(itemNumOperationsStatus => {
+//                            if (itemNumOperationsStatus.OperationNumber == parseInt(InOperationNumber)){
+//                                GlobalTimer.changeTimerState(itemSkusSerial.SkusSerial, Number(itemNumOperationsStatus.OperationNumber), startOrStop, length)
+//                                console.log(GlobalTimer.allTimers.get(SkusSerial).get(Number(OperationNumber)).getTime() / 1000)
+//                            }
+//                        })
+//                     }
+//                 })
+//             }
+//         })
+//
+//     })
+// }
 
 //создаем кнопки серий
 const htmlButtonSkusSerial = (itemSkusSerial, itemBoxSerial, itemSkusFriendlyName) => {
@@ -881,6 +884,7 @@ function microPartionChecker(BoxSerial, InOperationNumber, SkusSerial, Operation
                 handlerDeleteLocalDataDefect(BoxSerial, SkusSerial, OperationNumber, textStatus, WcGuid, num, InOperationNumber)
                 checkBoxItem = checkBoxItem - 1
                 checkBoxItemSkusSerial = checkBoxItemSkusSerial.filter(item => (item.SkusSerial !== SkusSerial))
+                handlerSearchTimerMap(SkusSerial, BoxSerial, InOperationNumber, OperationNumber, checkBoxItemSkusSerial, true, length)
                 microPartions_global.get(guidMicro).get(BoxSerial).delete(SkusSerial)
             }
             // если все одинаковы и НЕ равны empty
