@@ -575,18 +575,17 @@ const createJsonForBackend = (micropartions) => {
 
 // функция переводит микропартию из json
 const createParseJsonForFront = (micropartions) => {
-
     for (let key in micropartions) {
+        let dateNow='operation_date'
         let micropartionsGuid = key
         let micropartionsBox = micropartions[key].BoxSerial
         microPartions_global.set(key, new Map())
+        microPartions_global.get(key).set(dateNow,micropartions[key].OperationDate)
         microPartions_global.get(key).set(micropartions[key].BoxSerial, new Map());
         micropartions[key].Skus.forEach( itemSkus=>{
             microPartions_global.get(key).get(micropartions[key].BoxSerial).set(itemSkus.SkusSerial, new Map());
                 itemSkus.PartionOperations.forEach( itemOperatios =>{
-                    let dateNow='operation_date'
                     microPartions_global.get(key).get(micropartions[key].BoxSerial).get(itemSkus.SkusSerial,).set(itemOperatios.OperationGuid, itemOperatios.OpertionNumber);
-                    microPartions_global.get(key).get(micropartions[key].BoxSerial).get(itemSkus.SkusSerial,).set(dateNow,itemOperatios.OperationDate);
                 })
             })
 
@@ -771,12 +770,12 @@ function create_new_micropartion(main_micropartion_object, micropartion_guid, sk
     let start = true
     sku_serials_array.forEach(serial => {
         if (start) {
+            main_micropartion_object.get(micropartion_guid).set(dateNow,new Date().toISOString())
             main_micropartion_object.get(micropartion_guid).set(box_serial, new Map());
             start = false;
         }
         main_micropartion_object.get(micropartion_guid).get(box_serial).set(serial, new Map());
         main_micropartion_object.get(micropartion_guid).get(box_serial).get(serial).set(operation_guid, operation_number,dateNow);
-        main_micropartion_object.get(micropartion_guid).get(box_serial).get(serial).set(dateNow, new Date());
     });
 
 }
@@ -951,7 +950,7 @@ function handlerShowTable(BoxSerial, SkusSerial) {
                             addClassList(tableContainer, 'loading')
                             allButtonsIn = []
                             let table = (`
-                                <tbody class="control_table " id="${SkusSerial}"  >
+                                <tbody class="control_table ${itemSkusSerial.Operations[i].Status} " id="${SkusSerial}"  >
                                 <tr  class="tr_table" id="" >
                                    <td class="m-1 " id="numOperation">${itemSkusSerial.Operations[i].OperationNumber}</td>
                                      <td>${itemSkusSerial.Operations[i].OperationHumanName}</td>
@@ -976,6 +975,9 @@ function handlerShowTable(BoxSerial, SkusSerial) {
                             }
                             allButtonsIn.push(buttonsIn)
                             handlerButtonHidden(allButtonsIn)
+                            if(document.getElementById(`${itemSkusSerial.Operations[i].OperationNumber}status${SkusSerial}`).textContent.toLowerCase() == "брак"){
+                                addClassList(document.querySelector(`.${itemSkusSerial.Operations[i].Status}`),'hidden')
+                            }
                         }
                     }
                 })
