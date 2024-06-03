@@ -58,6 +58,7 @@ executors.set("170996f8-a9dc-11ec-8c0f-00505681efea", "Бубынин Алекс
 executors.set("1d09989f-a9dc-11ec-8c0f-00505681efea", "Москвичев Михаил Николаевич");
 executors.set("71690b93-c863-11ed-8c3b-00505681f37b", "Копцов Александр Сергеевич");
 
+//замоканные данные
 
 let micropartions= {
     "32f1cfae-8e39-4985-a3bd-d52027a5d693": {
@@ -403,8 +404,6 @@ let micropartions= {
 
 }
 
-
-
 let localData = {
     "OperationsLists": [{
         "WcGuid": "f5857713-2171-11ee-8c43-00505681f37b",
@@ -707,7 +706,7 @@ let localData = {
                             "OperationHumanName": "Приёмо-сдаточные испытания и оформление документации (Армирование)",
                             "DateOfChange": "27.10.2023 13.20.55",
                             "RealExecutor": "Рабочий стол 3 (Сапрыкин)",
-                            "Status": "Брак",
+                            "Status": "Несоответствие",
                             "OperationalDuration": 0
                         },
                         {
@@ -1068,7 +1067,7 @@ const htmlModalWindowDefect = (BoxSerial, SkusSerial, OperationNumber, textStatu
         <h2 class="text-center mb-1">Предупреждение</h2>
       </div>
       <div class="">
-        <p>Данное изделие относится к браку</p>
+        <p>Вы уверены, что данная операция не соответствует технологическому процессу</p>
       </div>
       <div class="text-end " >
         <button type="button" class="btn btn-secondary " onclick="deleteElems(document.querySelectorAll('.modal-wrap'))">Нет</button>
@@ -1079,6 +1078,8 @@ const htmlModalWindowDefect = (BoxSerial, SkusSerial, OperationNumber, textStatu
     `)
     document.body.insertAdjacentHTML('afterbegin', htmlModalDefect)
 }
+
+// функция передает данные запуска времени
 const handlerControlMapTimeAndButton = (BoxSerial, SkusSerial, OperationNumber, textStatus, WcGuid, num, InOperationNumber, length) => {
     if (num === 1) {
         document.getElementById(`${InOperationNumber}status${SkusSerial}`).innerHTML = ('Начато')
@@ -1111,7 +1112,7 @@ const handlerControlMapTimeAndButton = (BoxSerial, SkusSerial, OperationNumber, 
         handlerSearchButtons(InOperationNumber, SkusSerial, OperationNumber)
     }
     if (num === 0) {
-        console.log(990)
+
         handlerSearchTimerMap(SkusSerial, BoxSerial, InOperationNumber, OperationNumber, checkBoxItemSkusSerial, false, length)
     }
 }
@@ -1188,7 +1189,7 @@ function handlerDeleteLocalDataDefect(BoxSerial, SkusSerial, OperationNumber, te
                           dataBaseAll.DateNow = data.toISOString()
                           dataBaseAll.OperationalDuration = GlobalTimer.allTimers.get(itemSkusSerial.SkusSerial).get(Number(itemSkusSerialIn.OperationNumber)).getTime()
                           dataBase.push(dataBaseAll)
-                          itemSkusSerial.SkusSerial= 'Брак'
+                          itemSkusSerial.SkusSerial= 'Несоответствие'
                   }
               })
           }
@@ -1222,6 +1223,7 @@ const handlerSearchTimerMap = (SkusSerial, BoxSerial, InOperationNumber, Operati
     })
 }
 
+//функция  останавливает время у изделий с браком,но ей мы не пользуемся пока
 const handlerSearchTimerMapOneDefect = (SkusSerial, BoxSerial, InOperationNumber, OperationNumber, startOrStop, length) => {
     localData.OperationsLists.find(itemBox => {
         itemBox.Boxes.find(itemBoxSerial => {
@@ -1244,7 +1246,7 @@ const handlerSearchTimerMapOneDefect = (SkusSerial, BoxSerial, InOperationNumber
 
 //создаем кнопки серий
 const htmlButtonSkusSerial = (itemSkusSerial, itemBoxSerial, itemSkusFriendlyName) => {
-    let htmlButton = (`<li  class="liButton "  id ='${itemSkusSerial}liButton'>
+    let htmlButton = (`<li  class="liButton "  id ="${itemSkusSerial}liButton">
                         <div class="container_button_serial">
                         <button class="btn  m-1 btn-sm align-content-center btnIn btnSkusSerialIn" id ='${itemSkusSerial}' onclick="handlerShowTable('${itemBoxSerial}','${itemSkusSerial}'),handlerButtonSkusSerialStyle('${itemSkusSerial}')">${itemSkusFriendlyName}<br>${itemSkusSerial}</button>
                         <div class="d-flex flex-grow-1 justify-content-end" >
@@ -1257,7 +1259,7 @@ const htmlButtonSkusSerial = (itemSkusSerial, itemBoxSerial, itemSkusFriendlyNam
 //создаем боксы
 const htmlBoxSerial = (itemBoxSerial, itemWcGuid, itemClientOrder) => {
     htmlBox = (`<li id='' class="html_box">
-                <button class=" btn btn_carousel btnIn btnSBoxSerial" id ='${itemBoxSerial}' onclick="handlerBoxSkusSerial('${itemBoxSerial}')"><span class="clientOrder ">${itemClientOrder}</span><span class="boxSerialNumber">${itemBoxSerial}</span></button>
+                <button class=" btn btn_carousel btnIn btnSBoxSerial" id ='${itemBoxSerial}' onclick="handlerBoxSkusSerial('${itemBoxSerial}')"><span class="clientOrder ">${itemClientOrder}</span><p class="boxSerialNumber m-0 p-0">${itemBoxSerial}</p></button>
                 </li>`)
     listGalleryBox.insertAdjacentHTML('afterbegin', htmlBox)
     if(!buttonListOrDocument){
@@ -1275,30 +1277,36 @@ const createJsonForBackend = (micropartions) => {
         object['MicropartionGuid'] = key;
         object['Box'] = new Object();
         // key - это box_serial
-        value.forEach(function (value_1, key_1, value_2, key_2, map_2) {
-            object['Box']['OperationDate'] = key_1;
-            object['Box']['BoxSerial'] = key_2;
-            object['Box']['Skus'] = [];
-            // key - это sku_serial
-            // value_2.forEach(function (value_3, key_3, map_3) {
-            //     let temp_obj = new Object();
-            //     temp_obj['SkuSerial'] = key_3;
-            //     // key - это operation_guid value - это номер операции
-            //     value_3.forEach(function (value_4, key_4, map_4) {
-            //         let fin_temp_obj = new Object();
-            //         fin_temp_obj['OperationGuid'] = key_4;
-            //         fin_temp_obj['OperationNumber'] = value_4;
-            //         temp_obj['PartionOperations'] = fin_temp_obj;
-            //     })
-            //     object['Box']['Skus'].push(temp_obj);
-            // })
+        // этим булевом управляем установкой даты, если ложь - value_2 - это дата, иначе это бокссериал
+        dateCheckerForJsonCreation = false;
+        value.forEach(function (value_2, key_2, map_2) {
+            if (!dateCheckerForJsonCreation) {
+                object['Box']['OperationDate'] = value_2;
+                dateCheckerForJsonCreation = true;
+            } else {
+                object['Box']['BoxSerial'] = key_2;
+                object['Box']['Skus'] = [];
+
+                // key - это sku_serial
+                value_2.forEach(function (value_3, key_3, map_3) {
+                    let temp_obj = new Object();
+                    temp_obj['SkuSerial'] = key_3;
+                    // key - это operation_guid value - это номер операции
+                    value_3.forEach(function (value_4, key_4, map_4) {
+                        let fin_temp_obj = new Object();
+                        fin_temp_obj['OperationGuid'] = key_4;
+                        fin_temp_obj['OperationNumber'] = value_4;
+                        temp_obj['PartionOperations'] = fin_temp_obj;
+                    })
+                    object['Box']['Skus'].push(temp_obj);
+                })
+            }
+
         })
 
         raw_for_json.push(object)
     })
-
     const mapToJson = JSON.stringify(raw_for_json);
-    console.log(mapToJson)
     return mapToJson;
 
 }
@@ -1320,7 +1328,33 @@ const createParseJsonForFront = (micropartions) => {
             })
 
     }
-console.log(microPartions_global)
+// console.log(microPartions_global)
+}
+
+// функция поиска нужной боксерии через инпут
+function handlerSearchDocumentBox(){
+    let searchBox
+    let nameTag
+    let i
+    let txtValue;
+   let input = document.getElementById('inputBoxserial');
+   let filter = input.value.toLowerCase();
+   let ul = document.querySelector(".gallery_list_box");
+   let li = ul.getElementsByTagName('li');
+ if (buttonListOrDocument){
+     nameTag = 'p'
+ }else{
+     nameTag = 'span'
+ }
+    for (i = 0; i < li.length; i++) {
+        searchBox= li[i].getElementsByTagName(nameTag)[0];
+        txtValue = searchBox.textContent || searchBox.innerText;
+        if (txtValue.toLowerCase().indexOf(filter) > -1) {
+            li[i].style.display = "";
+        } else {
+            li[i].style.display = "none"
+        }
+    }
 }
 
 //функция выбора показа договора или листа
@@ -1486,6 +1520,32 @@ function handlerMicropartionCheckBoxItemSkusSerial(BoxSerial, SkusSerial, InOper
     return partion;
 }
 
+//функция оправки для микропартии с браком
+function handlerDeleteDateMicropartionDefect(guidMicro,BoxSerial,SkusSerial){
+   let dateDefect=new Date().toISOString()
+   let defectData=[]
+   let microDataDefect= new Object()
+    microDataDefect.GuidMcro=guidMicro
+    microDataDefect.OperationDate = dateDefect
+    microDataDefect.BoxSerial = BoxSerial
+    microDataDefect.SkusSerial = SkusSerial
+    defectData.push(microDataDefect)
+    let myHeaders = new Headers();
+    myHeaders.append("Content-Type", "application/json");
+    let allDataDefectMicro = JSON.stringify(defectData);
+    let requestOptionsAllData = {
+        method: 'POST',
+        headers: myHeaders,
+        body: allDataDefectMicro,
+        redirect: 'follow'
+    };
+    fetch(mainUrl + "changeFull", requestOptionsAllData)
+        .then(response => response.json())
+        .then(function (result) {
+        })
+        .catch(error => console.log('error', error));
+}
+
 //гениратор id для микропартии
 
 function microPartionSerialCodeGenerator() {
@@ -1617,6 +1677,7 @@ function microPartionChecker(BoxSerial, InOperationNumber, SkusSerial, Operation
                 checkBoxItem = checkBoxItem - 1
                 checkBoxItemSkusSerial = checkBoxItemSkusSerial.filter(item => (item.SkusSerial !== SkusSerial))
                 handlerSearchTimerMap(SkusSerial, BoxSerial, InOperationNumber, OperationNumber, checkBoxItemSkusSerial, true, length)
+                handlerDeleteDateMicropartionDefect(guidMicro,BoxSerial,SkusSerial)
                 microPartions_global.get(guidMicro).get(BoxSerial).delete(SkusSerial)
             }
             // если все одинаковы и НЕ равны empty
@@ -1657,8 +1718,7 @@ function handlerSendInLocal(SkusSerial, WcGuid, BoxSerial, Operation, num, Statu
             handlerControlStatus(BoxSerial, SkusSerial, OperationNumber, textStatus, WcGuid, num, InOperationNumber, Status)
         }
         if (num === 0) {
-            console.log('yes')
-            textStatus = 'Брак'
+            textStatus = 'Несоответствие'
             htmlModalWindowDefect(BoxSerial, SkusSerial, OperationNumber, textStatus, WcGuid, num, InOperationNumber, Status)
             // handlerControlStatus(BoxSerial, SkusSerial, OperationNumber, textStatus, WcGuid, num, InOperationNumber, Status)
         }
@@ -1696,7 +1756,7 @@ function handlerShowTable(BoxSerial, SkusSerial) {
                                      <button type="button"  class="btn btnPause btnIn" id="${itemSkusSerial.Operations[i].OperationNumber}pause${SkusSerial}" onclick="handlerSendInLocal('${SkusSerial}','${item.WcGuid}','${BoxSerial}','${itemSkusSerial.Operations[i].Operation}',2,'${itemSkusSerial.Operations[i].Status}','${itemSkusSerial.Operations[i].OperationNumber}','${itemSkusSerial.Operations[i].OperationNumber}',document.getElementById('${itemSkusSerial.Operations[i].OperationNumber}status${SkusSerial}').textContent)"><i class="fas fa-edit"></i>Пауза</button>
                                      <button type="button"  class="btn btnFinish btnIn" id="${itemSkusSerial.Operations[i].OperationNumber}finish${SkusSerial}" onclick="handlerSendInLocal('${SkusSerial}','${item.WcGuid}','${BoxSerial}','${itemSkusSerial.Operations[i].Operation}',3,'${itemSkusSerial.Operations[i].Status}','${itemSkusSerial.Operations[i].OperationNumber}','${itemSkusSerial.Operations[i].OperationNumber}',document.getElementById('${itemSkusSerial.Operations[i].OperationNumber}status${SkusSerial}').textContent)"><i class="far fa-trash-alt"></i>Закончить</button>
                                    <button type="button"  class="btn btnDefect btnIn" id="${itemSkusSerial.Operations[i].OperationNumber}defect${SkusSerial}" onclick="handlerSendInLocal('${SkusSerial}','${item.WcGuid}','${BoxSerial}','${itemSkusSerial.Operations[i].Operation}',0,'${itemSkusSerial.Operations[i].Status}','${itemSkusSerial.Operations[i].OperationNumber}','${itemSkusSerial.Operations[i].OperationNumber}',
-                                     document.getElementById('${itemSkusSerial.Operations[i].OperationNumber}status${SkusSerial}').textContent)"><i class="far fa-eye"></i>Брак</button>
+                                     document.getElementById('${itemSkusSerial.Operations[i].OperationNumber}status${SkusSerial}').textContent)"><i class="far fa-eye"></i>Несоответствие</button>
                                    </td>
                                 </tr>
                                 </tbody>`)
@@ -1710,9 +1770,10 @@ function handlerShowTable(BoxSerial, SkusSerial) {
                             }
                             allButtonsIn.push(buttonsIn)
                             handlerButtonHidden(allButtonsIn)
-                            if(document.getElementById(`${itemSkusSerial.Operations[i].OperationNumber}status${SkusSerial}`).textContent.toLowerCase() == "брак"){
-                                addClassList(document.querySelector(`.${itemSkusSerial.Operations[i].Status}`),'hidden')
-                            }
+                            // console.log(document.getElementById(`${itemSkusSerial.Operations[i].OperationNumber}status${SkusSerial}`).textContent.toLowerCase())
+                            // if(document.getElementById(`${itemSkusSerial.Operations[i].OperationNumber}status${SkusSerial}`).textContent.toLowerCase() == "несоответствие"){
+                            //     document.getElementById(`${itemSkusSerial.SkusSerial}liButton`).remove()
+                            // }
                         }
                     }
                 })
@@ -1793,38 +1854,37 @@ function handlerBoxSkusSerial(itemBoxSerial) {
     localData.OperationsLists.find(itemBox => {
         itemBox.Boxes.find(itemSkusSerial => {
             if (itemSkusSerial.BoxSerial == itemBoxSerial) {
-
                 itemSkusSerial.Skus.find(itemSerial => {
-                    if(itemSerial.SkusSerial != 'Брак'){
                         itemSerial.Operations.find(itemSerialStatus => {
-                                if (selectionChoose == 1 || selectionChoose == 0) {
-                                        let statusControl = new Object()
-                                        statusControl.SkusSerial = itemSerial.SkusSerial
-                                        statusControl.BoxSerial = itemSkusSerial.BoxSerial
-                                        statusControl.SkusFriendlyName = itemSerial.SkusFriendlyName
-                                        filterSerial.push(statusControl)
-                                }
-                                if (selectionChoose == 2) {
-                                    if (itemSerialStatus.Status.toLowerCase() === 'пауза') {
-                                        let statusControl = new Object()
-                                        statusControl.SkusSerial = itemSerial.SkusSerial
-                                        statusControl.BoxSerial = itemSkusSerial.BoxSerial
-                                        statusControl.SkusFriendlyName = itemSerial.SkusFriendlyName
-                                        filterSerial.push(statusControl)
+                                if (itemSerial.SkusSerial != 'Несоответствие') {
+                                    if (selectionChoose == 1 || selectionChoose == 0) {
+                                            let statusControl = new Object()
+                                            statusControl.SkusSerial = itemSerial.SkusSerial
+                                            statusControl.BoxSerial = itemSkusSerial.BoxSerial
+                                            statusControl.SkusFriendlyName = itemSerial.SkusFriendlyName
+                                            filterSerial.push(statusControl)
+                                    }
+                                    if (selectionChoose == 2) {
+                                        if (itemSerialStatus.Status.toLowerCase() === 'пауза') {
+                                            let statusControl = new Object()
+                                            statusControl.SkusSerial = itemSerial.SkusSerial
+                                            statusControl.BoxSerial = itemSkusSerial.BoxSerial
+                                            statusControl.SkusFriendlyName = itemSerial.SkusFriendlyName
+                                            filterSerial.push(statusControl)
+                                        }
+                                    }
+                                    if (selectionChoose == 3) {
+                                        if (itemSerialStatus.Status.toLowerCase() === 'начато') {
+                                            let statusControl = new Object()
+                                            statusControl.SkusSerial = itemSerial.SkusSerial
+                                            statusControl.BoxSerial = itemSkusSerial.BoxSerial
+                                            statusControl.SkusFriendlyName = itemSerial.SkusFriendlyName
+                                            filterSerial.push(statusControl)
+                                        }
                                     }
                                 }
-                                if (selectionChoose == 3) {
-                                    if (itemSerialStatus.Status.toLowerCase() === 'начато') {
-                                        let statusControl = new Object()
-                                        statusControl.SkusSerial = itemSerial.SkusSerial
-                                        statusControl.BoxSerial = itemSkusSerial.BoxSerial
-                                        statusControl.SkusFriendlyName = itemSerial.SkusFriendlyName
-                                        filterSerial.push(statusControl)
-                                    }
-                                }
-
                         })
-                    }
+
                 })
             }
         })
@@ -1972,6 +2032,11 @@ function handlerSortOperationNumber(){
                 itemOperations.Operations.sort((a,b)=>{
                     return a.OperationNumber - b.OperationNumber
                 })
+               itemOperations.Operations.find(itemStatus=>{
+                   if(itemStatus.Status.toLowerCase() == 'несоответствие'){
+                       itemOperations.SkusSerial ='Несоответствие'
+                   }
+               })
             })
 
         })
