@@ -530,7 +530,7 @@ const htmlButtonSkusSerial = (itemSkusSerial, itemBoxSerial, itemSkusFriendlyNam
 //создаем боксы
 const htmlBoxSerial = (itemBoxSerial, itemWcGuid, itemClientOrder) => {
     htmlBox = (`<li id='' class="html_box">
-                <button class=" btn btn_carousel btnIn btnSBoxSerial" id ='${itemBoxSerial}' onclick="handlerBoxSkusSerial('${itemBoxSerial}')"><span class="clientOrder ">${itemClientOrder}</span><span class="boxSerialNumber">${itemBoxSerial}</span></button>
+                <button class=" btn btn_carousel btnIn btnSBoxSerial" id ='${itemBoxSerial}' onclick="handlerBoxSkusSerial('${itemBoxSerial}')"><span class="clientOrder ">${itemClientOrder}</span><p class="boxSerialNumber m-0 p-0">${itemBoxSerial}</p></button>
                 </li>`)
     listGalleryBox.insertAdjacentHTML('afterbegin', htmlBox)
     if (!buttonListOrDocument) {
@@ -601,6 +601,33 @@ const createParseJsonForFront = (micropartions) => {
 
 
 }
+
+// функция поиска нужной боксерии через инпут
+function handlerSearchDocumentBox(){
+    let searchBox
+    let nameTag
+    let i
+    let txtValue;
+    let input = document.getElementById('inputBoxserial');
+    let filter = input.value.toLowerCase();
+    let ul = document.querySelector(".gallery_list_box");
+    let li = ul.getElementsByTagName('li');
+    if (buttonListOrDocument){
+        nameTag = 'p'
+    }else{
+        nameTag = 'span'
+    }
+    for (i = 0; i < li.length; i++) {
+        searchBox= li[i].getElementsByTagName(nameTag)[0];
+        txtValue = searchBox.textContent || searchBox.innerText;
+        if (txtValue.toLowerCase().indexOf(filter) > -1) {
+            li[i].style.display = "";
+        } else {
+            li[i].style.display = "none"
+        }
+    }
+}
+
 
 //функция выбора показа договора или листа
 function handlerTextButoonBoxSerial() {
