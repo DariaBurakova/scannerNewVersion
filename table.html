@@ -18,36 +18,31 @@
         <div class="guid-name">
 
         </div>
-        <input type="text" id="inputBoxserial" onkeyup="handlerSearchDocumentBox()" placeholder="Поиск документа..">
         <div class="container_selected">
+            <div>
+                <input type="text" id="inputBoxserial" class="" onkeyup="handlerSearchDocumentBox()" placeholder="Поиск документа..">
+            </div>
             <div>
                 <button type="button" class="btn btnUpList btnIn btn-sm " onclick="handlerTextButoonBoxSerial()">Договор</button>
             </div>
             <div>
-                <p class="pt-1 mx-md-4">Сортировка документов:</p>
+                <button type="button" class="btn btnUpList btnIn btn-sm " onclick="htmlModalGetList()">Получить лист</button>
             </div>
             <div>
-                <select class="form-select select_option form-select-sm" aria-label="Пример выбора по умолчанию"
-                                            id="selectedChoose">
-                                            <option value="0" selected="selected">Откройте меню выбора</option>
-                                            <option value="1">Все</option>
-                                            <option value="2">Пауза</option>
-                                            <option value="3">Начато</option>
-                                        </select>
+                <button type="button" class="btn btnUpList btnIn btn-sm " onclick="handlerModalFilter()">Фильтр</button>
             </div>
             <div>
-                                  <button type="button" class="btn btn-outline-warning  btn-sm btn1c text-center time_button"
-                                    onclick="handlerSendAllDataBase()">
-                                      Отправить В 1С
-                                 </button>
+                <button type="button" class="btn btn-outline-warning  btn-sm btn1c text-center time_button"
+                        onclick="handlerSendAllDataBase()">
+                    Отправить В 1С
+                </button>
             </div>
             <div>
-<!--                <p class="time_button"></p>-->
-                                    <a href="index.html" onclick="handlerSendAllDataBase()">
-                                        <img src="./assets/icons8-logout-50.png" alt="logout" width="25" height="25"></a>
+                <!--                <p class="time_button"></p>-->
+                <a href="index.html" onclick="handlerSendAllDataBase()">
+                    <img src="./assets/icons8-logout-50.png" alt="logout" width="25" height="25"></a>
             </div>
-
-            </div>
+        </div>
             <div class=" container_carousel bg-white">
                 <div class="row-cols-md-auto justify-content-center ">
                     <div class="col-md-12 ">
