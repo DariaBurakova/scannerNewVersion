@@ -19,6 +19,7 @@ let countButtonSkusSerial = false
 let buttonPrevSkusSerial = ''
 let countButton = false
 let buttonPrev = ''
+let buttonActiveBoxserial = ''
 let GlobalTimer;
 let allDataAboutOperations = new Map();
 let localData = {}
@@ -148,10 +149,12 @@ if (!isProduction) {
     mainUrl = "http://localhost:5103/api/"
     mainUrlMicroParti = "http://localhost:5167/micro_recieve"
     mainUrlNewBoxSerial = "http://localhost:5103/api/addwctosuplst"
+    mainUrlDeleteBoxSerial = "http://localhost:5103/api/deletewcfromsuplst"
 } else {
     mainUrl = "https://172.16.0.99:444/api/"
     mainUrlMicroParti = "http://127.0.0.1:3000/micro_recieve"
     mainUrlNewBoxSerial = "http://localhost:5167/addwctosuplst"
+    mainUrlDeleteBoxSerial = "http://localhost:5103/api/deletewcfromsuplst"
 }
 
 
@@ -367,6 +370,56 @@ const htmlModalErrorNewBoxSerial = () => {
     `)
     document.body.insertAdjacentHTML('afterbegin', htmlModalError)
 }
+
+// модальное окно удаления имеющийся бокссерии
+const htmlModalDeleteList = () =>{
+    if(buttonActiveBoxserial != ''){
+        let htmlModalDeleteList = (`
+        <div class="modal-wrap">
+  <div class="modal-win" >
+      <div class="modal-dialog">
+        <h2 class="text-center mb-1">Вы действительно хотите удалить себя как исполнителя из данного сопроводительного листа</h2>
+      </div>
+      <div class="m-4"> 
+      <h3>${buttonActiveBoxserial}</h3>
+      </div>
+      <div class="text-end " >
+        <button type="button" class="btn btn-secondary " onclick="handlerDeleteBoxserialLocalData(buttonActiveBoxserial),deleteElems(document.querySelectorAll('.modal-wrap'))">Да</button>
+        <button type="button" class="btn btn-secondary " onclick="deleteElems(document.querySelectorAll('.modal-wrap'))">Закрыть</button>
+      </div>
+  </div>
+</div>`)
+        document.body.insertAdjacentHTML('afterbegin', htmlModalDeleteList)
+    }
+
+}
+
+//функция удаления выбранной серии
+const handlerDeleteBoxserialLocalData=(buttonActive)=>{
+    deleteElems(document.querySelectorAll('.html_box'))
+    htmlSpiner()
+    let newObjectBoxserial = new Object()
+    newObjectBoxserial.wcguid = localData.OperationsLists[0].WcGuid
+    newObjectBoxserial.boxserial = buttonActive
+    for(let i =0;i < localData.OperationsLists[0].Boxes.length; i++ ){
+        if(localData.OperationsLists[0].Boxes[i].BoxSerial === buttonActive ){
+            localData.OperationsLists[0].Boxes.splice(i,1)
+        }
+    }
+    let myHeaders = new Headers();
+    myHeaders.append("Content-Type", "application/json");
+    let jsonBoxSerial = JSON.stringify(newObjectBoxserial)
+    let requestOptionsDeleteBoxserial = {
+        method: 'POST',
+        headers: myHeaders,
+        body: jsonBoxSerial,
+        redirect: 'follow'
+    };
+    fetch(mainUrlDeleteBoxSerial,requestOptionsDeleteBoxserial)
+    handlerControlLoadingSkusSerial()
+    handlerBoxSerial()
+}
+
 
 //модальное окно фильтра
 const handlerModalFilter = () => {
@@ -838,6 +891,7 @@ function handlerSendAllDataBase() {
 // функция отслеживает нажатие на бокс и меняет цвет кнопки
 function handlerButtonBoxSerialStyle(item) {
     let buttonThis = document.getElementById(`${item}`)
+    buttonActiveBoxserial = item
     if (countButton === false) {
         buttonThis.style = "background-color:#006400;color:white !important;box-shadow: rgb(38, 57, 77) 0px 20px 30px -10px !important;"
         if (buttonPrev === '') {
