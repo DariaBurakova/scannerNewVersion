@@ -147,7 +147,7 @@ let mainUrlMicroParti = ""
 if (!isProduction) {
     mainUrl = "http://localhost:5103/api/"
     mainUrlMicroParti = "http://localhost:5167/micro_recieve"
-    mainUrlNewBoxSerial = "http://localhost:5167/addwctosuplst"
+    mainUrlNewBoxSerial = "http://localhost:5103/api/addwctosuplst"
 } else {
     mainUrl = "https://172.16.0.99:444/api/"
     mainUrlMicroParti = "http://127.0.0.1:3000/micro_recieve"
@@ -718,9 +718,12 @@ function handlerGetNewBoxserial(newBoxSerial){
             .then(function (response){
                 if(response.ok){
                    result=response.json()
-                    localData.OperationsLists.find(itemBox=>{
-                        itemBox.Boxes.push(result)
+                    result.OperationsLists.find(itemBoxResult=>{
+                        localData.OperationsLists.find(itemBox=>{
+                            itemBox.Boxes.push(itemBoxResult.Boxes)
+                        })
                     })
+
                     handlerControlLoadingSkusSerial()
                     handlerBoxSerial()
                 }else{
@@ -734,6 +737,8 @@ function handlerGetNewBoxserial(newBoxSerial){
             // })
             .catch(error=>{
                 htmlModalErrorNewBoxSerial()
+                handlerControlLoadingSkusSerial()
+                handlerBoxSerial()
             })
 
 }
