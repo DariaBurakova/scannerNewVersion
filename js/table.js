@@ -713,19 +713,20 @@ function handlerGetNewBoxserial(newBoxSerial){
         body: jsonBoxSerial,
         redirect: 'follow'
     };
-    let result
         fetch(mainUrlNewBoxSerial,requestOptionsNewBoxserial)
             .then(function (response){
                 if(response.ok){
-                   result=response.json()
-                    result.OperationsLists.find(itemBoxResult=>{
-                        localData.OperationsLists.find(itemBox=>{
-                            itemBox.Boxes.push(itemBoxResult.Boxes)
+                    response = response.json()
+                .then(function (result) {
+                        result.OperationsLists.find(itemBoxResult => {
+                            localData.OperationsLists.find(itemBox => {
+                                itemBox.Boxes.push(itemBoxResult.Boxes)
+                            })
                         })
-                    })
 
-                    handlerControlLoadingSkusSerial()
-                    handlerBoxSerial()
+                        handlerControlLoadingSkusSerial()
+                        handlerBoxSerial()
+                    }
                 }else{
                     htmlModalErrorNewBoxSerial()
                     handlerControlLoadingSkusSerial()
