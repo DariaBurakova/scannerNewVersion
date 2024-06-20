@@ -140,7 +140,7 @@ class BtmcTimer {
     }
 }
 
-let isProduction = true
+let isProduction = false
 let mainUrl = ""
 let mainUrlMicroParti = ""
 
@@ -1443,8 +1443,8 @@ function axiosLogin() {
         .then(response => response.json())
         .then(function (result) {
             localData = result
-            handlerBoxSerialForMicropartion()
             htmlSpiner()
+            handlerBoxSerialForMicropartion()
             handlerGuidName()
             handlerSortOperationNumber()
             handlerSkusSerial()
