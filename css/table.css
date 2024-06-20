@@ -62,6 +62,10 @@
     border:2px solid #4682B4 !important;
     color: #4682B4 !important;
 }
+.btnUpDeleteList{
+    border:2px solid #800000  !important;
+    color: #800000  !important;
+}
 .btnSkusSerialIn{
     border-color: #0000CD !important;
     background-color: white;
