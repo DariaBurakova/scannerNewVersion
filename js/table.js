@@ -147,9 +147,11 @@ let mainUrlMicroParti = ""
 if (!isProduction) {
     mainUrl = "http://localhost:5103/api/"
     mainUrlMicroParti = "http://localhost:5167/micro_recieve"
+    mainUrlNewBoxSerial = "http://localhost:5167/addwctosuplst"
 } else {
     mainUrl = "https://172.16.0.99:444/api/"
     mainUrlMicroParti = "http://127.0.0.1:3000/micro_recieve"
+    mainUrlNewBoxSerial = "http://localhost:5167/addwctosuplst"
 }
 
 
@@ -695,15 +697,13 @@ const createParseJsonForFront = (micropartions) => {
 
 //функция отправки нового листа для добавления в данные
 function handlerGetNewBoxserial(newBoxSerial){
+    deleteElems(document.querySelectorAll('.html_box'))
+    htmlSpiner()
     let newBoxSerialObject= new Object()
-    newBoxSerialObject.BoxSerial = newBoxSerial
-    // localData.OperationsLists.find(itemBox=>{
-    //     itemBox.Boxes.push(newBoxSerialObject)
-    // })
-    // handlerControlLoadingSkusSerial()
-    // deleteElems(document.querySelectorAll('.html_box'))
-    // handlerBoxSerial()
-    // console.log(localData)
+    newBoxSerialObject.boxserial = newBoxSerial
+    localData.OperationsLists.find(itemGuid=>{
+        newBoxSerialObject.wcguid = itemGuid.WcGuid
+    })
     let myHeaders = new Headers();
     myHeaders.append("Content-Type", "application/json");
     let jsonBoxSerial = JSON.stringify(newBoxSerialObject)
@@ -714,22 +714,24 @@ function handlerGetNewBoxserial(newBoxSerial){
         redirect: 'follow'
     };
     let result
-        fetch('http://',requestOptionsNewBoxserial)
+        fetch(mainUrlNewBoxSerial,requestOptionsNewBoxserial)
             .then(function (response){
                 if(response.ok){
                    result=response.json()
-                }else{
-                    htmlModalErrorNewBoxSerial()
-                }
-            })
-            .then(function (result){
                     localData.OperationsLists.find(itemBox=>{
                         itemBox.Boxes.push(result)
                     })
                     handlerControlLoadingSkusSerial()
-                    deleteElems(document.querySelectorAll('.html_box'))
                     handlerBoxSerial()
+                }else{
+                    htmlModalErrorNewBoxSerial()
+                    handlerControlLoadingSkusSerial()
+                    handlerBoxSerial()
+                }
             })
+            // .then(function (result){
+            //
+            // })
             .catch(error=>{
                 htmlModalErrorNewBoxSerial()
             })
