@@ -713,15 +713,22 @@ function handlerGetNewBoxserial(newBoxSerial){
         body: jsonBoxSerial,
         redirect: 'follow'
     };
+    let result
         fetch('http://',requestOptionsNewBoxserial)
-            .then(response=>response.json())
+            .then(function (response){
+                if(response.ok){
+                   result=response.json()
+                }else{
+                    htmlModalErrorNewBoxSerial()
+                }
+            })
             .then(function (result){
-                localData.OperationsLists.find(itemBox=>{
-                    itemBox.Boxes.push(result)
-                })
-                handlerControlLoadingSkusSerial()
-                deleteElems(document.querySelectorAll('.html_box'))
-                handlerBoxSerial()
+                    localData.OperationsLists.find(itemBox=>{
+                        itemBox.Boxes.push(result)
+                    })
+                    handlerControlLoadingSkusSerial()
+                    deleteElems(document.querySelectorAll('.html_box'))
+                    handlerBoxSerial()
             })
             .catch(error=>{
                 htmlModalErrorNewBoxSerial()
@@ -1414,6 +1421,28 @@ function handlerSortOperationNumber(){
     })
 }
 
+//функция запроса микропартии
+function handlerFetchMicropartion(){
+    let myHeaders = new Headers();
+    myHeaders.append("Content-Type", "application/json");
+    let jsonBox =JSON.stringify(boxesObject)
+    let param = (new URL(document.location)).searchParams;
+    let requestOptionsMicroPartion = {
+        method: 'POST',
+        headers: myHeaders,
+        body:jsonBox,
+        redirect: 'follow'
+    };
+    fetch(mainUrlMicroParti, requestOptionsMicroPartion)
+        .then(response => response.json())
+        .then(function (result) {
+            if (Object.keys(result).length != 0) {
+                createParseJsonForFront(result)
+            }
+
+        })
+        .catch(error => console.log('error', error))
+}
 //запуск всех функций
 function axiosLogin() {
     htmlSpiner()
@@ -1424,19 +1453,10 @@ function axiosLogin() {
         "Guid": param.get('id')
     });
 
-    let jsonBox =JSON.stringify(boxesObject)
-
     let requestOptions = {
         method: 'POST',
         headers: myHeaders,
         body: raw,
-        redirect: 'follow'
-    };
-
-    let requestOptionsMicroPartion = {
-        method: 'POST',
-        headers: myHeaders,
-        body:jsonBox,
         redirect: 'follow'
     };
 
@@ -1448,19 +1468,10 @@ function axiosLogin() {
             handlerGuidName()
             handlerSortOperationNumber()
             handlerSkusSerial()
+            handlerFetchMicropartion()
             setTimeout(handlerBoxSerial, 1000)
         })
         .catch(error => console.log('error', error));
-
-    fetch(mainUrlMicroParti, requestOptionsMicroPartion)
-        .then(response => response.json())
-        .then(function (result) {
-            if (Object.keys(result).length != 0) {
-                createParseJsonForFront(result)
-            }
-
-        })
-        .catch(error => console.log('error', error))
 
 }
 
