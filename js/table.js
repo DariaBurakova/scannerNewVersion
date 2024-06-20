@@ -140,7 +140,7 @@ class BtmcTimer {
     }
 }
 
-let isProduction = false
+let isProduction = true
 let mainUrl = ""
 let mainUrlMicroParti = ""
 
