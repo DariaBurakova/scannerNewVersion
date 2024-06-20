@@ -1416,6 +1416,7 @@ function handlerSortOperationNumber(){
 
 //запуск всех функций
 function axiosLogin() {
+    htmlSpiner()
     let myHeaders = new Headers();
     myHeaders.append("Content-Type", "application/json");
     let param = (new URL(document.location)).searchParams;
@@ -1443,7 +1444,6 @@ function axiosLogin() {
         .then(response => response.json())
         .then(function (result) {
             localData = result
-            htmlSpiner()
             handlerBoxSerialForMicropartion()
             handlerGuidName()
             handlerSortOperationNumber()
