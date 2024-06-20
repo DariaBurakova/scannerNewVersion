@@ -1446,7 +1446,7 @@ function axiosLogin() {
             handlerBoxSerialForMicropartion()
             htmlSpiner()
             handlerGuidName()
-            handlerAddObject()
+            handlerSortOperationNumber()
             handlerSkusSerial()
             setTimeout(handlerBoxSerial, 1000)
         })
