@@ -723,6 +723,7 @@ function handlerGetNewBoxserial(newBoxSerial) {
                                 itemBox.Boxes.push(itemBoxResult.Boxes[0])
                             })
                         })
+                        handlerSortOperationNumber()
                         handlerControlLoadingSkusSerial()
                         handlerBoxSerial()
                     })
