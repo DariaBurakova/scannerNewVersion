@@ -146,10 +146,10 @@ let mainUrlMicroParti = ""
 
 if (!isProduction) {
     mainUrl = "http://localhost:5103/api/"
-    mainUrlMicroParti = "http://localhost:5167/micro_v2"
+    mainUrlMicroParti = "http://localhost:5167/micro_recieve"
 } else {
     mainUrl = "https://172.16.0.99:444/api/"
-    mainUrlMicroParti = "http://127.0.0.1:3000/micro_v2"
+    mainUrlMicroParti = "http://127.0.0.1:3000/micro_recieve"
 }
 
 
@@ -1433,7 +1433,7 @@ function axiosLogin() {
     };
 
     let requestOptionsMicroPartion = {
-        method: 'GET',
+        method: 'POST',
         headers: myHeaders,
         body:jsonBox,
         redirect: 'follow'
