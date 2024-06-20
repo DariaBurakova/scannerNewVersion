@@ -723,10 +723,9 @@ function handlerGetNewBoxserial(newBoxSerial){
                                 itemBox.Boxes.push(itemBoxResult.Boxes)
                             })
                         })
-
                         handlerControlLoadingSkusSerial()
                         handlerBoxSerial()
-                    }
+                    })
                 }else{
                     htmlModalErrorNewBoxSerial()
                     handlerControlLoadingSkusSerial()
