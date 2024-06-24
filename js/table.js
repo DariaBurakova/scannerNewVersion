@@ -141,20 +141,30 @@ class BtmcTimer {
     }
 }
 
-let isProduction = false
+const IS_PRODUCTION = false
 let mainUrl = ""
-let mainUrlMicroParti = ""
+let mainUrlNewBoxSerial = ""
+let mainUrlDeleteBoxSerial = ""
+let micropartionsUrl = ""
+let microPartionsSaveAllUrl = ""
+let micropartionResizeUrl = ""
 
-if (!isProduction) {
+if (!IS_PRODUCTION) {
     mainUrl = "http://localhost:5103/api/"
-    mainUrlMicroParti = "http://localhost:5167/micro_recieve"
     mainUrlNewBoxSerial = "http://localhost:5103/api/addwctosuplst"
     mainUrlDeleteBoxSerial = "http://localhost:5103/api/deletewcfromsuplst"
+
+    micropartionsUrl = "http://localhost:5167/micro_recieve"
+    microPartionsSaveAllUrl = "http://localhost:5167/micro_save"
+    micropartionResizeUrl = "http://localhost:5167/micro_change"
 } else {
     mainUrl = "https://172.16.0.99:444/api/"
-    mainUrlMicroParti = "http://127.0.0.1:3000/micro_recieve"
-    mainUrlNewBoxSerial = "http://localhost:5167/addwctosuplst"
-    mainUrlDeleteBoxSerial = "http://localhost:5103/api/deletewcfromsuplst"
+    mainUrlNewBoxSerial = "https://172.16.0.99:444/api/addwctosuplst"
+    mainUrlDeleteBoxSerial = "https://172.16.0.99:444/api/deletewcfromsuplst"
+
+    micropartionsUrl = "https://172.16.0.99:445/micro_recieve"
+    microPartionsSaveAllUrl = "https://172.16.0.99:445/micro_save"
+    micropartionResizeUrl = "https://172.16.0.99:445/micro_change"
 }
 
 
@@ -372,8 +382,8 @@ const htmlModalErrorNewBoxSerial = () => {
 }
 
 // модальное окно удаления имеющийся бокссерии
-const htmlModalDeleteList = () =>{
-    if(buttonActiveBoxserial != ''){
+const htmlModalDeleteList = () => {
+    if (buttonActiveBoxserial != '') {
         let htmlModalDeleteList = (`
         <div class="modal-wrap">
   <div class="modal-win" >
@@ -395,15 +405,15 @@ const htmlModalDeleteList = () =>{
 }
 
 //функция удаления выбранной серии
-const handlerDeleteBoxserialLocalData=(buttonActive)=>{
+const handlerDeleteBoxserialLocalData = (buttonActive) => {
     deleteElems(document.querySelectorAll('.html_box'))
     htmlSpiner()
     let newObjectBoxserial = new Object()
     newObjectBoxserial.wcguid = localData.OperationsLists[0].WcGuid
     newObjectBoxserial.boxserial = buttonActive
-    for(let i =0;i < localData.OperationsLists[0].Boxes.length; i++ ){
-        if(localData.OperationsLists[0].Boxes[i].BoxSerial === buttonActive ){
-            localData.OperationsLists[0].Boxes.splice(i,1)
+    for (let i = 0; i < localData.OperationsLists[0].Boxes.length; i++) {
+        if (localData.OperationsLists[0].Boxes[i].BoxSerial === buttonActive) {
+            localData.OperationsLists[0].Boxes.splice(i, 1)
         }
     }
     let myHeaders = new Headers();
@@ -415,7 +425,7 @@ const handlerDeleteBoxserialLocalData=(buttonActive)=>{
         body: jsonBoxSerial,
         redirect: 'follow'
     };
-    fetch(mainUrlDeleteBoxSerial,requestOptionsDeleteBoxserial)
+    fetch(mainUrlDeleteBoxSerial, requestOptionsDeleteBoxserial)
     handlerControlLoadingSkusSerial()
     handlerBoxSerial()
 }
@@ -870,7 +880,7 @@ function handlerSendAllDataBase() {
             body: mapToJson,
             redirect: 'follow'
         };
-        fetch(mainUrlMicroParti, requestOptionsMapMicropartion)
+        fetch(microPartionsSaveAllUrl, requestOptionsMapMicropartion)
             .then(response => response.json())
             .then(function (result) {
             })
@@ -1007,7 +1017,7 @@ function handlerDeleteDateMicropartionDefect(guidMicro, BoxSerial, SkusSerial) {
         body: allDataDefectMicro,
         redirect: 'follow'
     };
-    fetch("http://localhost:5167/micro_change", requestOptionsAllData)
+    fetch(micropartionResizeUrl, requestOptionsAllData)
         .then(response => response.json())
         .then(function (result) {
         })
@@ -1490,7 +1500,7 @@ function handlerFetchMicropartion() {
         body: jsonBox,
         redirect: 'follow'
     };
-    fetch(mainUrlMicroParti, requestOptionsMicroPartion)
+    fetch(micropartionsUrl, requestOptionsMicroPartion)
         .then(response => response.json())
         .then(function (result) {
             if (Object.keys(result).length != 0) {
