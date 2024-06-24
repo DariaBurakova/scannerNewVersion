@@ -599,7 +599,7 @@ function handlerDeleteLocalDataDefect(BoxSerial, SkusSerial, OperationNumber, te
                                 dataBaseAll.WcGuid = WcGuid
                                 dataBaseAll.SkusSerial = itemSkusSerial.SkusSerial
                                 dataBaseAll.BoxSerial = BoxSerial
-                                dataBaseAll.Operation = itemSkusSerialIn.Operation//
+                                dataBaseAll.Operation = itemSkusSerialIn.Operation
                                 dataBaseAll.ActionNumber = parseInt(num)
                                 dataBaseAll.OperationNumber = parseInt(itemSkusSerialIn.OperationNumber)
                                 dataBaseAll.CheckBox = checkBox
@@ -628,7 +628,6 @@ const handlerSearchTimerMap = (SkusSerial, BoxSerial, InOperationNumber, Operati
                             itemSkusSerial.Operations.find(itemNumOperationsStatus => {
                                 if (itemNumOperationsStatus.OperationNumber == parseInt(InOperationNumber)) {//
                                     GlobalTimer.changeTimerState(itemAllSkusSerialItem.SkusSerial, Number(itemNumOperationsStatus.OperationNumber), startOrStop, length)
-                                    console.log(GlobalTimer.allTimers.get(itemAllSkusSerialItem.SkusSerial).get(Number(OperationNumber)).getTime() / 1000)
                                 }
                             })
                         }
@@ -640,26 +639,26 @@ const handlerSearchTimerMap = (SkusSerial, BoxSerial, InOperationNumber, Operati
     })
 }
 
-//функция  останавливает время у изделий с браком,но ей мы не пользуемся пока
-const handlerSearchTimerMapOneDefect = (SkusSerial, BoxSerial, InOperationNumber, OperationNumber, startOrStop, length) => {
-    localData.OperationsLists.find(itemBox => {
-        itemBox.Boxes.find(itemBoxSerial => {
-            if (itemBoxSerial.BoxSerial === BoxSerial) {
-                itemBoxSerial.Skus.find(itemSkusSerial => {
-                    if (itemSkusSerial.SkusSerial == SkusSerial) {
-                        itemSkusSerial.Operations.find(itemNumOperationsStatus => {
-                            if (itemNumOperationsStatus.OperationNumber == parseInt(InOperationNumber)) {
-                                GlobalTimer.changeTimerState(itemSkusSerial.SkusSerial, Number(itemNumOperationsStatus.OperationNumber), startOrStop, length)
-                                console.log(GlobalTimer.allTimers.get(SkusSerial).get(Number(OperationNumber)).getTime() / 1000)
-                            }
-                        })
-                    }
-                })
-            }
-        })
-
-    })
-}
+// //функция  останавливает время у изделий с браком,но ей мы не пользуемся пока
+// const handlerSearchTimerMapOneDefect = (SkusSerial, BoxSerial, InOperationNumber, OperationNumber, startOrStop, length) => {
+//     localData.OperationsLists.find(itemBox => {
+//         itemBox.Boxes.find(itemBoxSerial => {
+//             if (itemBoxSerial.BoxSerial === BoxSerial) {
+//                 itemBoxSerial.Skus.find(itemSkusSerial => {
+//                     if (itemSkusSerial.SkusSerial == SkusSerial) {
+//                         itemSkusSerial.Operations.find(itemNumOperationsStatus => {
+//                             if (itemNumOperationsStatus.OperationNumber == parseInt(InOperationNumber)) {
+//                                 GlobalTimer.changeTimerState(itemSkusSerial.SkusSerial, Number(itemNumOperationsStatus.OperationNumber), startOrStop, length)
+//                                 console.log(GlobalTimer.allTimers.get(SkusSerial).get(Number(OperationNumber)).getTime() / 1000)
+//                             }
+//                         })
+//                     }
+//                 })
+//             }
+//         })
+//
+//     })
+// }
 
 //создаем кнопки серий
 const htmlButtonSkusSerial = (itemSkusSerial, itemBoxSerial, itemSkusFriendlyName) => {
@@ -845,11 +844,9 @@ function handlerTextButoonBoxSerial() {
 //отправка всего в 1с
 function handlerSendAllDataBase() {
     let dateTimeButton = new Date()
-    // dateTimeButton = dateTimeButton.toLocaleTimeString()
     let hours = dateTimeButton.getHours()
     let minutes = dateTimeButton.getMinutes()
     buttonSendTime.textContent = `Отправлено ${hours}:${minutes}`
-    // buttonSendTime.textContent = `Отправлено ${dateTimeButton}`
     let myHeaders = new Headers();
     myHeaders.append("Content-Type", "application/json");
     let allData = JSON.stringify(dataBase);
@@ -994,23 +991,23 @@ function handlerMicropartionCheckBoxItemSkusSerial(BoxSerial, SkusSerial, InOper
 //функция оправки для микропартии с браком
 function handlerDeleteDateMicropartionDefect(guidMicro, BoxSerial, SkusSerial) {
     let dateDefect = new Date().toISOString()
-    let defectData = []
+    // let defectData = []
     let microDataDefect = new Object()
     microDataDefect.GuidMcro = guidMicro
     microDataDefect.OperationDate = dateDefect
     microDataDefect.BoxSerial = BoxSerial
     microDataDefect.SkusSerial = SkusSerial
-    defectData.push(microDataDefect)
+    // defectData.push(microDataDefect)
     let myHeaders = new Headers();
     myHeaders.append("Content-Type", "application/json");
-    let allDataDefectMicro = JSON.stringify(defectData);
+    let allDataDefectMicro = JSON.stringify(microDataDefect);
     let requestOptionsAllData = {
         method: 'POST',
         headers: myHeaders,
         body: allDataDefectMicro,
         redirect: 'follow'
     };
-    fetch(mainUrl + "changeFull", requestOptionsAllData)
+    fetch("http://localhost:5167/micro_change", requestOptionsAllData)
         .then(response => response.json())
         .then(function (result) {
         })
@@ -1039,7 +1036,6 @@ function create_new_micropartion(main_micropartion_object, micropartion_guid, sk
         main_micropartion_object.get(micropartion_guid).get(box_serial).set(serial, new Map());
         main_micropartion_object.get(micropartion_guid).get(box_serial).get(serial).set(operation_guid, operation_number, dateNow);
     });
-    console.log(microPartions_global)
 }
 
 function check_do_we_have_micropartion_with_this_operation(all_micropartions, box_serial, sku_serial, operation_guid, operation_number) {
@@ -1142,7 +1138,6 @@ function microPartionChecker(BoxSerial, InOperationNumber, SkusSerial, Operation
                 handlerSearchLocalData(BoxSerial, SkusSerial, OperationNumber, textStatus, WcGuid, num, InOperationNumber)
                 console.log(microPartions_global)
             } else {
-                console.log(num)
                 handlerControlMapTimeAndButton(BoxSerial, SkusSerial, OperationNumber, textStatus, WcGuid, parseInt(num), InOperationNumber, allOperationsArray.length)
                 handlerDeleteLocalDataDefect(BoxSerial, SkusSerial, OperationNumber, textStatus, WcGuid, num, InOperationNumber)
                 checkBoxItem = checkBoxItem - 1
