@@ -1096,7 +1096,7 @@ function check_micropartion_size(all_micropartions, micropartion_guid) {
 
 
 //Проверяем данные ...есть ли такая микропартия
-function microPartionChecker(BoxSerial, InOperationNumber, SkusSerial, OperationNumber, textStatus, WcGuid, num) {
+function microPartionChecker(BoxSerial, InOperationNumber, SkusSerial, OperationNumber, textStatus, WcGuid, num){
     let allOperationsArray = []
     let currentMicropartion = "empty"
     for (let i = checkBoxItemSkusSerial.length - 1; i >= 0; i--) {
