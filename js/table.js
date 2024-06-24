@@ -498,7 +498,7 @@ const htmlModalWindowDefect = (BoxSerial, SkusSerial, OperationNumber, textStatu
       </div>
       <div class="text-end " >
         <button type="button" class="btn btn-secondary " onclick="deleteElems(document.querySelectorAll('.modal-wrap'))">Нет</button>
-        <button type="button" class="btn btn-secondary " onclick="microPartionChecker('${BoxSerial}','${InOperationNumber}', '${SkusSerial}', '${OperationNumber}', '${textStatus}', '${WcGuid}', Number('${num}')),deleteElems(document.querySelectorAll('.modal-wrap'))">Да</button>
+        <button type="button" class="btn btn-secondary " onclick="microPartionChecker('${BoxSerial}','${InOperationNumber}', '${SkusSerial}', '${OperationNumber}', '${textStatus}', '${WcGuid}','${parseInt(num)}'),deleteElems(document.querySelectorAll('.modal-wrap'))">Да</button>
       </div>
   </div>
 </div>
@@ -1246,10 +1246,7 @@ function handlerShowTable(BoxSerial, SkusSerial) {
                             }
                             allButtonsIn.push(buttonsIn)
                             handlerButtonHidden(allButtonsIn)
-                            // console.log(document.getElementById(`${itemSkusSerial.Operations[i].OperationNumber}status${SkusSerial}`).textContent.toLowerCase())
-                            // if(document.getElementById(`${itemSkusSerial.Operations[i].OperationNumber}status${SkusSerial}`).textContent.toLowerCase() == "несоответствие"){
-                            //     document.getElementById(`${itemSkusSerial.SkusSerial}liButton`).remove()
-                            // }
+
                         }
                     }
                 })
