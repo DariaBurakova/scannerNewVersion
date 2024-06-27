@@ -415,7 +415,8 @@ let localData = {
             {
                 "BoxSerial": "00000010442 02308",
                 "ClientOrder": "270-23/Ц   ",
-                "Skus": [{
+                "Skus": [
+                    {
                 "SkusID": "12226bea-3b65-11ee-8c44-00505681f37b",
                 "SkusFriendlyName": "КБСО - -3,0ESFC2Л ΔL\u003d+0,03м ",
                 "SkusSerial": "00000010442 023081",
@@ -452,7 +453,8 @@ let localData = {
                     "Status": "начато",
                     "OperationalDuration": 0
                 }]
-            }, {
+            },
+                    {
                 "SkusID": "12226bea-3b65-11ee-8c44-00505681f37bc",
                 "SkusFriendlyName": "КБСО - -3,0ESFC2Л ΔL\u003d+0,03м ",
                 "SkusSerial": "00000010442 023082",
@@ -489,7 +491,8 @@ let localData = {
                     "Status": "начато",
                     "OperationalDuration": 0
                 }]
-            }, {
+            },
+                    {
                 "SkusID": "12226bea-3b65-11ee-8c44-00505681f37b7",
                 "SkusFriendlyName": "КБСО - -3,0ESFC2Л ΔL\u003d+0,03м ",
                 "SkusSerial": "00000010442 023083",
@@ -786,7 +789,8 @@ let localData = {
             {
                 "BoxSerial": "00000010442 ",
                 "ClientOrder": "30-тест   ",
-                "Skus": [{
+                "Skus": [
+                    {
                     "SkusID": "12226bea-3b65-11ee-8c44-00505681f00087",
                     "SkusFriendlyName": "КБСО-тест ",
                     "SkusSerial": "00000010442 0230976",
@@ -796,7 +800,7 @@ let localData = {
                         "OperationHumanName": "Маркировка кабеля (Армирование)",
                         "DateOfChange": "27.10.2023 13.20.55",
                         "RealExecutor": "Рабочий стол 3 (Сапрыкин)",
-                        "Status": "Сформировано",
+                        "Status": "несоответствие",
                         "OperationalDuration": 0,
                     }, {
                         "OperationNumber": 1,
@@ -823,7 +827,8 @@ let localData = {
                         "Status": "Сформировано",
                         "OperationalDuration": 0
                     }]
-                }, {
+                },
+                    {
                     "SkusID": "12226bea-3b65-11ee-8c44-00505681f39900",
                     "SkusFriendlyName": "КБСО-тест2 ",
                     "SkusSerial": "00000010442 023082",
@@ -860,7 +865,8 @@ let localData = {
                         "Status": "Сформировано",
                         "OperationalDuration": 0
                     }]
-                }, {
+                },
+                    {
                     "SkusID": "12226bea-3b65-11ee-8c44-00505681f3985",
                     "SkusFriendlyName": "КБСО-тест3",
                     "SkusSerial": "00000010442 023975412",
@@ -1030,7 +1036,7 @@ let localData = {
                         "OperationHumanName": "Маркировка кабеля (Армирование)",
                         "DateOfChange": "27.10.2023 13.20.55",
                         "RealExecutor": "Рабочий стол 3 (Сапрыкин)",
-                        "Status": "Сформировано",
+                        "Status": "несоответствие",
                         "OperationalDuration": 0,
                     }, {
                         "OperationNumber": 1,
@@ -1057,7 +1063,8 @@ let localData = {
                         "Status": "Сформировано",
                         "OperationalDuration": 0
                     }]
-                }, {
+                },
+                    {
                     "SkusID": "12226bea-3b65-11ee-8c44-0050508751f399987545",
                     "SkusFriendlyName": "КОД-тест2 ",
                     "SkusSerial": "00000010442 02376572",
@@ -1067,7 +1074,7 @@ let localData = {
                         "OperationHumanName": "Маркировка кабеля (Армирование)",
                         "DateOfChange": "27.10.2023 13.20.55",
                         "RealExecutor": "Рабочий стол 3 (Сапрыкин)",
-                        "Status": "Сформировано",
+                        "Status": "несоответствие",
                         "OperationalDuration": 0
                     }, {
                         "OperationNumber": 2,
@@ -1672,7 +1679,9 @@ function handlerDeleteLocalDataDefect(BoxSerial, SkusSerial, OperationNumber, te
                           dataBaseAll.DateNow = data.toISOString()
                           dataBaseAll.OperationalDuration = GlobalTimer.allTimers.get(itemSkusSerial.SkusSerial).get(Number(itemSkusSerialIn.OperationNumber)).getTime()
                           dataBase.push(dataBaseAll)
-                          itemSkusSerial.SkusSerial= 'Несоответствие'
+                            // itemBoxSerial.Skus.splice(1)
+                          // // itemSkusSerial.SkusSerial= 'Несоответствие'
+                          //   console.log(localData)
                   }
               })
           }
@@ -1680,6 +1689,14 @@ function handlerDeleteLocalDataDefect(BoxSerial, SkusSerial, OperationNumber, te
             }
         })
     })
+    for(let i =0;i < localData.OperationsLists[0].Boxes.length; i++ ){
+        for(let j =0; j< localData.OperationsLists[0].Boxes[i].Skus.length; j++){
+            if(localData.OperationsLists[0].Boxes[i].Skus[j].SkusSerial == SkusSerial){
+                localData.OperationsLists[0].Boxes[i].Skus.splice(j,1)
+            }
+        }
+    }
+    console.log(localData)
 }
 
 
@@ -2577,17 +2594,34 @@ function axiosLogin() {
 }
 
 function handlerSortOperationNumber(){
+    let count=0
+    // for(let i =0;i < localData.OperationsLists[0].Boxes.length; i++ ){
+    //     for(let j =0; j< localData.OperationsLists[0].Boxes[i].Skus.length; j++){
+    //         count=0
+    //         for(let k = 0;k<localData.OperationsLists[0].Boxes[i].Skus[j].Operations.length;k++){
+    //             if(localData.OperationsLists[0].Boxes[i].Skus[j].Operations[k].Status.toLowerCase() == 'несоответствие' ){
+    //                 count=count+1
+    //                 localData.OperationsLists[0].Boxes[i].Skus.splice(j,count)
+    //                 // console.log(localData)
+    //                 // break;
+    //             }
+    //         }
+    //     }
+    // }
+
     localData.OperationsLists.find(itemBox => {
         itemBox.Boxes.find(itemSkusSerial => {
             itemSkusSerial.Skus.find(itemOperations=>{
                 itemOperations.Operations.sort((a,b)=>{
                     return a.OperationNumber - b.OperationNumber
                 })
-               itemOperations.Operations.find(itemStatus=>{
-                   if(itemStatus.Status.toLowerCase() == 'несоответствие'){
-                       itemOperations.SkusSerial ='Несоответствие'
-                   }
-               })
+
+               // itemOperations.Operations.find(itemStatus=>{
+               //     if(itemStatus.Status.toLowerCase() == 'несоответствие'){
+               //         itemSkusSerial.Skus.splice()
+               //
+               //     }
+               // })
             })
 
         })
