@@ -1105,4 +1105,4 @@ createParseJsonForFront(micropartions)
 handlerBoxSerialForMicropartion()
 // createJsonForBackend(microPartions_global)
 slideCarouselBox()
-
+ 
