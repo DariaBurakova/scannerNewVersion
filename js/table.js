@@ -41,349 +41,6 @@ let boxesObject = new Object()
 
 //БДА 2023-11-06 Массив, который отсылается в мидлэнд со всеми нажатиями
 
-let micropartions= {
-    "32f1cfae-8e39-4985-a3bd-d52027a5d693": {
-        "OperationDate" : "2024-05-31T09:22:03.449Z",
-        "BoxSerial": "БТМК ТЕСТ",
-        "Skus": [
-            {
-                "SkusSerial": "2592403",
-                "PartionOperations": [
-                    {
-                        "OperationGuid": "f8caa9e0-eb3d-11ee-8c53-00505681f37b",
-                        "OpertionNumber": 2,
-                    }
-                ]
-            },
-            {
-                "SkusSerial": "2602403",
-                "PartionOperations": [
-                    {
-                        "OperationGuid": "f8caa9e0-eb3d-11ee-8c53-00505681f37b",
-                        "OpertionNumber": 2,
-                    }
-                ]
-            }
-        ]
-    },
-    "358569c0-4030-4a81-9c32-6939d9adcb85": {
-        "OperationDate" : "2024-05-31T09:22:03.449Z",
-        "BoxSerial": "ФЛ44-03/24",
-        "Skus": [
-            {
-                "SkusSerial": "4202403",
-                "PartionOperations": [
-                    {
-                        "OperationGuid": "1f06b009-eb4f-11ee-8c53-00505681f37b",
-                        "OpertionNumber": 68,
-                    }
-                ]
-            },
-            {
-                "SkusSerial": "4192403",
-                "PartionOperations": [
-                    {
-                        "OperationGuid": "1f06b009-eb4f-11ee-8c53-00505681f37b",
-                        "OpertionNumber": 68,
-
-                    }
-                ]
-            },
-            {
-                "SkusSerial": "4182403",
-                "PartionOperations": [
-                    {
-                        "OperationGuid": "1f06b009-eb4f-11ee-8c53-00505681f37b",
-                        "OpertionNumber": 68,
-
-                    }
-                ]
-            },
-            {
-                "SkusSerial": "4172403",
-                "PartionOperations": [
-                    {
-                        "OperationGuid": "1f06b009-eb4f-11ee-8c53-00505681f37b",
-                        "OpertionNumber": 68,
-
-                    }
-                ]
-            },
-            {
-                "SkusSerial": "4162403",
-                "PartionOperations": [
-                    {
-                        "OperationGuid": "1f06b009-eb4f-11ee-8c53-00505681f37b",
-                        "OpertionNumber": 68,
-
-                    }
-                ]
-            },
-            {
-                "SkusSerial": "4152403",
-                "PartionOperations": [
-                    {
-                        "OperationGuid": "1f06b009-eb4f-11ee-8c53-00505681f37b",
-                        "OpertionNumber": 68,
-
-                    }
-                ]
-            },
-            {
-                "SkusSerial": "4142403",
-                "PartionOperations": [
-                    {
-                        "OperationGuid": "1f06b009-eb4f-11ee-8c53-00505681f37b",
-                        "OpertionNumber": 68,
-
-                    }
-                ]
-            },
-            {
-                "SkusSerial": "4132403",
-                "PartionOperations": [
-                    {
-                        "OperationGuid": "1f06b009-eb4f-11ee-8c53-00505681f37b",
-                        "OpertionNumber": 68,
-
-                    }
-                ]
-            },
-            {
-                "SkusSerial": "4122403",
-                "PartionOperations": [
-                    {
-                        "OperationGuid": "1f06b009-eb4f-11ee-8c53-00505681f37b",
-                        "OpertionNumber": 68,
-
-                    }
-                ]
-            },
-            {
-                "SkusSerial": "4112403",
-                "PartionOperations": [
-                    {
-                        "OperationGuid": "1f06b009-eb4f-11ee-8c53-00505681f37b",
-                        "OpertionNumber": 68,
-
-                    }
-                ]
-            }
-        ]
-    },
-    "b70dfed1-4000-4cc2-9165-39b8ed4435d9": {
-        "OperationDate" : "2024-05-31T09:22:03.449Z",
-        "BoxSerial": "ФЛ44-03/24",
-        "Skus": [
-            {
-                "SkusSerial": "4202403",
-                "PartionOperations": [
-                    {
-                        "OperationGuid": "f5489b75-eb4d-11ee-8c53-00505681f37b",
-                        "OpertionNumber": 61,
-
-                    }
-                ]
-            },
-            {
-                "SkusSerial": "4192403",
-                "PartionOperations": [
-                    {
-                        "OperationGuid": "f5489b75-eb4d-11ee-8c53-00505681f37b",
-                        "OpertionNumber": 61,
-
-                    }
-                ]
-            },
-            {
-                "SkusSerial": "4182403",
-                "PartionOperations": [
-                    {
-                        "OperationGuid": "f5489b75-eb4d-11ee-8c53-00505681f37b",
-                        "OpertionNumber": 61,
-
-                    }
-                ]
-            },
-            {
-                "SkusSerial": "4172403",
-                "PartionOperations": [
-                    {
-                        "OperationGuid": "f5489b75-eb4d-11ee-8c53-00505681f37b",
-                        "OpertionNumber": 61,
-
-                    }
-                ]
-            },
-            {
-                "SkusSerial": "4162403",
-                "PartionOperations": [
-                    {
-                        "OperationGuid": "f5489b75-eb4d-11ee-8c53-00505681f37b",
-                        "OpertionNumber": 61,
-
-                    }
-                ]
-            },
-            {
-                "SkusSerial": "4152403",
-                "PartionOperations": [
-                    {
-                        "OperationGuid": "f5489b75-eb4d-11ee-8c53-00505681f37b",
-                        "OpertionNumber": 61,
-
-                    }
-                ]
-            },
-            {
-                "SkusSerial": "4142403",
-                "PartionOperations": [
-                    {
-                        "OperationGuid": "f5489b75-eb4d-11ee-8c53-00505681f37b",
-                        "OpertionNumber": 61,
-
-                    }
-                ]
-            },
-            {
-                "SkusSerial": "4132403",
-                "PartionOperations": [
-                    {
-                        "OperationGuid": "f5489b75-eb4d-11ee-8c53-00505681f37b",
-                        "OpertionNumber": 61,
-
-                    }
-                ]
-            },
-            {
-                "SkusSerial": "4122403",
-                "PartionOperations": [
-                    {
-                        "OperationGuid": "f5489b75-eb4d-11ee-8c53-00505681f37b",
-                        "OpertionNumber": 61,
-
-                    }
-                ]
-            },
-            {
-                "SkusSerial": "4112403",
-                "PartionOperations": [
-                    {
-                        "OperationGuid": "f5489b75-eb4d-11ee-8c53-00505681f37b",
-                        "OpertionNumber": 61,
-
-                    }
-                ]
-            }
-        ]
-    },
-    "ff9515c5-4a80-4887-b2f0-94b7f8574bf8": {
-        "OperationDate" : "2024-05-31T09:22:03.449Z",
-        "BoxSerial": "ФЛ44-03/24",
-        "Skus": [
-            {
-                "SkusSerial": "4202403",
-                "PartionOperations": [
-                    {
-                        "OperationGuid": "c12a8cec-eb4d-11ee-8c53-00505681f37b",
-                        "OpertionNumber": 59,
-                    }
-                ]
-            },
-            {
-                "SkusSerial": "4192403",
-                "PartionOperations": [
-                    {
-                        "OperationGuid": "c12a8cec-eb4d-11ee-8c53-00505681f37b",
-                        "OpertionNumber": 59,
-
-                    }
-                ]
-            },
-            {
-                "SkusSerial": "4182403",
-                "PartionOperations": [
-                    {
-                        "OperationGuid": "c12a8cec-eb4d-11ee-8c53-00505681f37b",
-                        "OpertionNumber": 59,
-
-                    }
-                ]
-            },
-            {
-                "SkusSerial": "4172403",
-                "PartionOperations": [
-                    {
-                        "OperationGuid": "c12a8cec-eb4d-11ee-8c53-00505681f37b",
-                        "OpertionNumber": 59,
-
-                    }
-                ]
-            },
-            {
-                "SkusSerial": "4162403",
-                "PartionOperations": [
-                    {
-                        "OperationGuid": "c12a8cec-eb4d-11ee-8c53-00505681f37b",
-                        "OpertionNumber": 59,
-
-                    }
-                ]
-            },
-            {
-                "SkusSerial": "4152403",
-                "PartionOperations": [
-                    {
-                        "OperationGuid": "c12a8cec-eb4d-11ee-8c53-00505681f37b",
-                        "OpertionNumber": 59,
-
-                    }
-                ]
-            },
-            {
-                "SkusSerial": "4142403",
-                "PartionOperations": [
-                    {
-                        "OperationGuid": "c12a8cec-eb4d-11ee-8c53-00505681f37b",
-                        "OpertionNumber": 59,
-
-                    }
-                ]
-            },
-            {
-                "SkusSerial": "4132403",
-                "PartionOperations": [
-                    {
-                        "OperationGuid": "c12a8cec-eb4d-11ee-8c53-00505681f37b",
-                        "OpertionNumber": 59,
-
-                    }
-                ]
-            },
-            {
-                "SkusSerial": "4122403",
-                "PartionOperations": [
-                    {
-                        "OperationGuid": "c12a8cec-eb4d-11ee-8c53-00505681f37b",
-                        "OpertionNumber": 59,
-
-                    }
-                ]
-            },
-            {
-                "SkusSerial": "4112403",
-                "PartionOperations": [
-                    {
-                        "OperationGuid": "c12a8cec-eb4d-11ee-8c53-00505681f37b",
-                        "OpertionNumber": 59,
-
-                    }
-                ]
-            }
-        ]
-    },
-
-}
 
 let localData = {
     "OperationsLists": [{
@@ -1674,7 +1331,16 @@ const handlerControlStatus = (BoxSerial, SkusSerial, OperationNumber, textStatus
         controlStatus = 0
         errorsControl = []
     } else {
-        microPartionChecker(BoxSerial, InOperationNumber, SkusSerial, OperationNumber, textStatus, WcGuid, num)
+        if (num != 0) {
+            handlerControlMapTimeAndButton(BoxSerial, SkusSerial, OperationNumber, textStatus, WcGuid, num, InOperationNumber, allOperationsArray.length)
+            handlerSearchLocalData(BoxSerial, SkusSerial, OperationNumber, textStatus, WcGuid, num, InOperationNumber)
+        } else {
+            handlerControlMapTimeAndButton(BoxSerial, SkusSerial, OperationNumber, textStatus, WcGuid, parseInt(num), InOperationNumber, allOperationsArray.length)
+            handlerDeleteLocalDataDefect(BoxSerial, SkusSerial, OperationNumber, textStatus, WcGuid, num, InOperationNumber)
+            checkBoxItem = checkBoxItem - 1
+            checkBoxItemSkusSerial = checkBoxItemSkusSerial.filter(item => (item.SkusSerial !== SkusSerial))
+            handlerSearchTimerMap(SkusSerial, BoxSerial, InOperationNumber, OperationNumber, checkBoxItemSkusSerial, true, length)
+        }
     }
 }
 
@@ -1708,6 +1374,7 @@ function handlerDeleteLocalDataDefect(BoxSerial, SkusSerial, OperationNumber, te
             }
         })
     })
+    handlerSendAllDataBase()
     for(let i =0;i < localData.OperationsLists[0].Boxes.length; i++ ){
     for(let j =0; j< localData.OperationsLists[0].Boxes[i].Skus.length; j++){
         if(localData.OperationsLists[0].Boxes[i].Skus[j].SkusSerial == SkusSerial){
@@ -1741,27 +1408,6 @@ const handlerSearchTimerMap = (SkusSerial, BoxSerial, InOperationNumber, Operati
     })
 }
 
-// //функция  останавливает время у изделий с браком,но ей мы не пользуемся пока
-// const handlerSearchTimerMapOneDefect = (SkusSerial, BoxSerial, InOperationNumber, OperationNumber, startOrStop, length) => {
-//     localData.OperationsLists.find(itemBox => {
-//         itemBox.Boxes.find(itemBoxSerial => {
-//             if (itemBoxSerial.BoxSerial === BoxSerial) {
-//                 itemBoxSerial.Skus.find(itemSkusSerial => {
-//                     if (itemSkusSerial.SkusSerial == SkusSerial) {
-//                         itemSkusSerial.Operations.find(itemNumOperationsStatus => {
-//                             if (itemNumOperationsStatus.OperationNumber == parseInt(InOperationNumber)) {
-//                                 GlobalTimer.changeTimerState(itemSkusSerial.SkusSerial, Number(itemNumOperationsStatus.OperationNumber), startOrStop, length)
-//                                 console.log(GlobalTimer.allTimers.get(SkusSerial).get(Number(OperationNumber)).getTime() / 1000)
-//                             }
-//                         })
-//                     }
-//                 })
-//             }
-//         })
-//
-//     })
-// }
-
 //создаем кнопки серий
 const htmlButtonSkusSerial = (itemSkusSerial, itemBoxSerial, itemSkusFriendlyName) => {
     let htmlButton = (`<li  class="liButton "  id ="${itemSkusSerial}liButton">
@@ -1785,68 +1431,6 @@ const htmlBoxSerial = (itemBoxSerial, itemWcGuid, itemClientOrder) => {
     } else {
         addClassListAll(document.querySelectorAll('.clientOrder'), 'hidden')
     }
-}
-// функция переводит микропартию в объект json
-const createJsonForBackend = (micropartions) => {
-    let raw_for_json = [];
-    micropartions.forEach(function (value, key, map) {
-        // key - это micropartion_guid
-        let object = new Object();
-        object['MicropartionGuid'] = key;
-        object['Box'] = new Object();
-        // key - это box_serial
-        // этим булевом управляем установкой даты, если ложь - value_2 - это дата, иначе это бокссериал
-        dateCheckerForJsonCreation = false;
-        value.forEach(function (value_2, key_2, map_2) {
-            if (!dateCheckerForJsonCreation) {
-                object['Box']['OperationDate'] = value_2;
-                dateCheckerForJsonCreation = true;
-            } else {
-                object['Box']['BoxSerial'] = key_2;
-                object['Box']['Skus'] = [];
-
-                // key - это sku_serial
-                value_2.forEach(function (value_3, key_3, map_3) {
-                    let temp_obj = new Object();
-                    temp_obj['SkuSerial'] = key_3;
-                    // key - это operation_guid value - это номер операции
-                    value_3.forEach(function (value_4, key_4, map_4) {
-                        let fin_temp_obj = new Object();
-                        fin_temp_obj['OperationGuid'] = key_4;
-                        fin_temp_obj['OperationNumber'] = value_4;
-                        temp_obj['PartionOperations'] = fin_temp_obj;
-                    })
-                    object['Box']['Skus'].push(temp_obj);
-                })
-            }
-
-        })
-
-        raw_for_json.push(object)
-    })
-    const mapToJson = JSON.stringify(raw_for_json);
-    return mapToJson;
-
-}
-
-// функция переводит микропартию из json
-const createParseJsonForFront = (micropartions) => {
-    for (let key in micropartions) {
-        let dateNow = 'operation_date'
-        let micropartionsGuid = key
-        let micropartionsBox = micropartions[key].BoxSerial
-        microPartions_global.set(key, new Map())
-        microPartions_global.get(key).set(dateNow, micropartions[key].OperationDate)
-        microPartions_global.get(key).set(micropartions[key].BoxSerial, new Map());
-        micropartions[key].Skus.forEach(itemSkus => {
-            microPartions_global.get(key).get(micropartions[key].BoxSerial).set(itemSkus.SkusSerial, new Map());
-            itemSkus.PartionOperations.forEach(itemOperatios => {
-                microPartions_global.get(key).get(micropartions[key].BoxSerial).get(itemSkus.SkusSerial,).set(itemOperatios.OperationGuid, itemOperatios.OpertionNumber);
-            })
-        })
-
-    }
-    // console.log(microPartions_global)
 }
 
 //функция отправки нового листа для добавления в данные
@@ -1958,32 +1542,12 @@ function handlerSendAllDataBase() {
         body: allData,
         redirect: 'follow'
     };
-    fetch(mainUrl + "changeFull", requestOptionsAllData)
-        .then(response => response.json())
-        .then(function (result) {
-        })
-        .catch(error => console.log('error', error));
-    // BAO отправка микропартий
-    if (microPartions_global.size > 0) {
-        let mapToJson = createJsonForBackend(microPartions_global)
-        let requestOptionsMapMicropartion = {
-            method: 'POST',
-            headers: myHeaders,
-            body: mapToJson,
-            redirect: 'follow'
-        };
-        fetch(microPartionsSaveAllUrl, requestOptionsMapMicropartion)
-            .then(response => response.json())
-            .then(function (result) {
-            })
-            .catch(error => console.log('error', error));
-    }
-
-
-    // if (connetcClient) {
-    //     client.send('/queue/btmchash_2', {"content-type": "text/plain"}, raw)
-    //     dataBase = []
-    // }
+    // fetch(mainUrl + "changeFull", requestOptionsAllData)
+    //     .then(response => response.json())
+    //     .then(function (result) {
+    //     })
+    //     .catch(error => console.log('error', error));
+    console.log(dataBase)
 
 }
 
@@ -2063,202 +1627,7 @@ function handlerSearchLocalData(BoxSerial, SkusSerial, OperationNumber, textStat
             }
         })
     })
-}
-
-//функция собирает данные для микропартии
-
-function handlerMicropartionCheckBoxItemSkusSerial(BoxSerial, SkusSerial, InOperationNumber) {
-    let partion;
-    localData.OperationsLists.find(itemBox => {
-        itemBox.Boxes.find(itemBoxSerial => {
-            if (itemBoxSerial.BoxSerial === BoxSerial) {
-                itemBoxSerial.Skus.find(itemSkusSerial => {
-                    if (itemSkusSerial.SkusSerial === SkusSerial) {
-                        itemSkusSerial.Operations.find(itemOperationNumber => {
-                            if (itemOperationNumber.OperationNumber === parseInt(InOperationNumber)) {
-                                partion = []
-                                partion.push(BoxSerial, SkusSerial, itemOperationNumber.Operation, parseInt(itemOperationNumber.OperationNumber), InOperationNumber)
-
-                            }
-                        })
-                    }
-                })
-            }
-        })
-    })
-    return partion;
-}
-
-//функция оправки для микропартии с браком
-function handlerDeleteDateMicropartionDefect(guidMicro, BoxSerial, SkusSerial) {
-    let dateDefect = new Date().toISOString()
-    // let defectData = []
-    let microDataDefect = new Object()
-    microDataDefect.GuidMcro = guidMicro
-    microDataDefect.OperationDate = dateDefect
-    microDataDefect.BoxSerial = BoxSerial
-    microDataDefect.SkusSerial = SkusSerial
-    // defectData.push(microDataDefect)
-    let myHeaders = new Headers();
-    myHeaders.append("Content-Type", "application/json");
-    let allDataDefectMicro = JSON.stringify(microDataDefect);
-    let requestOptionsAllData = {
-        method: 'POST',
-        headers: myHeaders,
-        body: allDataDefectMicro,
-        redirect: 'follow'
-    };
-    fetch(micropartionResizeUrl, requestOptionsAllData)
-        .then(response => response.json())
-        .then(function (result) {
-        })
-        .catch(error => console.log('error', error));
-}
-
-//гениратор id для микропартии
-
-function microPartionSerialCodeGenerator() {
-    return "10000000-1000-4000-8000-100000000000".replace(/[018]/g, c => (c ^ crypto.getRandomValues(new Uint8Array(1))[0] & 15 >> c / 4).toString(16));
-}
-
-// функция создает микропартию
-
-function create_new_micropartion(main_micropartion_object, micropartion_guid, sku_serials_array, box_serial, operation_guid, operation_number) {
-    let dateNow = 'operation_date'
-    main_micropartion_object.set(micropartion_guid, new Map());
-    let start = true
-    sku_serials_array.forEach(serial => {
-        if (start) {
-            main_micropartion_object.get(micropartion_guid).set(dateNow, new Date().toISOString())
-            main_micropartion_object.get(micropartion_guid).set(box_serial, new Map());
-            start = false;
-
-        }
-        main_micropartion_object.get(micropartion_guid).get(box_serial).set(serial, new Map());
-        main_micropartion_object.get(micropartion_guid).get(box_serial).get(serial).set(operation_guid, operation_number, dateNow);
-    });
-}
-
-function check_do_we_have_micropartion_with_this_operation(all_micropartions, box_serial, sku_serial, operation_guid, operation_number) {
-    let have_micropartion = false;
-    all_micropartions.forEach(function (value, key, map) {
-        if (value.has(box_serial)) {
-            // 2) проверяем, есть ли в принципе в микропартиях в этом боксе эти серийники (skuserial)
-            if (value.get(box_serial).has(sku_serial)) {
-                if (value.get(box_serial).get(sku_serial).has(operation_guid)) {
-                    if (value.get(box_serial).get(sku_serial).get(operation_guid) === operation_number) {
-                        have_micropartion = true;
-                    }
-                }
-            }
-        }
-    })
-    return have_micropartion;
-}
-
-function get_micropartion_guid(all_micropartions, box_serial, sku_serial, operation_guid, operation_number) {
-    let micropartion_guid = "temp_guid";
-    all_micropartions.forEach(function (value, key, map) {
-        if (value.has(box_serial)) {
-            // 2) проверяем, есть ли в принципе в микропартиях в этом боксе эти серийники (skuserial)
-            if (value.get(box_serial).has(sku_serial)) {
-                if (value.get(box_serial).get(sku_serial).has(operation_guid)) {
-                    if (value.get(box_serial).get(sku_serial).get(operation_guid) === operation_number) {
-                        micropartion_guid = key;
-                    }
-                }
-            }
-        }
-    })
-    return micropartion_guid;
-}
-
-// Получаем длину / количество изделий микропартии
-function check_micropartion_size(all_micropartions, micropartion_guid) {
-    let counter = 0;
-    all_micropartions.get(micropartion_guid).forEach(function (value, key, map) {
-        map.forEach(function (value_2, key_2, value) {
-            counter = value_2.size;
-        })
-    })
-
-    return counter;
-}
-
-
-//Проверяем данные ...есть ли такая микропартия
-function microPartionChecker(BoxSerial, InOperationNumber, SkusSerial, OperationNumber, textStatus, WcGuid, num){
-    let allOperationsArray = []
-    let currentMicropartion = "empty"
-    for (let i = checkBoxItemSkusSerial.length - 1; i >= 0; i--) {
-        allOperationsArray.push(handlerMicropartionCheckBoxItemSkusSerial(BoxSerial, checkBoxItemSkusSerial[i].SkusSerial, InOperationNumber));
-    }
-    // BAO: micro partions control
-    // проверяем все операции на принадлежность микропартиям, если есть - записываем в массив guid, если нет - пишем empty
-    // потом проходимся по все получившейся коллекции и проверяем идентичны ли все элементы в ней
-    let allMicropartionsGuidsForControll = [];
-    let guidMicro = ''
-    for (let x = 0; x < allOperationsArray.length; x++) {
-        if (check_do_we_have_micropartion_with_this_operation(microPartions_global, allOperationsArray[x][0], allOperationsArray[x][1], allOperationsArray[x][2], allOperationsArray[x][3])) {
-            let guid = get_micropartion_guid(microPartions_global, allOperationsArray[x][0], allOperationsArray[x][1], allOperationsArray[x][2], allOperationsArray[x][3]);
-            currentMicropartion = guid;
-            allMicropartionsGuidsForControll.push(guid);
-            guidMicro = guid
-
-
-        } else {
-            allMicropartionsGuidsForControll.push("empty");
-        }
-    }
-    // на этом этапе мы сделали список все микропартий к этим операциям (если есть - та что есть, если нет - empty), теперь смотрим чтобы все они были одинаковы
-    let currentPartionForLocalCheck = allMicropartionsGuidsForControll[0];
-    let allMicropartionsAreEqual = true;
-    for (let x = 0; x < allMicropartionsGuidsForControll.length; x++) {
-        if (allMicropartionsGuidsForControll[x] !== currentPartionForLocalCheck) {
-            allMicropartionsAreEqual = false;
-            //TODO: тут надо записать, какие микропартии отличаются для того чтобы в конце вывести пользователю
-            break;
-        }
-    }
-
-    if (currentMicropartion === "empty" && allMicropartionsAreEqual) {
-        // если все epmty и они все одинаковы - создаем микропартию новую
-        let newMicropartionGuid = microPartionSerialCodeGenerator()
-        let skusSerialArray = []
-        allOperationsArray.forEach(itemArray => {
-            skusSerialArray.push(itemArray[1])
-        })
-        create_new_micropartion(microPartions_global, newMicropartionGuid, skusSerialArray, allOperationsArray[0][0], allOperationsArray[0][2], allOperationsArray[0][3])
-        handlerControlMapTimeAndButton(BoxSerial, SkusSerial, OperationNumber, textStatus, WcGuid, num, InOperationNumber, allOperationsArray.length)
-        handlerSearchLocalData(BoxSerial, SkusSerial, OperationNumber, textStatus, WcGuid, num, InOperationNumber)
-    } else if (allMicropartionsAreEqual) {
-        let size_of_micropartion = check_micropartion_size(microPartions_global, allMicropartionsGuidsForControll[0]);
-        if (size_of_micropartion === allOperationsArray.length) {
-            if (num != 0) {
-                handlerControlMapTimeAndButton(BoxSerial, SkusSerial, OperationNumber, textStatus, WcGuid, num, InOperationNumber, allOperationsArray.length)
-                handlerSearchLocalData(BoxSerial, SkusSerial, OperationNumber, textStatus, WcGuid, num, InOperationNumber)
-                console.log(microPartions_global)
-            } else {
-                handlerControlMapTimeAndButton(BoxSerial, SkusSerial, OperationNumber, textStatus, WcGuid, parseInt(num), InOperationNumber, allOperationsArray.length)
-                handlerDeleteLocalDataDefect(BoxSerial, SkusSerial, OperationNumber, textStatus, WcGuid, num, InOperationNumber)
-                checkBoxItem = checkBoxItem - 1
-                checkBoxItemSkusSerial = checkBoxItemSkusSerial.filter(item => (item.SkusSerial !== SkusSerial))
-                handlerSearchTimerMap(SkusSerial, BoxSerial, InOperationNumber, OperationNumber, checkBoxItemSkusSerial, true, length)
-                handlerDeleteDateMicropartionDefect(guidMicro, BoxSerial, SkusSerial)
-                microPartions_global.get(guidMicro).get(BoxSerial).delete(SkusSerial)
-            }
-            // если все одинаковы и НЕ равны empty
-            // Запись времени. Если статус завершить или пауза, то при записи время надо поделить на длину allOperationsArray.length
-        } else {
-            //TODO: тут надо будет вывести сообщение пользователю какие серийники отличаются по микропариям -
-            htmlModalWindow('Ошибка ', 'Микропартии не одинаковы в операциях,выберите серии из одной микропартии', '')
-            // alert("Микропартии не одинаковы в операциях, ничего записывать не буду !");
-        }
-    } else {
-        //TODO: тут надо будет вывести сообщение пользователю какие серийники отличаются по микропариям -
-        htmlModalWindow('Ошибка ', 'Микропартии не одинаковы в операциях,выберите серии из одной микропартии', '')
-        // alert("Микропартии не одинаковы в операциях, ничего записывать не буду !");
-    }
+    handlerSendAllDataBase()
 }
 
 //функция собирает данные отправленные пользователем при нажатии на кнопки и отправляеи их в функцию handlerControlStatus
@@ -2543,17 +1912,6 @@ function handlerSkusSerial() {
     }
 }
 
-//функция вытаскивает все получившие боксерии для запроса в миропартии
-
-function handlerBoxSerialForMicropartion() {
-    let boxesArray = []
-    localData.OperationsLists.find(itemBox => {
-        itemBox.Boxes.find(itemBoxSerial => {
-            boxesArray.push(itemBoxSerial.BoxSerial)
-        })
-    })
-    boxesObject.boxes = boxesArray
-}
 
 //функция сортирует полученные данные по номеру операций
 function handlerSortOperationNumber() {
@@ -2570,28 +1928,7 @@ function handlerSortOperationNumber() {
     })
 }
 
-//функция запроса микропартии
-function handlerFetchMicropartion() {
-    let myHeaders = new Headers();
-    myHeaders.append("Content-Type", "application/json");
-    let jsonBox = JSON.stringify(boxesObject)
-    let param = (new URL(document.location)).searchParams;
-    let requestOptionsMicroPartion = {
-        method: 'POST',
-        headers: myHeaders,
-        body: jsonBox,
-        redirect: 'follow'
-    };
-    fetch(micropartionsUrl, requestOptionsMicroPartion)
-        .then(response => response.json())
-        .then(function (result) {
-            if (Object.keys(result).length != 0) {
-                createParseJsonForFront(result)
-            }
 
-        })
-        .catch(error => console.log('error', error))
-}
 //запуск всех функций
 function axiosLogin() {
     htmlSpiner()
@@ -2613,11 +1950,9 @@ function axiosLogin() {
         .then(response => response.json())
         .then(function (result) {
             localData = result
-            handlerBoxSerialForMicropartion()
             handlerGuidName()
             handlerSortOperationNumber()
             handlerSkusSerial()
-            handlerFetchMicropartion()
             setTimeout(handlerBoxSerial, 1000)
         })
         .catch(error => console.log('error', error));
@@ -2633,7 +1968,5 @@ setTimeout(handlerBoxSerial, 1000)
 // handlerAddObject()
 // axiosLogin()
 handlerGuidName()
-createParseJsonForFront(micropartions)
-handlerBoxSerialForMicropartion()
 // createJsonForBackend(microPartions_global)
 slideCarouselBox()
