@@ -1,4 +1,3 @@
-
 let dataBase = [] //массив отправки данных в 1с
 let buttonSendTime = document.querySelector('.time_button')
 let carouselBox = document.querySelector('.carousel_box')
@@ -781,8 +780,6 @@ let boxesObject = new Object()
 // }
 
 
-
-
 const executors = new Map();
 executors.set("24ae3488-6419-11ee-8c48-00505681f37b", "БТМК");
 executors.set("f5857713-2171-11ee-8c43-00505681f37b", "Жильцова Анастасия Сергеевна");
@@ -1384,13 +1381,13 @@ function handlerDeleteLocalDataDefect(BoxSerial, SkusSerial, OperationNumber, te
         })
     })
     handlerSendAllDataBase()
-    for(let i =0;i < localData.OperationsLists[0].Boxes.length; i++ ){
-    for(let j =0; j< localData.OperationsLists[0].Boxes[i].Skus.length; j++){
-        if(localData.OperationsLists[0].Boxes[i].Skus[j].SkusSerial == SkusSerial){
-            localData.OperationsLists[0].Boxes[i].Skus.splice(j,1)
+    for (let i = 0; i < localData.OperationsLists[0].Boxes.length; i++) {
+        for (let j = 0; j < localData.OperationsLists[0].Boxes[i].Skus.length; j++) {
+            if (localData.OperationsLists[0].Boxes[i].Skus[j].SkusSerial == SkusSerial) {
+                localData.OperationsLists[0].Boxes[i].Skus.splice(j, 1)
+            }
         }
     }
-}
 }
 
 
@@ -1552,23 +1549,11 @@ function handlerSendAllDataBase() {
         redirect: 'follow'
     };
     fetch(mainUrl + "changeFull", requestOptionsAllData)
-        .then(response => response.json())
-        .then((result)=> {
-            console.log(result.status)
-            if(result.status === 200){
-                dataBase=[]
+        .then(response =>  {
+            if (response.status === 200) {
+                dataBase = []
             }
-        })
-        .catch(error => console.log('error', error));
-    // BAO отправка микропартий
-
-console.log(dataBase)
-
-    // if (connetcClient) {
-    //     client.send('/queue/btmchash_2', {"content-type": "text/plain"}, raw)
-    //     dataBase = []
-    // }
-
+        }).catch(error => console.log('error', error));
 }
 
 // функция отслеживает нажатие на бокс и меняет цвет кнопки
