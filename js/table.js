@@ -27,7 +27,7 @@ let connetcClient = false
 let buttonListOrDocument = false
 let position = 0;
 let boxesObject = new Object()
-
+let activeTable=0;
 
 
 const executors = new Map();
@@ -587,6 +587,9 @@ const handlerControlStatus = (BoxSerial, SkusSerial, OperationNumber, textStatus
         controlStatus = 0
         errorsControl = []
     } else {
+        addClassListAll(document.querySelectorAll('.btnActive'),'btnNoActive')
+        addClassListAll(document.querySelectorAll('.btnActive'),'disabled')
+        activeTable=1
         if (num != 0) {
             handlerControlMapTimeAndButton(BoxSerial, SkusSerial, OperationNumber, textStatus, WcGuid, num, InOperationNumber, checkBoxItemSkusSerial.length)
             handlerSearchLocalData(BoxSerial, SkusSerial, OperationNumber, textStatus, WcGuid, num, InOperationNumber)
@@ -783,6 +786,13 @@ function handlerTextButoonBoxSerial() {
     }
 }
 
+// функция контролирует активность таблицы для нажатия
+function handlerControlActiveTable(){
+    activeTable=0
+    deleteClassListAll(document.querySelectorAll('.btnActive'),'btnNoActive')
+    deleteClassListAll(document.querySelectorAll('.btnActive'),'disabled')
+}
+
 //отправка всего в 1с
 function handlerSendAllDataBase() {
     // let dateTimeButton = new Date()
@@ -804,7 +814,10 @@ function handlerSendAllDataBase() {
                 dataBase = []
             }
         }).catch(error => console.log('error', error));
+
+    setTimeout(handlerControlActiveTable,2000)
 }
+
 
 // функция отслеживает нажатие на бокс и меняет цвет кнопки
 function handlerButtonBoxSerialStyle(item) {
@@ -887,35 +900,41 @@ function handlerSearchLocalData(BoxSerial, SkusSerial, OperationNumber, textStat
 
 //функция собирает данные отправленные пользователем при нажатии на кнопки и отправляеи их в функцию handlerControlStatus
 function handlerSendInLocal(SkusSerial, WcGuid, BoxSerial, Operation, num, Status2, InOperationNumber, OperationNumber, Status) {
-    let textStatus = ''
-    if (checkBoxItem > 0 || checkBoxAll > 0) {
-        if (num === 1) {
-            textStatus = 'Начато'
-            handlerControlStatus(BoxSerial, SkusSerial, OperationNumber, textStatus, WcGuid, num, InOperationNumber, Status)
-        }
-        if (num === 2) {
-            if (document.getElementById(`${InOperationNumber}pause${SkusSerial}`).textContent === 'Продолжить') {
+    if(activeTable==0){
+        let textStatus = ''
+        if (checkBoxItem > 0 || checkBoxAll > 0) {
+            if (num === 1) {
                 textStatus = 'Начато'
-                num = 1985
-                handlerControlStatus(BoxSerial, SkusSerial, OperationNumber, textStatus, WcGuid, num, InOperationNumber, Status)
-            } else {
-                textStatus = 'Пауза'
-                num = 2
                 handlerControlStatus(BoxSerial, SkusSerial, OperationNumber, textStatus, WcGuid, num, InOperationNumber, Status)
             }
+            if (num === 2) {
+                if (document.getElementById(`${InOperationNumber}pause${SkusSerial}`).textContent === 'Продолжить') {
+                    textStatus = 'Начато'
+                    num = 1985
+                    handlerControlStatus(BoxSerial, SkusSerial, OperationNumber, textStatus, WcGuid, num, InOperationNumber, Status)
+                } else {
+                    textStatus = 'Пауза'
+                    num = 2
+                    handlerControlStatus(BoxSerial, SkusSerial, OperationNumber, textStatus, WcGuid, num, InOperationNumber, Status)
+                }
+            }
+            if (num === 3) {
+                textStatus = 'Закончено'
+                handlerControlStatus(BoxSerial, SkusSerial, OperationNumber, textStatus, WcGuid, num, InOperationNumber, Status)
+            }
+            if (num === 0) {
+                textStatus = 'Несоответствие'
+                htmlModalWindowDefect(BoxSerial, SkusSerial, OperationNumber, textStatus, WcGuid, num, InOperationNumber, Status)
+                // handlerControlStatus(BoxSerial, SkusSerial, OperationNumber, textStatus, WcGuid, num, InOperationNumber, Status)
+            }
+        } else {
+            htmlModalWindow('Ошибка серии не выбраны', 'Выберите серии', '')
         }
-        if (num === 3) {
-            textStatus = 'Закончено'
-            handlerControlStatus(BoxSerial, SkusSerial, OperationNumber, textStatus, WcGuid, num, InOperationNumber, Status)
-        }
-        if (num === 0) {
-            textStatus = 'Несоответствие'
-            htmlModalWindowDefect(BoxSerial, SkusSerial, OperationNumber, textStatus, WcGuid, num, InOperationNumber, Status)
-            // handlerControlStatus(BoxSerial, SkusSerial, OperationNumber, textStatus, WcGuid, num, InOperationNumber, Status)
-        }
-    } else {
-        htmlModalWindow('Ошибка серии не выбраны', 'Выберите серии', '')
+    }else{
+        console.log('false')
     }
+
+
 
 }
 
@@ -942,11 +961,11 @@ function handlerShowTable(BoxSerial, SkusSerial) {
                                      <td>${itemSkusSerial.Operations[i].OperationHumanName}</td>
                                      <td id="${itemSkusSerial.Operations[i].OperationNumber}status${SkusSerial}" class="${itemSkusSerial.Operations[i].OperationNumber}status">${itemSkusSerial.Operations[i].Status}</td>
                                    <td id="${itemSkusSerial.Operations[i].Status}">
-                                     <button type="button"  class="btn btnBegin btnIn" id="${itemSkusSerial.Operations[i].OperationNumber}begin${SkusSerial}" onclick="handlerSendInLocal('${SkusSerial}','${item.WcGuid}','${BoxSerial}','${itemSkusSerial.Operations[i].Operation}',1,'${itemSkusSerial.Operations[i].Status}','${itemSkusSerial.Operations[i].OperationNumber}','${itemSkusSerial.Operations[i].OperationNumber}',
+                                     <button type="button"  class="btn btnBegin btnIn btnActive" id="${itemSkusSerial.Operations[i].OperationNumber}begin${SkusSerial}" onclick="handlerSendInLocal('${SkusSerial}','${item.WcGuid}','${BoxSerial}','${itemSkusSerial.Operations[i].Operation}',1,'${itemSkusSerial.Operations[i].Status}','${itemSkusSerial.Operations[i].OperationNumber}','${itemSkusSerial.Operations[i].OperationNumber}',
                                      document.getElementById('${itemSkusSerial.Operations[i].OperationNumber}status${SkusSerial}').textContent)"><i class="far fa-eye"></i>Начать</button>
-                                     <button type="button"  class="btn btnPause btnIn" id="${itemSkusSerial.Operations[i].OperationNumber}pause${SkusSerial}" onclick="handlerSendInLocal('${SkusSerial}','${item.WcGuid}','${BoxSerial}','${itemSkusSerial.Operations[i].Operation}',2,'${itemSkusSerial.Operations[i].Status}','${itemSkusSerial.Operations[i].OperationNumber}','${itemSkusSerial.Operations[i].OperationNumber}',document.getElementById('${itemSkusSerial.Operations[i].OperationNumber}status${SkusSerial}').textContent)"><i class="fas fa-edit"></i>Пауза</button>
-                                     <button type="button"  class="btn btnFinish btnIn" id="${itemSkusSerial.Operations[i].OperationNumber}finish${SkusSerial}" onclick="handlerSendInLocal('${SkusSerial}','${item.WcGuid}','${BoxSerial}','${itemSkusSerial.Operations[i].Operation}',3,'${itemSkusSerial.Operations[i].Status}','${itemSkusSerial.Operations[i].OperationNumber}','${itemSkusSerial.Operations[i].OperationNumber}',document.getElementById('${itemSkusSerial.Operations[i].OperationNumber}status${SkusSerial}').textContent)"><i class="far fa-trash-alt"></i>Закончить</button>
-                                   <button type="button"  class="btn btnDefect btnIn" id="${itemSkusSerial.Operations[i].OperationNumber}defect${SkusSerial}" onclick="handlerSendInLocal('${SkusSerial}','${item.WcGuid}','${BoxSerial}','${itemSkusSerial.Operations[i].Operation}',0,'${itemSkusSerial.Operations[i].Status}','${itemSkusSerial.Operations[i].OperationNumber}','${itemSkusSerial.Operations[i].OperationNumber}',
+                                     <button type="button"  class="btn btnPause btnIn btnActive" id="${itemSkusSerial.Operations[i].OperationNumber}pause${SkusSerial}" onclick="handlerSendInLocal('${SkusSerial}','${item.WcGuid}','${BoxSerial}','${itemSkusSerial.Operations[i].Operation}',2,'${itemSkusSerial.Operations[i].Status}','${itemSkusSerial.Operations[i].OperationNumber}','${itemSkusSerial.Operations[i].OperationNumber}',document.getElementById('${itemSkusSerial.Operations[i].OperationNumber}status${SkusSerial}').textContent)"><i class="fas fa-edit"></i>Пауза</button>
+                                     <button type="button"  class="btn btnFinish btnIn btnActive" id="${itemSkusSerial.Operations[i].OperationNumber}finish${SkusSerial}" onclick="handlerSendInLocal('${SkusSerial}','${item.WcGuid}','${BoxSerial}','${itemSkusSerial.Operations[i].Operation}',3,'${itemSkusSerial.Operations[i].Status}','${itemSkusSerial.Operations[i].OperationNumber}','${itemSkusSerial.Operations[i].OperationNumber}',document.getElementById('${itemSkusSerial.Operations[i].OperationNumber}status${SkusSerial}').textContent)"><i class="far fa-trash-alt"></i>Закончить</button>
+                                   <button type="button"  class="btn btnDefect btnIn btnActive" id="${itemSkusSerial.Operations[i].OperationNumber}defect${SkusSerial}" onclick="handlerSendInLocal('${SkusSerial}','${item.WcGuid}','${BoxSerial}','${itemSkusSerial.Operations[i].Operation}',0,'${itemSkusSerial.Operations[i].Status}','${itemSkusSerial.Operations[i].OperationNumber}','${itemSkusSerial.Operations[i].OperationNumber}',
                                      document.getElementById('${itemSkusSerial.Operations[i].OperationNumber}status${SkusSerial}').textContent)"><i class="far fa-eye"></i>Несоответствие</button>
                                    </td>
                                 </tr>
@@ -961,6 +980,10 @@ function handlerShowTable(BoxSerial, SkusSerial) {
                             }
                             allButtonsIn.push(buttonsIn)
                             handlerButtonHidden(allButtonsIn)
+                            if(activeTable==1){
+                                addClassListAll(document.querySelectorAll('.btnActive'),'btnNoActive')
+                               addClassListAll(document.querySelectorAll('.btnActive'),'disabled')
+                            }
 
                         }
                     }
