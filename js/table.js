@@ -130,13 +130,14 @@ class BtmcTimer {
     }
 }
 
-const IS_PRODUCTION = false
-let mainUrl = ""
-let mainUrlNewBoxSerial = ""
-let mainUrlDeleteBoxSerial = ""
-let micropartionsUrl = ""
-let microPartionsSaveAllUrl = ""
-let micropartionResizeUrl = ""
+const IS_PRODUCTION = false;
+const DELAY_BEFORE_BUTTON_PRESSES = 1 * 1000;
+let mainUrl = "";
+let mainUrlNewBoxSerial = "";
+let mainUrlDeleteBoxSerial = "";
+let micropartionsUrl = "";
+let microPartionsSaveAllUrl = "";
+let micropartionResizeUrl = "";
 
 if (!IS_PRODUCTION) {
     mainUrl = "http://localhost:5103/api/"
@@ -806,16 +807,20 @@ function handlerSendAllDataBase() {
         method: 'POST',
         headers: myHeaders,
         body: allData,
-        redirect: 'follow'
+        redirect: 'follow',
+        timeout: 10000
     };
-    fetch(mainUrl + "changeFull", requestOptionsAllData)
+        fetch(mainUrl + "changeFull", requestOptionsAllData)
         .then(response => {
             if (response.status === 200) {
-                dataBase = []
+                dataBase = [];
+                handlerControlActiveTable();
+                console.log('1С успешно получило данные');
             }
-        }).catch(error => console.log('error', error));
-
-    setTimeout(handlerControlActiveTable,2000)
+        }).catch(error => {
+            console.log('Ошибка подтверждения получения данных 1С. Отсылаю данные повторно', error);
+            handlerSendAllDataBase();
+        });
 }
 
 
