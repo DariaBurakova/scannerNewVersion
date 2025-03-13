@@ -28,7 +28,7 @@ let buttonListOrDocument = false
 let position = 0;
 let boxesObject = new Object()
 let activeTable=0;
-let newListLocalData={}
+let newListLocalData=[]
 
 const executors = new Map();
 executors.set("24ae3488-6419-11ee-8c48-00505681f37b", "БТМК");
@@ -341,7 +341,7 @@ const htmlModalGetList = () => {
       </div>
       <div class="m-4"> 
       <input type="text" id="inputGetNewBoxserial" class="inputGetList" placeholder="Поиск листа..." onkeyup="handlerSearchNewBoxSerial()">
-      <div style=" height: 150px; overflow:auto; padding: 15px;">
+      <div style=" height: 60vh; overflow:auto; padding: 15px;">
        <table class=" table table-sm table-bordered  newListAdd" >
 </table>
 </div>
@@ -355,6 +355,7 @@ const htmlModalGetList = () => {
 </div>
     `)
     document.body.insertAdjacentHTML('afterbegin', htmlModalGetList)
+    console.log(newListLocalData)
     let i = 0
     let newList
     newListLocalData.find(itemNewList=>{
@@ -769,17 +770,18 @@ function handlerGetNewListLocalData(){
     let myHeaders = new Headers();
     myHeaders.append("Content-Type", "application/json");
     let requestOptionsNewBoxSerial = {
-        method: 'POST',
+        method: 'GET',
         headers: myHeaders,
         redirect: 'follow'
     };
     fetch(mainGetAllContracts, requestOptionsNewBoxSerial)
         .then(response => response.json())
         .then(function (result) {
-            newListLocalData = result
+           newListLocalData = result
+           htmlModalGetList()
         })
         .catch(error => console.log('error', error));
-    htmlModalGetList()
+    
 }
 //функция отправки нового листа для добавления в данные
 function handlerGetNewBoxserial(newBoxSerial) {
