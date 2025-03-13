@@ -272,5 +272,19 @@ select:focus{
     border: 1px solid #ddd;
     margin-bottom: 2px;
 }
+.newListAdd{
+    font-family: sans-serif !important;
+    letter-spacing: 1px !important;
+    padding: 0px !important;
+    margin: 0 auto !important;
+}
+.btnAdd{
+    border:2px solid #4682B4 !important;
+    color: #4682B4 !important;
+}
+.btnAdd:active{
+    background-color: #4682B4 !important;
+    color: white !important;;
+}
 
 

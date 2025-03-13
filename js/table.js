@@ -28,7 +28,7 @@ let buttonListOrDocument = false
 let position = 0;
 let boxesObject = new Object()
 let activeTable=0;
-
+let newListLocalData={}
 
 const executors = new Map();
 executors.set("24ae3488-6419-11ee-8c48-00505681f37b", "БТМК");
@@ -143,6 +143,7 @@ if (!IS_PRODUCTION) {
     mainUrl = "http://localhost:5103/api/"
     mainUrlNewBoxSerial = "http://localhost:5103/api/addwctosuplst"
     mainUrlDeleteBoxSerial = "http://localhost:5103/api/deletewcfromsuplst"
+    mainGetAllContracts= "http://localhost:5103/api/getAllContracts"
 
     micropartionsUrl = "http://localhost:5167/micro_recieve"
     microPartionsSaveAllUrl = "http://localhost:5167/micro_save"
@@ -151,6 +152,7 @@ if (!IS_PRODUCTION) {
     mainUrl = "https://172.16.0.99:444/api/"
     mainUrlNewBoxSerial = "https://172.16.0.99:444/api/addwctosuplst"
     mainUrlDeleteBoxSerial = "https://172.16.0.99:444/api/deletewcfromsuplst"
+    mainGetAllContracts= "https://172.16.0.99:444/api/getAllContracts"
 
     micropartionsUrl = "https://172.16.0.99:445/micro_recieve"
     microPartionsSaveAllUrl = "https://172.16.0.99:445/micro_save"
@@ -338,16 +340,37 @@ const htmlModalGetList = () => {
         <h2 class="text-center mb-1">Поиск листа</h2>
       </div>
       <div class="m-4"> 
-      <input type="text" id="inputGetNewBoxserial" class="inputGetList" placeholder="Поиск листа...">
+      <input type="text" id="inputGetNewBoxserial" class="inputGetList" placeholder="Поиск листа..." onkeyup="handlerSearchNewBoxSerial()">
+      <div style=" height: 150px; overflow:auto; padding: 15px;">
+       <table class=" table table-sm table-bordered  newListAdd" >
+</table>
+</div>
+     
       </div>
       <div class="text-end " >
-        <button type="button" class="btn btn-secondary " onclick="handlerGetNewBoxserial(document.getElementById('inputGetNewBoxserial').value),deleteElems(document.querySelectorAll('.modal-wrap'))">Найти</button>
+     
         <button type="button" class="btn btn-secondary " onclick="deleteElems(document.querySelectorAll('.modal-wrap'))">Закрыть</button>
       </div>
   </div>
 </div>
     `)
     document.body.insertAdjacentHTML('afterbegin', htmlModalGetList)
+    let i = 0
+    let newList
+    newListLocalData.find(itemNewList=>{
+         newList=(`
+<tr>
+         <td>${i=i+1}</td>
+        <td class="text-center">${itemNewList.BoxSerial}</td>
+        <td class="text-center">${itemNewList.ClientOrder}</td>
+        <td class="text-center"> ${itemNewList.Specification}</td>
+        <td class="text-center"><button class=" btn btn-sm btnAdd btnIn" onclick="handlerGetNewBoxserial('${itemNewList.BoxSerial}'),deleteElems(document.querySelectorAll('.modal-wrap'))">Добавить</button></td>
+        </tr>
+        
+        </option>
+        `)
+        document.querySelector('.newListAdd').insertAdjacentHTML('beforeend', newList)
+    })
 }
 
 //модальное окно ошибки запроса новой бокссерии
@@ -693,6 +716,71 @@ const htmlBoxSerial = (itemBoxSerial, itemWcGuid, itemClientOrder) => {
     }
 }
 
+//функция поиска в модальном окне на получение листа
+function handlerSearchNewBoxSerial(){
+    let searchBox
+    let i
+    let txtValue;
+    let input = document.getElementById('inputGetNewBoxserial');
+    let filter = input.value.toLowerCase();
+    let table = document.querySelector(".newListAdd");
+    let tr = table.getElementsByTagName('tr');
+    for (i = 0; i < tr.length; i++) {
+        searchBox = tr[i];
+        txtValue = searchBox.textContent || searchBox.innerText;
+        if (txtValue.toLowerCase().indexOf(filter) > -1) {
+            tr[i].style.display = "";
+        } else {
+            tr[i].style.display = "none"
+        }
+    }
+}
+//функция открывает окно получить лист и делает запрос на все листы
+function handlerGetNewListLocalData(){
+    // newListLocalData=
+    //     [
+    //         {
+    //             "BoxSerial": "00000010442 023034",
+    //             "ClientOrder": "270-23/Ц ",
+    //             "Specification": "Кабель"
+    //         },
+    //         {
+    //             "BoxSerial": "00000010442 023035",
+    //             "ClientOrder": "270-28/Ц   ",
+    //             "Specification": "Кабель"
+    //         },
+    //         {
+    //             "BoxSerial": "00000010442 023036",
+    //             "ClientOrder": "270-29/Ц   ",
+    //             "Specification": "Кабель"
+    //         },
+    //         {
+    //             "BoxSerial": "00000010442 023037",
+    //             "ClientOrder": "270-30/Ц   ",
+    //             "Specification": "Кабель"
+    //         },
+    //         {
+    //             "BoxSerial": "00000010442 023038",
+    //             "ClientOrder": "270-31/Ц  ghjgjgjffyfjghghghjfufhjghjghffghghfyfyfhjghftydfytfgdrtd  ",
+    //             "Specification": "Кабель"
+    //         }
+    //     ]
+
+    let myHeaders = new Headers();
+    myHeaders.append("Content-Type", "application/json");
+    let requestOptionsNewBoxSerial = {
+        method: 'POST',
+        headers: myHeaders,
+        redirect: 'follow'
+    };
+    fetch(mainGetAllContracts, requestOptionsNewBoxSerial)
+        .then(response => response.json())
+        .then(function (result) {
+            newListLocalData = result
+        })
+        .catch(error => console.log('error', error));
+    htmlModalGetList()
+}
 //функция отправки нового листа для добавления в данные
 function handlerGetNewBoxserial(newBoxSerial) {
     deleteElems(document.querySelectorAll('.html_box'))
